@@ -10,7 +10,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Home</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive overflow-auto">
+            <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
@@ -77,7 +77,7 @@
                     </tr>
                     <tr>
                         <td>Donna Snider</td>
-                        <td>Customer Support</td>
+                        <td>Customer Support<w/td>
                         <td>New York</td>
                         <td>27</td>
                         <td>2011/01/25</td>
@@ -91,13 +91,3 @@
 
 @endsection
 
-@section('scripts')
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-
-@endsection

@@ -7,7 +7,7 @@ return [
      | Debugbar Settings
      |--------------------------------------------------------------------------
      |
-     | Debugbar is enabled by default, when debug is set to true in app.php.
+     | Debugbar is enabled by default, when debug is set to true in layouts.php.
      | You can override the value by setting enable to true or false instead of null.
      |
      | You can provide an array of URI's that must be ignored (eg. 'api/*')
@@ -140,7 +140,7 @@ return [
 
     'options' => [
         'auth' => [
-            'show_name' => true,   // Also show the users name/email in the debugbar
+            'show_name' => true,   // Also show the user name/email in the debugbar
         ],
         'db' => [
             'with_params'       => true,   // Render SQL with the parameters substituted
