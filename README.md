@@ -1,9 +1,9 @@
-# Sinahan - Sistem Informasi Layanan Tahanan
+# ?
 
 ### Fitur Utama 🏅
 
 1. Manajemen User
-2. Manajemen Role dan Permission
+2. Manajemen Roles/Group/Jabatan
 3. Kunjungan
 4. Sidang
 5. Jaksa

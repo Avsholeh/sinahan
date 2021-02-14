@@ -53,35 +53,35 @@
         </div>
     </li>
 
-    <li class="nav-item{{ request()->is('jabatan') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jabatan" aria-expanded="false"
-           aria-controls="jabatan">
-            <i class="fas fa-fw fa-user-friends"></i>
-            <span>{{ __('layouts.jabatan') }}</span>
-        </a>
-        <div id="jabatan" class="collapse " aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('jabatan.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('jabatan.index') }}">{{ __('layouts.add') }}</a>
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item{{ request()->is('jabatan') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jabatan" aria-expanded="false"--}}
+{{--           aria-controls="jabatan">--}}
+{{--            <i class="fas fa-fw fa-user-friends"></i>--}}
+{{--            <span>{{ __('layouts.jabatan') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="jabatan" class="collapse " aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item" href="{{ route('jabatan.index') }}">{{ __('layouts.index') }}</a>--}}
+{{--                <a class="collapse-item" href="{{ route('jabatan.index') }}">{{ __('layouts.add') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
-    <li class="nav-item{{ request()->is('hak-akses') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#hak_akses" aria-expanded="false"
-           aria-controls="hak_akses">
-            <i class="fas fa-fw fa-key"></i>
-            <span>{{ __('layouts.hak_akses') }}</span>
-        </a>
-        <div id="hak_akses" class="collapse" aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('hak-akses.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('hak-akses.index') }}">{{ __('layouts.add') }}</a>
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item{{ request()->is('hak-akses') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#hak_akses" aria-expanded="false"--}}
+{{--           aria-controls="hak_akses">--}}
+{{--            <i class="fas fa-fw fa-key"></i>--}}
+{{--            <span>{{ __('layouts.hak_akses') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="hak_akses" class="collapse" aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item" href="{{ route('hak-akses.index') }}">{{ __('layouts.index') }}</a>--}}
+{{--                <a class="collapse-item" href="{{ route('hak-akses.index') }}">{{ __('layouts.add') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <hr class="sidebar-divider">
 

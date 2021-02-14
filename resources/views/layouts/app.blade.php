@@ -25,7 +25,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('layouts.sidebar-backup')
+    @include('layouts.sidebar')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
