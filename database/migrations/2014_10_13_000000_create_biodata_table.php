@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePegawaiTable extends Migration
+class CreateBiodataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreatePegawaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+        Schema::create('biodata', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('nip', 100);
-            $table->string('pangkat');
-            $table->string('jabatan');
-            $table->string('agama', 100);
-            $table->string('jenis_kelamin', 100);
+            $table->foreignId('user_id')->constrained('users');
+            $table->binary('foto');
+            $table->text('alamat');
+            $table->string('pekerjaan');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreatePegawaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pegawais');
+        Schema::dropIfExists('biodatas');
     }
 }

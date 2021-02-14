@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Pegawai;
+use App\Models\Jaksa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PegawaiFactory extends Factory
+class JaksaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Pegawai::class;
+    protected $model = Jaksa::class;
 
     /**
      * Define the model's default state.

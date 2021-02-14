@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1)->create();
+        // Create Actors
+        $admin = \App\Models\User::factory(1)
+            ->state(new Sequence(
+                [ 'username' => 'sinahan_admin'],
+                [ 'username' => 'sinahan_staff'],
+                [ 'username' => 'sinahan_user'],
+            ))
+            ->create();
+
     }
 }

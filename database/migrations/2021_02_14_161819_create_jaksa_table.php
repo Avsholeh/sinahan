@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBiodataTable extends Migration
+class CreateJaksaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateBiodataTable extends Migration
      */
     public function up()
     {
-        Schema::create('biodata', function (Blueprint $table) {
+        Schema::create('jaksa', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->binary('foto');
-            $table->text('alamat');
-            $table->string('pekerjaan');
-            $table->string('hubungan');
+            $table->foreignId('pegawai_id')->constrained('data_pegawai');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateBiodataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('biodatas');
+        Schema::dropIfExists('jaksas');
     }
 }
