@@ -30,6 +30,10 @@ Route::prefix('/biodata')->group(function () {
     Route::get('/', function() {
         return view('pages.biodata.index');
     })->name('biodata.index');
+
+    Route::get('/edit', function() {
+        return view('pages.biodata.edit');
+    })->name('biodata.edit');
 });
 
 Route::prefix('/pengguna')->group(function () {
@@ -64,10 +68,4 @@ Route::prefix('/kunjungan')->group(function () {
     Route::get('/', function() {
         return view('pages.kunjungan.index');
     })->name('kunjungan.index');
-});
-
-Route::prefix('/dokumen')->group(function () {
-    Route::get('/', function() {
-        return view('pages.dokumen.index');
-    })->name('dokumen.index');
 });

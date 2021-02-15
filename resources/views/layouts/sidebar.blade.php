@@ -2,16 +2,21 @@
 <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-        <div class="sidebar-brand-icon">
-            <i class="fas fa-chair fa-21"></i>
+    <a style="height: auto" class="sidebar-brand d-flex align-items-center justify-content-center flex-column"
+       href="{{ route('home') }}">
+        <div class="sidebar-brand-icon bg-white rounded mb-2">
+            <img src="{{ asset('img/logo.png') }}" width="50">
         </div>
         <div class="sidebar-brand-text mx-3">{{ config('app.name') }}</div>
+        <small>Sistem Informasi Layanan Tahanan</small>
     </a>
     <!-- END Brand -->
 
-    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider my-3">
 
+    <div class="sidebar-heading">
+        {{ __('layouts.utama') }}
+    </div>
     <li class="nav-item{{ request()->is('dashboard') ? ' active' : '' }}">
         <a class="nav-link " href="{{ route('dashboard.index') }}">
             <i class="fas fa-fw fa-home"></i>
@@ -154,20 +159,20 @@
         </div>
     </li>
 
-    <li class="nav-item{{ request()->is('dokumen') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dokumen" aria-expanded="false"
-           aria-controls="dokumen">
-            <i class="fas fa-fw fa-business-time"></i>
-            <span>{{ __('layouts.dokumen') }}</span>
-        </a>
-        <div id="dokumen" class="collapse" aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('dokumen.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('dokumen.index') }}">{{ __('layouts.add') }}</a>
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item{{ request()->is('dokumen') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dokumen" aria-expanded="false"--}}
+{{--           aria-controls="dokumen">--}}
+{{--            <i class="fas fa-fw fa-business-time"></i>--}}
+{{--            <span>{{ __('layouts.dokumen') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="dokumen" class="collapse" aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item" href="{{ route('dokumen.index') }}">{{ __('layouts.index') }}</a>--}}
+{{--                <a class="collapse-item" href="{{ route('dokumen.index') }}">{{ __('layouts.add') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <hr class="sidebar-divider">
 

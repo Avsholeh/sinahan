@@ -3,9 +3,10 @@
 return [
 
     // Menu level 1
-    'user_management' => 'Manajemen Pengguna',
-    'data_management' => 'Manajemen Data',
+    'user_management' => 'Kelola Pengguna',
+    'data_management' => 'Kelola Data',
     'layanan' => 'Layanan',
+    'utama' => 'Utama',
 
     // Menu Level 2
     'dashboard' => 'Dashboard',

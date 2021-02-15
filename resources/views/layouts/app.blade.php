@@ -40,7 +40,7 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">@yield('title', 'Title')</h1>
-                <p class="mb-4">@yield('desc', 'Description')</p>
+                <p class="mb-4">@yield('desc')</p>
 
                 @yield('content')
 
@@ -107,6 +107,8 @@
 
 <!-- Page level custom scripts -->
 <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+
+@yield('scripts')
 
 </body>
 
