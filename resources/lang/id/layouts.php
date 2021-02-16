@@ -3,8 +3,8 @@
 return [
 
     // Menu level 1
-    'user_management' => 'Kelola Pengguna',
-    'data_management' => 'Kelola Data',
+    'kelola_pengguna' => 'Kelola Pengguna',
+    'kelola_data' => 'Kelola Data',
     'layanan' => 'Layanan',
     'utama' => 'Utama',
 
@@ -14,18 +14,18 @@ return [
 
     'pengguna' => 'Pengguna',
     'jabatan' => 'Jabatan',
-    'hak_akses' => 'Hak Akses',
 
     'hakim' => 'Hakim',
     'jaksa' => 'Jaksa',
     'narapidana' => 'Narapidana',
     'kunjungan'=> 'Kunjungan',
-    'dokumen'=> 'Dokumen',
 
     // Menu Level 3
     'index' => 'Semua',
-    'add' => 'Tambah',
+    'create' => 'Tambah',
+    'edit' => 'Perbarui',
 
     // Tambahan
-    'logout'=> 'Keluar,',
+    'login'=> 'Masuk',
+    'logout'=> 'Keluar',
 ];

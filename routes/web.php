@@ -22,7 +22,6 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::middleware(['auth', 'web'])->group(function() {
 
-
     Route::prefix('/dashboard')->group(function () {
         Route::get('/', function() {
             return view('pages.dashboard.index');
@@ -46,31 +45,47 @@ Route::middleware(['auth', 'web'])->group(function() {
 
         Route::get('/create', function() {
             return view('pages.pengguna.create');
-        })->name('pengguna.add');
+        })->name('pengguna.create');
     });
 
     Route::prefix('/hakim')->group(function () {
         Route::get('/', function() {
-            return view('hakim.index');
+            return view('pages.hakim.index');
         })->name('hakim.index');
+
+        Route::get('/create', function() {
+            return view('pages.hakim.create');
+        })->name('hakim.create');
     });
 
     Route::prefix('/jaksa')->group(function () {
         Route::get('/', function() {
             return view('pages.jaksa.index');
         })->name('jaksa.index');
+
+        Route::get('/create', function() {
+            return view('pages.jaksa.create');
+        })->name('jaksa.create');
     });
 
     Route::prefix('/narapidana')->group(function () {
         Route::get('/', function() {
             return view('pages.narapidana.index');
         })->name('narapidana.index');
+
+        Route::get('/create', function() {
+            return view('pages.narapidana.create');
+        })->name('narapidana.create');
     });
 
     Route::prefix('/kunjungan')->group(function () {
         Route::get('/', function() {
             return view('pages.kunjungan.index');
         })->name('kunjungan.index');
+
+        Route::get('/create', function() {
+            return view('pages.kunjungan.create');
+        })->name('kunjungan.create');
     });
 
 });

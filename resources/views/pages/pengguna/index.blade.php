@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="card shadow mb-4">
+    <div class="card mb-4">
         <div class="card-body p-3">
             <div class="row mb-5">
                 <div class="col">
@@ -16,7 +16,6 @@
                     <thead>
                     <tr>
                         <th>Foto</th>
-
                         <th>Nama Lengkap</th>
                         <th>Username</th>
                         <th>Tempat Lahir</th>
