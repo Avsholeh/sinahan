@@ -44,13 +44,13 @@
             <i class="fas fa-fw fa-user"></i>
             <span>{{ __('layouts.pengguna') }}</span>
         </a>
-        <div id="pengguna" class="collapse{{ request()->is('pengguna') || request()->is('pengguna/create') ? ' show' : '' }}"
+        <div id="pengguna" class="collapse{{ request()->is('pengguna') || request()->is('pengguna/*') ? ' show' : '' }}"
              aria-labelledby="headingPages"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item{{ request()->is('pengguna') ? ' active' : '' }}"
                    href="{{ route('pengguna.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item{{ request()->routeIs('pengguna.create') ? ' active' : '' }}"
+                <a class="collapse-item{{ request()->is('pengguna/create') ? ' active' : '' }}"
                    href="{{ route('pengguna.create') }}">{{ __('layouts.create') }}</a>
             </div>
         </div>
@@ -73,29 +73,41 @@
              aria-labelledby="headingPages"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('hakim.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('hakim.create') }}">{{ __('layouts.create') }}</a>
+
+                <a class="collapse-item{{ request()->is('hakim') ? ' active' : '' }}"
+                   href="{{ route('hakim.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('hakim/create') ? ' active' : '' }}"
+                   href="{{ route('hakim.create') }}">{{ __('layouts.create') }}</a>
+
             </div>
         </div>
     </li>
 
     <li class="nav-item{{ request()->is('jaksa') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#jaksa" aria-expanded="false"
+        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#jaksa"
+           aria-expanded="false"
            aria-controls="jaksa">
             <i class="fas fa-fw fa-people-arrows"></i>
             <span>{{ __('layouts.jaksa') }}</span>
         </a>
-        <div id="jaksa" class="collapse" aria-labelledby="headingPages"
+        <div id="jaksa" class="collapse{{ request()->is('jaksa') || request()->is('jaksa/*') ? ' show' : '' }}"
+             aria-labelledby="headingPages"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('jaksa.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('jaksa.index') }}">{{ __('layouts.create') }}</a>
+
+                <a class="collapse-item{{ request()->is('jaksa') ? ' active' : '' }}"
+                   href="{{ route('jaksa.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('jaksa/create') ? ' active' : '' }}"
+                   href="{{ route('jaksa.create') }}">{{ __('layouts.create') }}</a>
             </div>
         </div>
     </li>
 
     <li class="nav-item{{ request()->is('narapidana') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#narapidana" aria-expanded="false"
+        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#narapidana"
+           aria-expanded="false"
            aria-controls="narapidana">
             <i class="fas fa-fw fa-person-booth"></i>
             <span>{{ __('layouts.narapidana') }}</span>
@@ -115,7 +127,8 @@
     </div>
 
     <li class="nav-item{{ request()->is('kunjungan') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan" aria-expanded="false"
+        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"
+           aria-expanded="false"
            aria-controls="kunjungan">
             <i class="fas fa-fw fa-business-time"></i>
             <span>{{ __('layouts.kunjungan') }}</span>

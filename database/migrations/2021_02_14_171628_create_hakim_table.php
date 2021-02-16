@@ -15,7 +15,7 @@ class CreateHakimTable extends Migration
     {
         Schema::create('hakim', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pegawai_id')->constrained('data_pegawai');
+            $table->foreignId('pegawai_id')->constrained('pegawai');
             $table->timestamps();
         });
     }

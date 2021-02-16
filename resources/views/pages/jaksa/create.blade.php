@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Hakim')
+@section('title', 'Tambah Jaksa')
 
-@section('desc', 'Anda dapat menambahkan Hakim dengan form dibawah ini.')
+@section('desc', 'Anda dapat menambahkan Jaksa dengan form dibawah ini.')
 
 @section('content')
 
@@ -61,8 +61,8 @@
                             <label for="jabatan">Jabatan</label>
                             <select name="jabatan" id="jabatan" class="form-control">
                                 <option disabled>Pilih jabatan</option>
-                                <option value="Hakim" selected>Hakim</option>
-                                <option value="Jaksa">Jaksa</option>
+                                <option value="Hakim">Hakim</option>
+                                <option value="Jaksa" selected>Jaksa</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>

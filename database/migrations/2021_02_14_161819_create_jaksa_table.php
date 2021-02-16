@@ -15,7 +15,7 @@ class CreateJaksaTable extends Migration
     {
         Schema::create('jaksa', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pegawai_id')->constrained('data_pegawai');
+            $table->foreignId('pegawai_id')->constrained('pegawai');
             $table->timestamps();
         });
     }

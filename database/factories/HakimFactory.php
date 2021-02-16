@@ -22,7 +22,7 @@ class HakimFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'pegawai_id' => $this->faker->numberBetween(1, 3)
         ];
     }
 }

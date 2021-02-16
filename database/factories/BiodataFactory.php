@@ -21,8 +21,16 @@ class BiodataFactory extends Factory
      */
     public function definition()
     {
+        $foto = file_get_contents('public/img/pria.png');
+
         return [
-            //
+            'user_id' => $this->faker->numberBetween(1, 3),
+            'nama_lengkap' => $this->faker->name,
+            'foto' => $foto,
+            'alamat' => $this->faker->address,
+            'tempat_lahir' => $this->faker->country,
+            'tanggal_lahir' => $this->faker->date(),
+            'pekerjaan' => $this->faker->jobTitle,
         ];
     }
 }
