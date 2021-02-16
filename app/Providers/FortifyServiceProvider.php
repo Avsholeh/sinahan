@@ -10,6 +10,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
+use App\Models\User;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -36,12 +37,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('username', $request->username)->first();
+
+            if ($user &&
+                \Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
+                session()->flash('message', 'Username/Password anda salah!');
+                return $user;
+            }
+        });
+
         Fortify::loginView(function () {
-            return view('auth.login');
+            return view('pages.auth.login');
         });
 
         Fortify::registerView(function () {
-            return view('auth.register');
+            return view('pages.auth.register');
         });
 
         RateLimiter::for('login', function (Request $request) {

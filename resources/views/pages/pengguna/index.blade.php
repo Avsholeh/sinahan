@@ -1,93 +1,103 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Pengguna')
 
 @section('content')
 
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Home</h6>
-        </div>
-        <div class="card-body">
+        <div class="card-body p-3">
+            <div class="row mb-5">
+                <div class="col">
+                    <button class="btn btn-primary">Tambah Baru</button>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Foto</th>
+
+                        <th>Nama Lengkap</th>
+                        <th>Username</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Alamat</th>
+                        <th>Pekerjaan</th>
                     </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                    </tfoot>
                     <tbody>
-
                     <tr>
+                        <td>
+                            <div class="rounded-circle"
+                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
+                            </div>
+                        </td>
                         <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-                    </tr>
-                    <tr>
-                        <td>Jena Gaines</td>
-                        <td>Office Manager</td>
-                        <td>London</td>
-                        <td>30</td>
-                        <td>2008/12/19</td>
-                        <td>$90,560</td>
-                    </tr>
-                    <tr>
-                        <td>Haley Kennedy</td>
-                        <td>Senior Marketing Designer</td>
-                        <td>London</td>
-                        <td>43</td>
-                        <td>2012/12/18</td>
-                        <td>$313,500</td>
-                    </tr>
-                    <tr>
-                        <td>Tatyana Fitzpatrick</td>
-                        <td>Regional Director</td>
-                        <td>London</td>
-                        <td>19</td>
-                        <td>2010/03/17</td>
-                        <td>$385,750</td>
+                        <td>cedrickelly</td>
+                        <td>Bengkalis</td>
+                        <td>22 Januari 2000</td>
+                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
+                        <td>Mahasiswa</td>
+
                     </tr>
 
                     <tr>
-                        <td>Michael Bruce</td>
-                        <td>Javascript Developer</td>
-                        <td>Singapore</td>
-                        <td>29</td>
-                        <td>2011/06/27</td>
-                        <td>$183,000</td>
+                        <td>
+                            <div class="rounded-circle"
+                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
+                            </div>
+                        </td>
+                        <td>Cedric Kelly</td>
+                        <td>cedrickelly</td>
+                        <td>Bengkalis</td>
+                        <td>22 Januari 2000</td>
+                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
+                        <td>Mahasiswa</td>
+
                     </tr>
+
                     <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support<w/td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
+                        <td>
+                            <div class="rounded-circle"
+                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
+                            </div>
+                        </td>
+                        <td>Cedric Kelly</td>
+                        <td>cedrickelly</td>
+                        <td>Bengkalis</td>
+                        <td>22 Januari 2000</td>
+                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
+                        <td>Mahasiswa</td>
+
                     </tr>
+
+                    <tr>
+                        <td>
+                            <div class="rounded-circle"
+                                 style="width: 50px; height: 50px; background-image: url('/img/wanita.png'); background-size: cover">
+                            </div>
+                        </td>
+                        <td>Cedric Kelly</td>
+                        <td>cedrickelly</td>
+                        <td>Bengkalis</td>
+                        <td>22 Januari 2000</td>
+                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
+                        <td>Mahasiswa</td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
 
 @endsection
 
