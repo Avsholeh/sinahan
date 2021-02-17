@@ -25,6 +25,7 @@
                         <th>Agama</th>
                         <th>Jenis Kelamin</th>
                         <th>Pendidikan</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,10 @@
                             <td>Islam</td>
                             <td>Laki-Laki</td>
                             <td>SII</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Perbarui</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
                         </tr>
 
                     @endforeach
@@ -62,9 +67,11 @@
 
 @section('scripts')
 
-    $(document).ready(function() {
-    $('#dataTable').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 
 @endsection
 

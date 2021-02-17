@@ -161,11 +161,15 @@
             <i class="fas fa-fw fa-business-time"></i>
             <span>{{ __('layouts.kunjungan') }}</span>
         </a>
-        <div id="kunjungan" class="collapse" aria-labelledby="headingPages"
+        <div id="kunjungan" class="collapse{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' show' : '' }}"
+             aria-labelledby="headingPages"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('kunjungan.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('kunjungan.index') }}">{{ __('layouts.create') }}</a>
+                <a class="collapse-item{{ request()->is('kunjungan') ? ' active' : '' }}"
+                   href="{{ route('kunjungan.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('kunjungan/create') ? ' active' : '' }}"
+                   href="{{ route('kunjungan.create') }}">{{ __('layouts.create') }}</a>
             </div>
         </div>
     </li>

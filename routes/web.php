@@ -88,6 +88,9 @@ Route::middleware(['auth', 'web'])->group(function() {
         })->name('sidang.create');
     });
 
+    /**
+     * Layanan Kunjungan (Izin kunjungan)
+     */
     Route::prefix('/kunjungan')->group(function () {
         Route::get('/', function() {
             return view('pages.kunjungan.index');

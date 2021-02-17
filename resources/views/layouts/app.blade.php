@@ -18,7 +18,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 
 <body id="page-top">
@@ -108,7 +108,7 @@
 <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 @endif
 
-<script>@yield('scripts')</script>
+@yield('scripts')
 
 
 </body>

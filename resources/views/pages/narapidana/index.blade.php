@@ -24,6 +24,7 @@
                         <th>Agama</th>
                         <th>Pekerjaan</th>
                         <th>Pendidikan</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,10 @@
                             <td>{{ $faker->randomElement(['Islam', 'Kristen', 'Hindu', 'Budha']) }}</td>
                             <td>{{ $faker->randomElement(['Wiraswasta', 'Buruh']) }}</td>
                             <td>{{ $faker->randomElement(['SD', 'SMP', 'SMA', 'D3', 'S1']) }}</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm">Perbarui</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
                         </tr>
 
                     @endforeach
@@ -59,9 +64,11 @@
 
 @section('scripts')
 
-    $(document).ready(function() {
-    $('#dataTable').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 
 @endsection
 

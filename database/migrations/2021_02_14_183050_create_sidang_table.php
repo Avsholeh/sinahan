@@ -15,13 +15,13 @@ class CreateSidangTable extends Migration
     {
         Schema::create('sidang', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tgl_mulai');
-            $table->foreignId('hakim_id')->constrained('hakim');
-            $table->foreignId('jaksa_id')->constrained('jaksa');
+            $table->dateTime('tanggal');
+//            $table->foreignId('hakim_id')->constrained('hakim');
+            $table->foreignId('hakim_id')->constrained('pegawai');
             $table->foreignId('narapidana_id')->constrained('narapidana');
-            $table->string('reg_perkara')->nullable();
-            $table->string('reg_tahanan')->nullable();
-            $table->string('reg_bukti')->nullable();
+            $table->string('pasal');
+            $table->string('jpu');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

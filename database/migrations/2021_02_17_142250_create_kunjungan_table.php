@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKunjungansTable extends Migration
+class CreateKunjunganTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateKunjungansTable extends Migration
      */
     public function up()
     {
-        Schema::create('kunjungans', function (Blueprint $table) {
+        Schema::create('kunjungan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('narapidana_id')->constrained('narapidana');
+            $table->dateTime('berlaku');
+            $table->string('keperluan');
             $table->timestamps();
         });
     }

@@ -13,11 +13,11 @@ class CreateJaksaTable extends Migration
      */
     public function up()
     {
-        Schema::create('jaksa', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('pegawai_id')->constrained('pegawai');
-            $table->timestamps();
-        });
+//        Schema::create('jaksa', function (Blueprint $table) {
+//            $table->id();
+//            $table->foreignId('pegawai_id')->constrained('pegawai');
+//            $table->timestamps();
+//        });
     }
 
     /**

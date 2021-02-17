@@ -13,11 +13,11 @@ class CreateHakimTable extends Migration
      */
     public function up()
     {
-        Schema::create('hakim', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('pegawai_id')->constrained('pegawai');
-            $table->timestamps();
-        });
+//        Schema::create('hakim', function (Blueprint $table) {
+//            $table->id();
+//            $table->foreignId('pegawai_id')->constrained('pegawai');
+//            $table->timestamps();
+//        });
     }
 
     /**

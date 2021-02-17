@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
         $admin = \App\Models\User::factory()
             ->count(3)
             ->state(new Sequence(
-                [ 'username' => 'sinahan_admin'],
-                [ 'username' => 'sinahan_staff'],
-                [ 'username' => 'sinahan_user'],
+                [ 'username' => 'admin'],
+                [ 'username' => 'staff'],
+                [ 'username' => 'user'],
             ))
             ->create();
     }

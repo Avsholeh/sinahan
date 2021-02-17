@@ -16,7 +16,7 @@
 
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 
 <body class="bg-gradient-primary">
@@ -63,12 +63,12 @@
                                     <div class="form-group">
                                         <label class="control-label pl-3" for="username_help">Username</label>
                                         <input name="username" type="text" class="form-control form-control-user"
-                                               id="username" aria-describedby="username_help" placeholder="Username">
+                                               id="username" aria-describedby="username_help">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label pl-3" for="username_help">Password</label>
                                         <input name="password" type="password" class="form-control form-control-user"
-                                               id="password" aria-describedby="username_help" placeholder="Password">
+                                               id="password" aria-describedby="username_help">
                                     </div>
                                     <input type="submit" class="btn btn-primary btn-block" value="Login">
                                     <a href="{{ route('register') }}" class="btn btn-secondary btn-block">

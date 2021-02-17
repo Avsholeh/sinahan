@@ -25,6 +25,7 @@
                         <th>Agama</th>
                         <th>Jenis Kelamin</th>
                         <th>Pendidikan</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,9 +36,7 @@
 
                         <tr>
                             <td>
-                                <div class="rounded-circle"
-                                     style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
-                                </div>
+                                <div class="rounded-circle" style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover"></div>
                             </td>
                             <td>{{ $faker->name }}</td>
                             <td>{{ $faker->creditCardNumber }}</td>
@@ -48,6 +47,10 @@
                             <td>Islam</td>
                             <td>Laki-Laki</td>
                             <td>SII</td>
+                            <td class="d-flex flex-row m-2">
+                                <button class="btn btn-warning btn-sm text-dark">Perbarui</button>
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </td>
                         </tr>
 
                     @endforeach
@@ -62,9 +65,10 @@
 
 @section('scripts')
 
-    $(document).ready(function() {
-    $('#dataTable').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 
 @endsection
-

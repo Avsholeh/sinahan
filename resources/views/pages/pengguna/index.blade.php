@@ -22,53 +22,14 @@
                         <th>Tanggal Lahir</th>
                         <th>Alamat</th>
                         <th>Pekerjaan</th>
+                        <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="rounded-circle"
-                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
-                            </div>
-                        </td>
-                        <td>Cedric Kelly</td>
-                        <td>cedrickelly</td>
-                        <td>Bengkalis</td>
-                        <td>22 Januari 2000</td>
-                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
-                        <td>Mahasiswa</td>
 
-                    </tr>
+                    <?php $faker = \Faker\Factory::create() ?>
 
-                    <tr>
-                        <td>
-                            <div class="rounded-circle"
-                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
-                            </div>
-                        </td>
-                        <td>Cedric Kelly</td>
-                        <td>cedrickelly</td>
-                        <td>Bengkalis</td>
-                        <td>22 Januari 2000</td>
-                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
-                        <td>Mahasiswa</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="rounded-circle"
-                                 style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover">
-                            </div>
-                        </td>
-                        <td>Cedric Kelly</td>
-                        <td>cedrickelly</td>
-                        <td>Bengkalis</td>
-                        <td>22 Januari 2000</td>
-                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
-                        <td>Mahasiswa</td>
-
-                    </tr>
+                    @foreach([1,2,3,4,5] as $key)
 
                     <tr>
                         <td>
@@ -76,13 +37,19 @@
                                  style="width: 50px; height: 50px; background-image: url('/img/wanita.png'); background-size: cover">
                             </div>
                         </td>
-                        <td>Cedric Kelly</td>
-                        <td>cedrickelly</td>
-                        <td>Bengkalis</td>
-                        <td>22 Januari 2000</td>
-                        <td>Jl. Ampera Kp No.15 Tanjungbalai Karimun</td>
-                        <td>Mahasiswa</td>
+                        <td>{{ $faker->name }}</td>
+                        <td>{{ $faker->userName }}</td>
+                        <td>{{ $faker->city }}</td>
+                        <td>{{ $faker->date('Y-m-d') }}</td>
+                        <td>{{ $faker->text }}</td>
+                        <td>{{ $faker->jobTitle }}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm">Perbarui</button>
+                            <button class="btn btn-danger btn-sm">Hapus</button>
+                        </td>
                     </tr>
+
+                    @endforeach
 
                     </tbody>
                 </table>
@@ -94,9 +61,11 @@
 
 @section('scripts')
 
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 
 @endsection
 

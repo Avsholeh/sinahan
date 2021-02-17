@@ -24,6 +24,9 @@ class CreateNarapidanaTable extends Migration
             $table->string('agama');
             $table->string('pekerjaan');
             $table->string('pendidikan');
+            $table->string('reg_perkara');
+            $table->string('reg_tahanan');
+            $table->string('reg_bukti');
             $table->timestamps();
         });
     }
