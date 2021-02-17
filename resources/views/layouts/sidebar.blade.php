@@ -112,11 +112,39 @@
             <i class="fas fa-fw fa-person-booth"></i>
             <span>{{ __('layouts.narapidana') }}</span>
         </a>
-        <div id="narapidana" class="collapse" aria-labelledby="headingPages"
+        <div id="narapidana" class="collapse{{ request()->is('narapidana') || request()->is('narapidana/*') ? ' show' : '' }}"
+             aria-labelledby="headingPages"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('narapidana.index') }}">{{ __('layouts.index') }}</a>
-                <a class="collapse-item" href="{{ route('narapidana.index') }}">{{ __('layouts.create') }}</a>
+
+                <a class="collapse-item{{ request()->is('narapidana') ? ' active' : '' }}"
+                   href="{{ route('narapidana.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('narapidana/create') ? ' active' : '' }}"
+                   href="{{ route('narapidana.create') }}">{{ __('layouts.create') }}</a>
+
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item{{ request()->is('sidang') ? ' active' : '' }}">
+        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#sidang"
+           aria-expanded="false"
+           aria-controls="sidang">
+            <i class="fas fa-fw fa-person-booth"></i>
+            <span>{{ __('layouts.sidang') }}</span>
+        </a>
+        <div id="sidang" class="collapse{{ request()->is('sidang') || request()->is('sidang/*') ? ' show' : '' }}"
+             aria-labelledby="headingPages"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item{{ request()->is('sidang') ? ' active' : '' }}"
+                   href="{{ route('sidang.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('sidang/create') ? ' active' : '' }}"
+                   href="{{ route('sidang.create') }}">{{ __('layouts.create') }}</a>
+
             </div>
         </div>
     </li>

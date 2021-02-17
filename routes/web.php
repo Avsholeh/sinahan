@@ -78,6 +78,16 @@ Route::middleware(['auth', 'web'])->group(function() {
         })->name('narapidana.create');
     });
 
+    Route::prefix('/sidang')->group(function () {
+        Route::get('/', function() {
+            return view('pages.sidang.index');
+        })->name('sidang.index');
+
+        Route::get('/create', function() {
+            return view('pages.sidang.create');
+        })->name('sidang.create');
+    });
+
     Route::prefix('/kunjungan')->group(function () {
         Route::get('/', function() {
             return view('pages.kunjungan.index');

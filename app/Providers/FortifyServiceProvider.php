@@ -47,6 +47,8 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+        // redirect user to http://127.0.0.1:8000/biodata/edit after register.
+
         Fortify::loginView(function () {
             return view('pages.auth.login');
         });

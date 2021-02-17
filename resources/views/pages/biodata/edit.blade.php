@@ -28,7 +28,7 @@
                             <input type="text" class="form-control" id="username" aria-describedby="username_help">
 {{--                            <small id="username_help" class="form-text text-success">--}}
 {{--                                <i class="fa fa-info-circle"></i> Anda dapat memilih username unik minimal 6 karakter.--}}
-{{--                            </small>--}}t
+{{--                            </small>--}}
                         </div>
 
                         <div class="form-group">

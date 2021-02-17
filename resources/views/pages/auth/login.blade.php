@@ -33,7 +33,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Logo -->
-                            <div class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
+                            <div
+                                class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
                                 <div class="rounded">
                                     <img src="{{ asset('img/logo.png') }}" width="150">
                                 </div>
@@ -52,7 +53,7 @@
                                 <hr>
 
                                 @if(session('message'))
-                                <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @endif
 
                                 <form class="user" action="{{ route('login') }}" method="post">
@@ -60,18 +61,17 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="remember_help">Username</label>
+                                        <label class="control-label pl-3" for="username_help">Username</label>
                                         <input name="username" type="text" class="form-control form-control-user"
-                                               id="username" aria-describedby="username_help"
-                                               placeholder="Username">
+                                               id="username" aria-describedby="username_help" placeholder="Username">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="remember_help">Password</label>
+                                        <label class="control-label pl-3" for="username_help">Password</label>
                                         <input name="password" type="password" class="form-control form-control-user"
-                                               id="password" placeholder="Password">
+                                               id="password" aria-describedby="username_help" placeholder="Password">
                                     </div>
-                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
-                                    <a href="{{ route('register') }}" class="btn btn-secondary btn-user btn-block">
+                                    <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                    <a href="{{ route('register') }}" class="btn btn-secondary btn-block">
                                         Daftar
                                     </a>
                                 </form>
