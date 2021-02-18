@@ -25,6 +25,7 @@ return [
     'update' => 'Perbarui',
     'update.button' => 'Simpan Perubahan',
     'delete' => 'Hapus',
+    'verify' => 'Verifikasi',
 
     // Tambahan
     'register'=> 'Daftar',

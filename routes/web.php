@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+//Route::get('/register', [RegisterController::class, 'index'])->name('register');
+//Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::middleware(['auth', 'web'])->group(function() {
 
@@ -168,6 +168,10 @@ Route::middleware(['auth', 'web'])->group(function() {
         Route::delete('/delete/{kunjungan}', function() {
             return null;
         })->name('kunjungan.delete');
+
+        Route::post('/verify/{kunjungan}', function() {
+            return null;
+        })->name('kunjungan.verify');
     });
 
 });

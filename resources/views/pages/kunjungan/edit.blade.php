@@ -19,7 +19,13 @@
                         <div class="form-group">
                             <label for="berlaku">Berlaku Hingga</label>
                             <input name="berlaku" type="date" class="form-control" id="berlaku"
-                                   aria-describedby="berlaku" value="" disabled>
+                                   aria-describedby="berlaku" value="" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <input name="status" type="text" class="form-control" id="status"
+                                   aria-describedby="status" value="BELUM DISETUJUI" readonly>
                         </div>
 
                         <div class="form-group">

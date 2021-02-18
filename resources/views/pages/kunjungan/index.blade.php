@@ -15,10 +15,10 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
+                        <th>Status</th>
                         <th>Narapidana</th>
                         <th>Berlaku Hingga</th>
                         <th>Keperluan</th>
-                        <th>Status</th>
                         <th>#</th>
                     </tr>
                     </thead>
@@ -29,15 +29,19 @@
                     @foreach(['BELUM DISETUJUI','BELUM DISETUJUI','BELUM DISETUJUI','TELAH DISETUJUI','TELAH DISETUJUI'] as $status)
 
                         <tr>
-                            <td>{{ $faker->name }}</td>
-                            <td>{{ $faker->date('Y-m-d') }}</td>
-                            <td>{{ $faker->text }}</td>
                             <td>
                                 <span class="badge badge-{{ $status === 'TELAH DISETUJUI' ? 'success' : 'primary' }}">
                                     {{ $status }}
                                 </span>
                             </td>
+                            <td>{{ $faker->name }}</td>
+                            <td>{{ $faker->date('Y-m-d') }}</td>
+                            <td>{{ $faker->text }}</td>
                             <td class="d-flex flex-row">
+                                <a href="{{ route('kunjungan.verify', 1) }}"
+                                   class="btn btn-success btn-sm text-light mr-2">
+                                    {{ __('layouts.verify') }}
+                                </a>
                                 <a href="{{ route('kunjungan.edit', 1) }}"
                                    class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
