@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Hakim')
-
-@section('desc', 'Anda dapat menambahkan Hakim dengan form dibawah ini.')
+@section('title', 'Perbarui Hakim')
 
 @section('content')
 
@@ -98,7 +96,9 @@
                             <input name="foto" type="file" class="form-control-file" id="foto">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <hr>
+
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Hakim')
-
-@section('desc', 'Anda dapat menambahkan Hakim dengan form dibawah ini.')
+@section('title', 'Perbarui Jaksa')
 
 @section('content')
 
@@ -61,8 +59,8 @@
                             <label for="jabatan">Jabatan</label>
                             <select name="jabatan" id="jabatan" class="form-control">
                                 <option disabled>Pilih jabatan</option>
-                                <option value="Hakim" selected>Hakim</option>
-                                <option value="Jaksa">Jaksa</option>
+                                <option value="Hakim">Hakim</option>
+                                <option value="Jaksa" selected>Jaksa</option>
                                 <option value="Lainnya">Lainnya</option>
                             </select>
                         </div>
@@ -95,10 +93,12 @@
 
                         <div class="form-group">
                             <label for="foto">Upload foto</label>
-                            <input name="foto" type="file" class="form-control-file" id="foto">
+                            <input name="foto" type="file" class="form-control" id="foto">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <hr>
+
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>

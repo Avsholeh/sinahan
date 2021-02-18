@@ -23,6 +23,8 @@ return [
     'create' => 'Tambah',
     'edit' => 'Ubah',
     'update' => 'Perbarui',
+    'update.button' => 'Simpan Perubahan',
+    'delete' => 'Hapus',
 
     // Tambahan
     'register'=> 'Daftar',

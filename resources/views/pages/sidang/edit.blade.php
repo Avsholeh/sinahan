@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Sidang')
-
-@section('desc', 'Anda dapat menambahkan Jadwal sidang dengan form dibawah ini.')
+@section('title', 'Perbarui Sidang')
 
 @section('content')
 
@@ -56,7 +54,9 @@
                             <input name="keterangan" type="text" class="form-control" id="keterangan">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <hr>
+
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
                     </form>
                 </div>
             </div>

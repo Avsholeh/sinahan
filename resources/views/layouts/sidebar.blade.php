@@ -1,7 +1,6 @@
-<!-- Sidebar -->
 <ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Brand -->
+    <!-- Logo -->
     <a style="height: auto" class="sidebar-brand d-flex align-items-center justify-content-center flex-column"
        href="{{ route('home') }}">
         <div class="sidebar-brand-icon bg-white rounded mb-2">
@@ -10,7 +9,7 @@
         <div class="sidebar-brand-text mx-3">{{ config('app.name') }}</div>
         <small>Sistem Informasi Layanan Tahanan</small>
     </a>
-    <!-- END Brand -->
+    <!-- END Logo -->
 
     <hr class="sidebar-divider my-3">
 
@@ -37,7 +36,7 @@
         {{ __('layouts.kelola_pengguna') }}
     </div>
 
-    <li class="nav-item{{ request()->is('pengguna') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('pengguna') || request()->is('pengguna/*') ? ' active' : '' }}">
         <a class="nav-link{{ request()->is('pengguna') ? '' : ' collapsed' }}"
            href="javascript:void(0)" data-toggle="collapse" data-target="#pengguna" aria-expanded="false"
            aria-controls="pengguna">
@@ -62,7 +61,7 @@
         {{ __('layouts.kelola_data') }}
     </div>
 
-    <li class="nav-item{{ request()->is('hakim') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('hakim') || request()->is('hakim/*') ? ' active' : '' }}">
         <a class="nav-link collapsed{{ request()->is('hakim') ? '' : ' collapsed' }}"
            href="javascript:void(0)" data-toggle="collapse" data-target="#hakim" aria-expanded="false"
            aria-controls="hakim">
@@ -84,7 +83,7 @@
         </div>
     </li>
 
-    <li class="nav-item{{ request()->is('jaksa') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('jaksa')  || request()->is('jaksa/*')? ' active' : '' }}">
         <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#jaksa"
            aria-expanded="false"
            aria-controls="jaksa">
@@ -105,7 +104,7 @@
         </div>
     </li>
 
-    <li class="nav-item{{ request()->is('narapidana') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('narapidana') || request()->is('narapidana/*') ? ' active' : '' }}">
         <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#narapidana"
            aria-expanded="false"
            aria-controls="narapidana">
@@ -127,7 +126,7 @@
         </div>
     </li>
 
-    <li class="nav-item{{ request()->is('sidang') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('sidang') || request()->is('sidang/*')? ' active' : '' }}">
         <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#sidang"
            aria-expanded="false"
            aria-controls="sidang">
@@ -150,11 +149,12 @@
     </li>
 
     <hr class="sidebar-divider">
+
     <div class="sidebar-heading">
         {{ __('layouts.layanan') }}
     </div>
 
-    <li class="nav-item{{ request()->is('kunjungan') ? ' active' : '' }}">
+    <li class="nav-item{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' active' : '' }}">
         <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"
            aria-expanded="false"
            aria-controls="kunjungan">
@@ -182,4 +182,3 @@
     </div>
 
 </ul>
-<!-- End of Sidebar -->
