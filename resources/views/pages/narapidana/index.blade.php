@@ -8,7 +8,7 @@
         <div class="card-body p-3">
             <div class="row mb-5">
                 <div class="col">
-                    <button class="btn btn-primary">Tambah Baru</button>
+                    <a href="{{ route('narapidana.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
             <div class="table-responsive overflow-auto">
