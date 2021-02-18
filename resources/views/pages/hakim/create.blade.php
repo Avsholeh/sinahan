@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-6 col-xl-6">
 
-            <div class="card shadow mb-4">
+            <div class="card mb-4">
                 <div class="card-body">
                     <form>
                         <div class="form-group">
@@ -99,6 +99,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('hakim.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>

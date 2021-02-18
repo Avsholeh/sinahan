@@ -56,11 +56,11 @@ Route::middleware(['auth', 'web'])->group(function() {
             return view('pages.pengguna.create');
         })->name('pengguna.create');
 
-        Route::get('/{pengguna}/edit', function() {
+        Route::get('/{user}/edit', function() {
             return view('pages.pengguna.edit');
         })->name('pengguna.edit');
 
-        Route::delete('/delete/{pengguna}', function() {
+        Route::delete('/delete/{user}', function() {
             return null;
         })->name('pengguna.delete');
     });

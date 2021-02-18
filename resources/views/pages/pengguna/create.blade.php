@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-6 col-xl-6">
 
-            <div class="card shadow mb-4">
+            <div class="card mb-4">
                 <div class="card-body">
 
 {{--                    <div class="alert alert-danger" role="alert">--}}
@@ -62,6 +62,7 @@
 
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('pengguna.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>
@@ -69,16 +70,5 @@
         </div>
 
     </div>
-
-@endsection
-
-@section('scripts')
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
 
 @endsection

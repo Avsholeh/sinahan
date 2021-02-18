@@ -14,12 +14,15 @@ class Pegawai extends Model
     protected $fillable = [
         'nama_lengkap',
         'tempat_lahir',
+        'tanggal_lahir',
         'nip',
         'pangkat',
         'golongan',
         'jabatan',
+        'peran',
         'agama',
         'jenis_kelamin',
         'pendidikan',
+        'foto',
     ];
 }

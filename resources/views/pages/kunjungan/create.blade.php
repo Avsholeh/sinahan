@@ -9,13 +9,21 @@
     <div class="row">
         <div class="col-lg-6 col-xl-6">
             <!-- KUNJUNGAN -->
-            <div class="card shadow mb-4">
+            <div class="card mb-4">
                 <div class="card-body">
                     <form>
                         <div class="form-group">
                             <label for="narapidana">Narapidana</label>
-                            <input name="narapidana" type="text" class="form-control" id="narapidana"
-                                   aria-describedby="narapidana_help">
+                            <select name="narapidana" id="narapidana" class="form-control">
+                                <option disabled selected>Narapidana yang akan dikunjungi</option>
+                                <?php $faker = \Faker\Factory::create(); $index = 1  ?>
+
+                                @while($index < 100)
+                                <option value="0">{{ $faker->name }}</option>
+                                <?php $index++ ?>
+                                @endwhile
+
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -31,6 +39,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('kunjungan.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>

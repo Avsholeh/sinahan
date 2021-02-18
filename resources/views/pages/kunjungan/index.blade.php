@@ -18,6 +18,7 @@
                         <th>Narapidana</th>
                         <th>Berlaku Hingga</th>
                         <th>Keperluan</th>
+                        <th>Status</th>
                         <th>#</th>
                     </tr>
                     </thead>
@@ -25,21 +26,27 @@
 
                     <?php $faker = \Faker\Factory::create() ?>
 
-                    @foreach([1,2,3,4,5] as $key)
+                    @foreach(['BELUM DISETUJUI','BELUM DISETUJUI','BELUM DISETUJUI','TELAH DISETUJUI','TELAH DISETUJUI'] as $status)
 
-                    <tr>
-                        <td>{{ $faker->name }}</td>
-                        <td>{{ $faker->date('Y-m-d') }}</td>
-                        <td>{{ $faker->text }}</td>
-                        <td class="d-flex flex-row">
-                            <a href="{{ route('kunjungan.edit', 1) }}" class="btn btn-warning btn-sm text-dark mr-2">
-                                {{ __('layouts.update') }}
-                            </a>
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
-                                {{ __('layouts.delete') }}
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{ $faker->name }}</td>
+                            <td>{{ $faker->date('Y-m-d') }}</td>
+                            <td>{{ $faker->text }}</td>
+                            <td>
+                                <span class="badge badge-{{ $status === 'TELAH DISETUJUI' ? 'success' : 'primary' }}">
+                                    {{ $status }}
+                                </span>
+                            </td>
+                            <td class="d-flex flex-row">
+                                <a href="{{ route('kunjungan.edit', 1) }}"
+                                   class="btn btn-warning btn-sm text-dark mr-2">
+                                    {{ __('layouts.update') }}
+                                </a>
+                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                    {{ __('layouts.delete') }}
+                                </a>
+                            </td>
+                        </tr>
 
                     @endforeach
 

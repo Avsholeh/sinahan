@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePengunjungTable extends Migration
+class CreateBiodataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreatePengunjungTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengunjung', function (Blueprint $table) {
+        Schema::create('biodata', function (Blueprint $table) {
             $table->id();
-//            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('kunjungan_id')->constrained('kunjungan');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_lengkap');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('alamat');
+            $table->string('jenis_kelamin');
+            $table->string('agama');
             $table->string('pekerjaan');
-            $table->string('hubungan');
+            $table->string('pendidikan');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreatePengunjungTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengunjungs');
+        Schema::dropIfExists('biodatas');
     }
 }
