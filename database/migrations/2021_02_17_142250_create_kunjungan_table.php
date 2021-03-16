@@ -16,8 +16,8 @@ class CreateKunjunganTable extends Migration
         Schema::create('kunjungan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('narapidana_id')->constrained('narapidana');
-            $table->foreignId('user_id')->constrained('users');
-            $table->dateTime('berlaku');
+            $table->foreignId('pengguna_id')->constrained('pengguna');
+            $table->dateTime('waktu_k');
             $table->string('keperluan');
             $table->timestamps();
         });

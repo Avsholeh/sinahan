@@ -2,17 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\Pengunjung;
+use App\Models\Pengguna;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
-class PengunjungFactory extends Factory
+class PenggunaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Pengunjung::class;
+    protected $model = Pengguna::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +24,9 @@ class PengunjungFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'username' => $this->faker->userName,
+            'password' => Hash::make('master'),
+            'remember_token' => Str::random(10),
         ];
     }
 }

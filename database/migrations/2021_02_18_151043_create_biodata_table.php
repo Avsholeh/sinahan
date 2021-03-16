@@ -13,18 +13,18 @@ class CreateBiodataTable extends Migration
      */
     public function up()
     {
-        Schema::create('biodata', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('nama_lengkap');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
-            $table->string('jenis_kelamin');
-            $table->string('agama');
-            $table->string('pekerjaan');
-            $table->string('pendidikan');
-            $table->timestamps();
-        });
+//        Schema::create('biodata', function (Blueprint $table) {
+//            $table->id();
+//            $table->foreignId('user_id')->constrained('users');
+//            $table->string('nama_lengkap');
+//            $table->string('tempat_lahir');
+//            $table->date('tanggal_lahir');
+//            $table->string('jenis_kelamin');
+//            $table->string('agama');
+//            $table->string('pekerjaan');
+//            $table->string('pendidikan');
+//            $table->timestamps();
+//        });
     }
 
     /**
