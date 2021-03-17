@@ -66,6 +66,19 @@
                                                id="nama_lengkap" aria-describedby="nama_lengkap_help">
                                     </div>
 
+                                    {{-- Jenis Kelamin --}}
+                                    <div class="form-group">
+                                        <label class="control-label pl-3" for="jenis_kelamin">Nama Lengkap</label>
+                                        <input name="jenis_kelamin" type="text" class="form-control form-control-user"
+                                               id="jenis_kelamin" aria-describedby="jenis_kelamin_help">
+
+                                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                                            <option selected>Jenis Kelamin</option>
+                                            <option value="laki-laki">Laki-laki</option>
+                                            <option value="perempuan">Perempuan</option>
+                                        </select>
+                                    </div>
+
                                     {{-- Username --}}
                                     <div class="form-group">
                                         <label class="control-label pl-3" for="username">Username</label>

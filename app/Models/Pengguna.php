@@ -16,6 +16,7 @@ class Pengguna extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
+        'nama_lengkap',
         'username',
         'foto',
         'roles',

@@ -18,6 +18,7 @@ class CreatePenggunaTable extends Migration
             $table->string('nama_lengkap');
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('jenis_kelamin');
             $table->string('roles')->default('USER');
             $table->binary('foto')->nullable();
             $table->rememberToken();
