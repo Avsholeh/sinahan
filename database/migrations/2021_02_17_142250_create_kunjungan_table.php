@@ -17,9 +17,7 @@ class CreateKunjunganTable extends Migration
             $table->id();
             $table->foreignId('narapidana_id')->constrained('narapidana');
             $table->foreignId('pengguna_id')->constrained('pengguna');
-            $table->dateTime('waktu_k');
             $table->string('keperluan');
-            $table->timestamps();
         });
     }
 

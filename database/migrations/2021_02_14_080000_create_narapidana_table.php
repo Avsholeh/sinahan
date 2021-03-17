@@ -29,7 +29,6 @@ class CreateNarapidanaTable extends Migration
             $table->string('reg_bukti');
             $table->string('keterangan');
             $table->string('status_aktif');
-            $table->timestamps();
         });
     }
 

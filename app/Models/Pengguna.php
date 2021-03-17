@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 
 class Pengguna extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
     protected $table = 'pengguna';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'username',

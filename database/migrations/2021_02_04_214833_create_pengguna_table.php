@@ -15,12 +15,13 @@ class CreatePenggunaTable extends Migration
     {
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_lengkap');
             $table->string('username')->unique();
             $table->string('password');
             $table->string('roles')->default('USER');
             $table->binary('foto')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+//            $table->timestamps();
 //            $table->string('nama_lengkap');
 //            $table->string('tempat_lahir')->nullable();
 //            $table->date('tanggal_lahir')->nullable();

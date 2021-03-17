@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class DataPengunjung extends Model
+class DataPengunjung extends BaseModel
 {
     use HasFactory;
 
     protected $table = 'data_pengunjung';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'kunjungan_id',

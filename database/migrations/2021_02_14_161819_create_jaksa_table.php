@@ -13,11 +13,21 @@ class CreateJaksaTable extends Migration
      */
     public function up()
     {
-//        Schema::create('jaksa', function (Blueprint $table) {
-//            $table->id();
-//            $table->foreignId('pegawai_id')->constrained('pegawai');
-//            $table->timestamps();
-//        });
+        Schema::create('jaksa', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_lengkap');
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->string('nip', 100)->nullable();
+            $table->string('pangkat')->nullable();
+            $table->string('golongan')->nullable();
+            $table->string('jabatan');
+            $table->string('agama', 100);
+            $table->string('jenis_kelamin', 100);
+            $table->string('pendidikan', 100)->nullable();
+            $table->string('status', 100)->default('AKTIF');
+            $table->string('foto')->nullable();
+        });
     }
 
     /**
