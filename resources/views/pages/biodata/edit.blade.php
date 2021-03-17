@@ -11,35 +11,59 @@
 
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <div class="alert alert-warning" role="alert">
-                        <i class="fa fa-info-circle"></i> Dihimbau untuk mengisi biodata sesuai dengan identitas asli Anda.
-                    </div>
+{{--                    <div class="alert alert-warning" role="alert">--}}
+{{--                        <i class="fa fa-info-circle"></i> Dihimbau untuk mengisi biodata sesuai dengan identitas asli Anda.--}}
+{{--                    </div>--}}
                     <form>
                         <div class="form-group">
                             <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama_lengkap">
+                            <input type="text" class="form-control" id="nama_lengkap"
+                                value="{{ auth()->user()->nama_lengkap }}">
 {{--                            <small id="username_help" class="form-text text-success">--}}
 {{--                                <i class="fa fa-info-circle"></i> Isikan nama sesuai dengan KTP Anda.--}}
 {{--                            </small>--}}
                         </div>
 
+                        {{-- Jenis Kelamin --}}
+                        <div class="form-group">
+                            <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
+                            <select class="form-control" name="jenis_kelamin"
+                                    id="jenis_kelamin">
+                                <option disabled>Pilih jenis kelamin</option>
+
+                                @if(auth()->user()->jenis_kelamin === 'laki-laki')
+
+                                <option selected value="laki-laki">Laki-laki</option>
+                                <option value="perempuan">Perempuan</option>
+
+                                @else
+
+                                <option value="laki-laki">Laki-laki</option>
+                                <option selected value="perempuan">Perempuan</option>
+
+                                @endif
+
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" aria-describedby="username_help">
+                            <input type="text" class="form-control" id="username"
+                                   value="{{ auth()->user()->username }}" disabled>
+{{--                            <small id="username_help" class="form-text text-danger">--}}
+{{--                                <i class="fa fa-info-circle"></i> Username tidak dapat diubah.--}}
+{{--                            </small>--}}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password"
+                                   value="password" aria-describedby="password_help">
 {{--                            <small id="username_help" class="form-text text-success">--}}
 {{--                                <i class="fa fa-info-circle"></i> Anda dapat memilih username unik minimal 6 karakter.--}}
 {{--                            </small>--}}
                         </div>
 
-                        <div class="form-group">
-                            <label for="tempat_lahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempat_lahir">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggal_lahir">
-                        </div>
 
                         <div class="form-group">
                             <label for="foto">Foto</label>
@@ -47,16 +71,6 @@
 {{--                            <small id="foto_help" class="form-text text-success">--}}
 {{--                                <i class="fa fa-info-circle"></i> Foto yang diunggah akan digunakan sebagai foto profil Anda.--}}
 {{--                            </small>--}}
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pekerjaan">Pekerjaan</label>
-                            <input type="text" class="form-control" id="pekerjaan">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>

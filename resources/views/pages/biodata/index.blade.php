@@ -71,28 +71,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="jenis_kelamin">Jenis Kelamin</label>
+                            <input type="text" class="form-control" id="jenis_kelamin" value="Laki-laki" disabled>
+                        </div>
+
+                        <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" value="salfikar" disabled>
                         </div>
 
                         <div class="form-group">
-                            <label for="tempat_lahir">Tempat Lahir</label>
-                            <input type="text" class="form-control" id="tempat_lahir" value="Bengkalis" disabled>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control" id="tanggal_lahir" value="2021-01-30" disabled>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="3" disabled>Jl. Veteran No.15 Lowokwaru, Malang, Jawa Timur.</textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pekerjaan">Pekerjaan</label>
-                            <input type="text" class="form-control" id="pekerjaan" value="Wiraswasta" disabled>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" value="password" disabled>
                         </div>
 
                         <div class="form-group mt-2">

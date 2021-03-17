@@ -16,7 +16,7 @@
 
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 
 <body class="bg-gradient-primary">
@@ -33,7 +33,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Logo -->
-                            <div class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
+                            <div
+                                class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
                                 <div class="rounded">
                                     <img src="{{ asset('img/logo.png') }}" width="150">
                                 </div>
@@ -61,16 +62,17 @@
 
                                     {{-- Nama Lengkap --}}
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="username">Nama Lengkap</label>
-                                        <input name="nama_lengkap" type="text" class="form-control form-control-user"
+                                        <label class="control-label" for="username">Nama Lengkap</label>
+                                        <input name="nama_lengkap" type="text" class="form-control"
                                                id="nama_lengkap" aria-describedby="nama_lengkap_help">
                                     </div>
 
                                     {{-- Jenis Kelamin --}}
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="jenis_kelamin">Jenis Kelamin</label>
-                                        <select class="form-control form-control-user" name="jenis_kelamin" id="jenis_kelamin">
-                                            <option selected value="Jenis Kelamin">Jenis Kelamin</option>
+                                        <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
+                                        <select class="form-control" name="jenis_kelamin"
+                                                id="jenis_kelamin">
+                                            <option selected>Pilih jenis kelamin</option>
                                             <option value="laki-laki">Laki-laki</option>
                                             <option value="perempuan">Perempuan</option>
                                         </select>
@@ -78,22 +80,24 @@
 
                                     {{-- Username --}}
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="username">Username</label>
-                                        <input name="username" type="text" class="form-control form-control-user"
+                                        <label class="control-label" for="username">Username</label>
+                                        <input name="username" type="text" class="form-control"
                                                id="username" aria-describedby="username_help">
                                     </div>
 
                                     {{-- Password --}}
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="password_help">Password</label>
-                                        <input name="password" type="password" class="form-control form-control-user"
+                                        <label class="control-label" for="password_help">Password</label>
+                                        <input name="password" type="password" class="form-control"
                                                id="password" aria-describedby="password_help">
                                     </div>
 
                                     {{-- Konfirmasi Password --}}
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="password_confirmation_help">Konfirmasi Password</label>
-                                        <input name="password_confirmation" type="password" class="form-control form-control-user"
+                                        <label class="control-label" for="password_confirmation_help">Konfirmasi
+                                            Password</label>
+                                        <input name="password_confirmation" type="password"
+                                               class="form-control"
                                                aria-describedby="password_confirmation_help" id="password_confirmation">
                                     </div>
 

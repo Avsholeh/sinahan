@@ -61,16 +61,16 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="username_help">Username</label>
-                                        <input name="username" type="text" class="form-control form-control-user"
+                                        <label class="control-label" for="username_help">Username</label>
+                                        <input name="username" type="text" class="form-control"
                                                id="username" aria-describedby="username_help">
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label pl-3" for="username_help">Password</label>
-                                        <input name="password" type="password" class="form-control form-control-user"
+                                        <label class="control-label" for="username_help">Password</label>
+                                        <input name="password" type="password" class="form-control"
                                                id="password" aria-describedby="username_help">
                                     </div>
-                                    <input type="submit" class="btn btn-primary btn-block" value="Login">
+                                    <input type="submit" class="btn btn-primary btn-block mt-4" value="Login">
                                     <a href="{{ route('register') }}" class="btn btn-secondary btn-block">
                                         Daftar
                                     </a>
