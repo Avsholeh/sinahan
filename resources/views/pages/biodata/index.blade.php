@@ -17,7 +17,7 @@
                             <div id="image-profile" class="rounded-circle"
                                  style="width: 200px; height: 200px; background-image: url('/img/pria.png'); background-size: cover">
                             </div>
-{{--                            <img class="rounded-circle" src="{{ asset('img/pria.png') }}" width="200"--}}
+{{--                            <img class="rounded-circle" src="{{ asset('img/laki.png') }}" width="200"--}}
 {{--                                 height="200">--}}
                         </div>
                     </div>
