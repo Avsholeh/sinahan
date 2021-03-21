@@ -30,10 +30,60 @@
         </a>
     </li>
 
+    <li class="nav-item{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' active' : '' }}">
+        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"
+           aria-expanded="false"
+           aria-controls="kunjungan">
+            <i class="fas fa-fw fa-business-time"></i>
+            <span>{{ __('layouts.kunjungan') }}</span>
+        </a>
+        <div id="kunjungan" class="collapse{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' show' : '' }}"
+             aria-labelledby="headingPages"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item{{ request()->is('kunjungan') ? ' active' : '' }}"
+                   href="{{ route('kunjungan.index') }}">{{ __('layouts.index') }}</a>
+
+                <a class="collapse-item{{ request()->is('kunjungan/create') ? ' active' : '' }}"
+                   href="{{ route('kunjungan.create') }}">{{ __('layouts.create') }}</a>
+            </div>
+        </div>
+    </li>
+
+{{--    <hr class="sidebar-divider">--}}
+
+{{--    @if(auth()->user()->roles === 'TU-PEGAWAI')--}}
+
+{{--    <div class="sidebar-heading">--}}
+{{--        {{ __('layouts.kelola_pengguna') }}--}}
+{{--    </div>--}}
+
+{{--    <li class="nav-item{{ request()->is('pengguna') || request()->is('pengguna/*') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link{{ request()->is('pengguna') ? '' : ' collapsed' }}"--}}
+{{--           href="javascript:void(0)" data-toggle="collapse" data-target="#pengguna" aria-expanded="false"--}}
+{{--           aria-controls="pengguna">--}}
+{{--            <i class="fas fa-fw fa-user"></i>--}}
+{{--            <span>{{ __('layouts.pengguna') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="pengguna" class="collapse{{ request()->is('pengguna') || request()->is('pengguna/*') ? ' show' : '' }}"--}}
+{{--             aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item{{ request()->is('pengguna') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('pengguna.index') }}">{{ __('layouts.index') }}</a>--}}
+{{--                <a class="collapse-item{{ request()->is('pengguna/create') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('pengguna.create') }}">{{ __('layouts.create') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
+
+{{--    @endif--}}
+
     <hr class="sidebar-divider">
 
+    @if(auth()->user()->roles === 'TU-PEGAWAI')
     <div class="sidebar-heading">
-        {{ __('layouts.kelola_pengguna') }}
+        {{ __('layouts.kelola_data') }}
     </div>
 
     <li class="nav-item{{ request()->is('pengguna') || request()->is('pengguna/*') ? ' active' : '' }}">
@@ -54,12 +104,6 @@
             </div>
         </div>
     </li>
-
-    <hr class="sidebar-divider">
-
-    <div class="sidebar-heading">
-        {{ __('layouts.kelola_data') }}
-    </div>
 
     <li class="nav-item{{ request()->is('hakim') || request()->is('hakim/*') ? ' active' : '' }}">
         <a class="nav-link collapsed{{ request()->is('hakim') ? '' : ' collapsed' }}"
@@ -148,31 +192,33 @@
         </div>
     </li>
 
-    <hr class="sidebar-divider">
+    @endif
 
-    <div class="sidebar-heading">
-        {{ __('layouts.layanan') }}
-    </div>
+{{--    <hr class="sidebar-divider">--}}
 
-    <li class="nav-item{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"
-           aria-expanded="false"
-           aria-controls="kunjungan">
-            <i class="fas fa-fw fa-business-time"></i>
-            <span>{{ __('layouts.kunjungan') }}</span>
-        </a>
-        <div id="kunjungan" class="collapse{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' show' : '' }}"
-             aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item{{ request()->is('kunjungan') ? ' active' : '' }}"
-                   href="{{ route('kunjungan.index') }}">{{ __('layouts.index') }}</a>
+{{--    <div class="sidebar-heading">--}}
+{{--        {{ __('layouts.layanan') }}--}}
+{{--    </div>--}}
 
-                <a class="collapse-item{{ request()->is('kunjungan/create') ? ' active' : '' }}"
-                   href="{{ route('kunjungan.create') }}">{{ __('layouts.create') }}</a>
-            </div>
-        </div>
-    </li>
+{{--    <li class="nav-item{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"--}}
+{{--           aria-expanded="false"--}}
+{{--           aria-controls="kunjungan">--}}
+{{--            <i class="fas fa-fw fa-business-time"></i>--}}
+{{--            <span>{{ __('layouts.kunjungan') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="kunjungan" class="collapse{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' show' : '' }}"--}}
+{{--             aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item{{ request()->is('kunjungan') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('kunjungan.index') }}">{{ __('layouts.index') }}</a>--}}
+
+{{--                <a class="collapse-item{{ request()->is('kunjungan/create') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('kunjungan.create') }}">{{ __('layouts.create') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <hr class="sidebar-divider">
 

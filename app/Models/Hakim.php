@@ -44,4 +44,19 @@ class Hakim extends BaseModel
     use HasFactory;
 
     protected $table = 'hakim';
+
+    protected $fillable = [
+        'nama_lengkap',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'nip',
+        'pangkat',
+        'golongan',
+        'agama',
+        'jenis_kelamin',
+        'pendidikan',
+        'status',
+        'foto',
+    ];
+
 }

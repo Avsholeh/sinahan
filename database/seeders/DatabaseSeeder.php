@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
                 [
                     'nama_lengkap' => 'Novitasari',
                     'username' => 'tupegawai',
-                    'jenis_kelamin' => 'Perempuan'
+                    'jenis_kelamin' => 'Perempuan',
+                    'roles' => 'TU-PEGAWAI'
                 ],
                 [
                     'username' => 'masyarakat',
