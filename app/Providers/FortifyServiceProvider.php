@@ -41,9 +41,17 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             $user = Pengguna::where('username', $request->username)->first();
 
-            if ($user &&
-                Hash::check($request->password, $user->password)) {
-                session()->flash('message', 'Username/Password anda salah!');
+            if (!$user)  {
+                session()->flash('message', 'Akun tidak tersedia');
+                return false;
+            }
+
+            if ($user && !Hash::check($request->password, $user->password)) {
+                session()->flash('message', 'Password anda salah!');
+                return false;
+            }
+
+            if ($user && Hash::check($request->password, $user->password)) {
                 return $user;
             }
 

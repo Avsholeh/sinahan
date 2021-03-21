@@ -18,8 +18,16 @@ class DatabaseSeeder extends Seeder
         $admin = \App\Models\Pengguna::factory()
             ->count(2)
             ->state(new Sequence(
-                [ 'username' => 'tupegawai'],
-                [ 'username' => 'masyarakat'],
+                [
+                    'nama_lengkap' => 'Novitasari',
+                    'username' => 'tupegawai',
+                    'jenis_kelamin' => 'Perempuan'
+                ],
+                [
+                    'username' => 'masyarakat',
+                    'jenis_kelamin' => 'Laki-laki'
+
+                ],
             ))
             ->create();
     }

@@ -6,6 +6,33 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * App\Models\Pengguna
+ *
+ * @property int $id
+ * @property string $nama_lengkap
+ * @property string $username
+ * @property string $password
+ * @property string $jenis_kelamin
+ * @property string $roles
+ * @property mixed|null $foto
+ * @property string|null $remember_token
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Database\Factories\PenggunaFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereFoto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereJenisKelamin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereNamaLengkap($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereRoles($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereUsername($value)
+ * @mixin \Eloquent
+ */
 class Pengguna extends Authenticatable
 {
     use HasFactory;
@@ -18,9 +45,10 @@ class Pengguna extends Authenticatable
     protected $fillable = [
         'nama_lengkap',
         'username',
-        'foto',
-        'roles',
+        'jenis_kelamin',
         'password',
+        'roles',
+        'foto',
     ];
 
     protected $hidden = [

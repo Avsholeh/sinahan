@@ -64,41 +64,75 @@
                                     <div class="form-group">
                                         <label class="control-label" for="username">Nama Lengkap</label>
                                         <input name="nama_lengkap" type="text" class="form-control"
+                                               value="@if(old('nama_lengkap')) {{ old('nama_lengkap') }} @endif"
                                                id="nama_lengkap" aria-describedby="nama_lengkap_help">
+
+                                        @error('nama_lengkap')
+                                        <small id="nama_lengkap_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
 
                                     {{-- Jenis Kelamin --}}
                                     <div class="form-group">
                                         <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
                                         <select class="form-control" name="jenis_kelamin"
+                                                aria-describedby="jenis_kelamin_help"
                                                 id="jenis_kelamin">
-                                            <option selected>Pilih jenis kelamin</option>
-                                            <option value="laki-laki">Laki-laki</option>
-                                            <option value="perempuan">Perempuan</option>
+                                            <option value="" selected>Pilih jenis kelamin</option>
+                                            <option @if(old('jenis_kelamin') === 'laki-laki') {{ 'selected' }} @endif
+                                                    value="laki-laki">Laki-laki</option>
+                                            <option @if(old('jenis_kelamin') === 'perempuan') {{ 'selected' }} @endif
+                                                    value="perempuan">Perempuan</option>
                                         </select>
+                                        @error('jenis_kelamin')
+                                        <small id="jenis_kelamin_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
 
                                     {{-- Username --}}
                                     <div class="form-group">
                                         <label class="control-label" for="username">Username</label>
                                         <input name="username" type="text" class="form-control"
+                                               value="@if(old('username')) {{ old('username') }} @endif"
                                                id="username" aria-describedby="username_help">
+
+                                        @error('username')
+                                        <small id="username_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
 
                                     {{-- Password --}}
                                     <div class="form-group">
                                         <label class="control-label" for="password_help">Password</label>
                                         <input name="password" type="password" class="form-control"
+                                               value="@if(old('password')) {{ old('password') }} @endif"
                                                id="password" aria-describedby="password_help">
+
+                                        @error('password')
+                                        <small id="password_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
 
                                     {{-- Konfirmasi Password --}}
                                     <div class="form-group">
                                         <label class="control-label" for="password_confirmation_help">Konfirmasi
                                             Password</label>
-                                        <input name="password_confirmation" type="password"
-                                               class="form-control"
+                                        <input name="password_confirmation" type="password" class="form-control"
                                                aria-describedby="password_confirmation_help" id="password_confirmation">
+
+                                        @error('password_confirmation')
+                                        <small id="password_confirmation_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
                                     </div>
 
                                     <input type="submit" class="btn btn-primary btn-block" value="Daftar">

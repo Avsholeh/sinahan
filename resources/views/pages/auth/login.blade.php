@@ -53,7 +53,7 @@
                                 <hr>
 
                                 @if(session('message'))
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="alert alert-danger">{{ session('message') }}</div>
                                 @endif
 
                                 <form class="user" action="{{ route('login') }}" method="post">

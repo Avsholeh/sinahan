@@ -15,17 +15,15 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
                             <div id="image-profile" class="rounded-circle"
-                                 style="width: 200px; height: 200px; background-image: url('/img/pria.png'); background-size: cover">
+                                 style="width: 200px; height: 200px; background-image: url('/img/perempuan.png'); background-size: cover">
                             </div>
-{{--                            <img class="rounded-circle" src="{{ asset('img/laki.png') }}" width="200"--}}
-{{--                                 height="200">--}}
                         </div>
                     </div>
 
                     <div class="row pt-3">
                         <div class="col-12 d-flex justify-content-center flex-column align-items-center">
-                            <h4>Abdul Salfikar</h4>
-                            <h5 class="text-muted">User</h5>
+                            <h4>{{ auth()->user()->nama_lengkap }}</h4>
+                            <small class="text-muted">{{ auth()->user()->roles }}</small>
                         </div>
                     </div>
 
@@ -46,8 +44,17 @@
                                             <i class="fas fa-chart-line fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
+
+
                                 </div>
+
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <a href="{{ route('biodata.edit') }}" class="btn btn-primary btn-block">Perbarui Biodata</a>
                         </div>
                     </div>
 
@@ -64,20 +71,24 @@
                 </div>
                 <div class="card-body">
 
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">{{ $message }}</div>
+                    @endif
+
                     <form>
                         <div class="form-group">
                             <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama_lengkap" value="Abdul Salfikar" disabled>
+                            <input type="text" class="form-control" id="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}" disabled>
                         </div>
 
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <input type="text" class="form-control" id="jenis_kelamin" value="Laki-laki" disabled>
+                            <input type="text" class="form-control" id="jenis_kelamin" value="{{ auth()->user()->jenis_kelamin }}" disabled>
                         </div>
 
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" value="salfikar" disabled>
+                            <input type="text" class="form-control" id="username" value="{{ auth()->user()->username }}" disabled>
                         </div>
 
                         <div class="form-group">
@@ -85,9 +96,9 @@
                             <input type="password" class="form-control" id="password" value="password" disabled>
                         </div>
 
-                        <div class="form-group mt-2">
-                            <a href="{{ route('biodata.edit') }}" class="btn btn-primary">Perbarui</a>
-                        </div>
+{{--                        <div class="form-group mt-2">--}}
+{{--                            <a href="{{ route('biodata.edit') }}" class="btn btn-primary">Perbarui</a>--}}
+{{--                        </div>--}}
 
                     </form>
 

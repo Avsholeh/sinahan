@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,34 +37,21 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Biodata
      */
     Route::prefix('/biodata')->group(function () {
-        Route::get('/', function() {
-            return view('pages.biodata.index');
-        })->name('biodata.index');
-
-        Route::get('/edit', function() {
-            return view('pages.biodata.edit');
-        })->name('biodata.edit');
+        Route::get('/', [BiodataController::class, 'index'])->name('biodata.index');
+        Route::get('/edit', [BiodataController::class, 'edit'])->name('biodata.edit');
+        Route::post('/', [BiodataController::class, 'store'])->name('biodata.store');
     });
 
     /**
      * Route Kelola Data Pengguna
      */
     Route::prefix('/pengguna')->group(function () {
-        Route::get('/', function() {
-            return view('pages.pengguna.index');
-        })->name('pengguna.index');
-
-        Route::get('/create', function() {
-            return view('pages.pengguna.create');
-        })->name('pengguna.create');
-
-        Route::get('/{user}/edit', function() {
-            return view('pages.pengguna.edit');
-        })->name('pengguna.edit');
-
-        Route::delete('/delete/{user}', function() {
-            return null;
-        })->name('pengguna.delete');
+        Route::get('/', [PenggunaController::class, 'index'])->name('pengguna.index');
+        Route::get('/create', [PenggunaController::class, 'create'])->name('pengguna.create');
+        Route::get('/{pengguna}/edit', [PenggunaController::class, 'edit'])->name('pengguna.edit');
+        Route::post('/', [PenggunaController::class, 'store'])->name('pengguna.store');
+        Route::put('/{pengguna}', [PenggunaController::class, 'update'])->name('pengguna.update');
+        Route::delete('/{pengguna}', [PenggunaController::class, 'destroy'])->name('pengguna.delete');
     });
 
     /**

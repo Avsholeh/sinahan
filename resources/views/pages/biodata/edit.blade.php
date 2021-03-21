@@ -11,17 +11,20 @@
 
             <div class="card shadow mb-4">
                 <div class="card-body">
-{{--                    <div class="alert alert-warning" role="alert">--}}
-{{--                        <i class="fa fa-info-circle"></i> Dihimbau untuk mengisi biodata sesuai dengan identitas asli Anda.--}}
-{{--                    </div>--}}
-                    <form>
+                    <form action="{{ route('biodata.store') }}" method="post">
+
+                        @csrf
+
+                        {{-- Nama Lengkap --}}
                         <div class="form-group">
                             <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama_lengkap"
-                                value="{{ auth()->user()->nama_lengkap }}">
-{{--                            <small id="username_help" class="form-text text-success">--}}
-{{--                                <i class="fa fa-info-circle"></i> Isikan nama sesuai dengan KTP Anda.--}}
-{{--                            </small>--}}
+                            <input type="text" name="nama_lengkap" class="form-control" id="nama_lengkap"
+                                value="{{ auth()->user()->nama_lengkap }}" aria-describedby="nama_lengkap_help">
+                            @error('nama_lengkap')
+                            <small id="nama_lengkap_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
                         {{-- Jenis Kelamin --}}
@@ -46,31 +49,54 @@
                             </select>
                         </div>
 
+                        {{-- Username --}}
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username"
-                                   value="{{ auth()->user()->username }}" disabled>
-{{--                            <small id="username_help" class="form-text text-danger">--}}
-{{--                                <i class="fa fa-info-circle"></i> Username tidak dapat diubah.--}}
-{{--                            </small>--}}
+                            <input type="text" name="username" class="form-control" id="username"
+                                   value="{{ auth()->user()->username }}" readonly>
+                            @error('username')
+                            <small id="username_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
+                        {{-- Password --}}
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password"
+                            <input type="password" name="password" class="form-control" id="password"
                                    value="password" aria-describedby="password_help">
-{{--                            <small id="username_help" class="form-text text-success">--}}
-{{--                                <i class="fa fa-info-circle"></i> Anda dapat memilih username unik minimal 6 karakter.--}}
-{{--                            </small>--}}
+                            @error('password')
+                            <small id="username_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
+                        {{-- Konfirmasi Password --}}
+                        <div class="form-group">
+                            <label for="password">Konfirmasi Password</label>
+                            <input type="password" name="password_confirmation" class="form-control" id="password"
+                                   value="password" aria-describedby="password_confirmation_help">
+                            @error('password_confirmation')
+                            <small id="password_confirmation_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
 
+                        <input type="text" name="roles" value="{{ auth()->user()->roles }}" hidden>
+
+                        {{-- Foto --}}
                         <div class="form-group">
                             <label for="foto">Foto</label>
-                            <input type="file" class="form-control-file" id="foto" aria-describedby="foto_help">
-{{--                            <small id="foto_help" class="form-text text-success">--}}
-{{--                                <i class="fa fa-info-circle"></i> Foto yang diunggah akan digunakan sebagai foto profil Anda.--}}
-{{--                            </small>--}}
+                            <input type="file" name="foto" class="form-control-file" id="foto"
+                                   value="{{ auth()->user()->foto }}" aria-describedby="foto_help">
+                            @error('foto')
+                            <small id="foto_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>
