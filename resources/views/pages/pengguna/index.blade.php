@@ -16,7 +16,7 @@
                 <div class="alert alert-success">{{ $message }}</div>
             @endif
 
-            <div class="table-responsive">
+            <div class="table-responsive overflow-auto">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
@@ -30,20 +30,19 @@
                     </thead>
                     <tbody>
 
-                    @foreach($pengguna as $p)
+                    @foreach($penggunas as $pengguna)
 
                         <tr>
                             <td>
                                 <div class="rounded-circle"
-                                     style="width: 50px; height: 50px; background-image: url('/img/perempuan.png'); background-size: cover">
-                                </div>
+                                     style="width: 50px; height: 50px; background-image: url('data:image/png;base64,{{ $pengguna->foto }}'); background-size: cover"></div>
                             </td>
-                            <td>{{ $p->nama_lengkap }}</td>
-                            <td>{{ $p->username }}</td>
-                            <td>{{ $p->jenis_kelamin }}</td>
-                            <td>{{ $p->roles }}</td>
+                            <td>{{ $pengguna->nama_lengkap }}</td>
+                            <td>{{ $pengguna->username }}</td>
+                            <td>{{ $pengguna->jenis_kelamin }}</td>
+                            <td>{{ $pengguna->roles }}</td>
                             <td class="d-flex flex-row">
-                                <a href="{{ route('pengguna.edit', $p->id) }}"
+                                <a href="{{ route('pengguna.edit', $pengguna->id) }}"
                                    class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
                                 </a>
@@ -52,7 +51,7 @@
                                 <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal" data-target="#hapusModal">
                                     {{ __('layouts.delete') }}
                                 </a>
-                                <form id="form-delete-{{ $p->id }}" action="{{ route('pengguna.delete', $p->id) }}" method="post"
+                                <form id="form-delete-{{ $pengguna->id }}" action="{{ route('pengguna.delete', $pengguna->id) }}" method="post"
                                       hidden>
                                     @csrf
                                     @method('delete')

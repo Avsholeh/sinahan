@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Pengguna;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class PenggunaController extends Controller
 {
@@ -19,8 +22,8 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $pengguna = Pengguna::all();
-        return view('pages.pengguna.index', compact('pengguna'));
+        $penggunas = Pengguna::all();
+        return view('pages.pengguna.index', compact('penggunas'));
     }
 
     /**
@@ -38,6 +41,7 @@ class PenggunaController extends Controller
      *
      * @param Request $request
      * @return Response
+     * @throws FileNotFoundException
      */
     public function store(Request $request)
     {
@@ -47,10 +51,20 @@ class PenggunaController extends Controller
             'jenis_kelamin' => 'required',
             'password' => $this->passwordRules(),
             'roles' => 'required',
-//            'foto' => 'required',
         ]);
 
         $newPassword = Hash::make($request->password);
+
+        // @TODO fix this photo upload
+
+        $defaultFoto = base64_encode(File::get(storage_path('app/public/laki.png')));
+        if ($request->roles === 'TU-PEGAWAI') {
+            if ($request->jenis_kelamin === 'Perempuan') {
+                $defaultFoto = base64_encode(File::get(storage_path('app/public/perempuan.png')));
+            }
+        } else {
+            $defaultFoto = base64_encode(File::get(storage_path('app/public/avatar.jpg')));
+        }
 
         Pengguna::insert([
             'nama_lengkap' => $request->nama_lengkap,
@@ -58,7 +72,7 @@ class PenggunaController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => $newPassword,
             'roles' => $request->roles,
-            'foto' => $request->foto,
+            'foto' => $defaultFoto,
         ]);
 
         return redirect()->route('pengguna.index')
@@ -102,7 +116,6 @@ class PenggunaController extends Controller
             'jenis_kelamin' => 'required',
             'password' => $this->passwordRules(),
             'roles' => 'required',
-//            'foto' => 'required',
         ]);
 
         $newPassword = $request->password;
@@ -113,14 +126,18 @@ class PenggunaController extends Controller
             $newPassword = Hash::make($request->password);
         }
 
-        $pengguna->update([
+        $updatePengguna = [
             'nama_lengkap' => $request->nama_lengkap,
             'username' => $request->username,
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => $newPassword,
             'roles' => $request->roles,
-            'foto' => $request->foto,
-        ]);
+        ];
+
+        $image = Image::make($request->file('foto')->path())->encode('png');
+        $updatePengguna['foto'] = base64_encode($image);
+
+        $pengguna->update($updatePengguna);
 
         return redirect()->route('pengguna.index')
             ->with('success', "Data pengguna {$pengguna->nama_lengkap} telah berhasil diperbarui.");
@@ -136,6 +153,6 @@ class PenggunaController extends Controller
     {
         $pengguna->delete();
         return redirect()->route('pengguna.index')
-            ->with('success','Pengguna telah berhasil dihapus');
+            ->with('success', 'Pengguna telah berhasil dihapus');
     }
 }

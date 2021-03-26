@@ -117,9 +117,8 @@
                             @enderror
                         </div>
 
-                        <hr>
-
-                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('hakim.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>

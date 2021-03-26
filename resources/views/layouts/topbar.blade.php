@@ -51,19 +51,8 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     {{ auth()->user()->nama_lengkap }}
                 </span>
-                @if(!auth()->user()->foto)
-                    {{-- user tidak memiliki foto --}}
-                    @if(auth()->user()->jenis_kelamin === 'laki-laki')
-                        {{-- foto pengguna dengan jenis kelamin laki-laki --}}
-                        <img class="img-profile rounded-circle" src="{{ asset('img/laki.png') }}" alt="foto">
-                    @else
-                        {{-- foto pengguna dengan jenis kelamin perempuan --}}
-                        <img class="img-profile rounded-circle" src="{{ asset('img/perempuan.png') }}" alt="foto">
-                    @endif
-                @else
-                    {{-- menggunakan foto pengguna (blob) --}}
-                    <img class="img-profile rounded-circle" src="{{ asset('img/laki.png') }}" alt="foto">
-                @endif
+
+                <img class="img-profile rounded-circle" src="data:image/png;base64,{{ auth()->user()->foto }}" alt="foto">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,14 +23,17 @@ class DatabaseSeeder extends Seeder
                     'nama_lengkap' => 'Novitasari',
                     'username' => 'tupegawai',
                     'jenis_kelamin' => 'Perempuan',
-                    'roles' => 'TU-PEGAWAI'
+                    'roles' => 'TU-PEGAWAI',
+                    'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
                 ],
                 [
                     'username' => 'masyarakat',
-                    'jenis_kelamin' => 'Laki-laki'
-
+                    'jenis_kelamin' => 'Laki-laki',
+                    'foto' => base64_encode(File::get(storage_path('app/public/avatar.jpg'))),
                 ],
             ))
             ->create();
+
+        $hakims = \App\Models\Hakim::factory(50)->create();
     }
 }

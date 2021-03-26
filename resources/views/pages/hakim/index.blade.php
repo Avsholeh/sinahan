@@ -6,11 +6,16 @@
 
     <div class="card mb-4">
         <div class="card-body p-3">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col">
                     <a href="{{ route('hakim.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
+
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">{{ $message }}</div>
+            @endif
+
             <div class="table-responsive overflow-auto">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
@@ -20,39 +25,46 @@
                         <th>NIP</th>
                         <th>Tempat Lahir</th>
                         <th>Tanggal Lahir</th>
-                        <th>Pangkat/Golongan</th>
-                        <th>Jabatan</th>
+                        <th>Pangkat</th>
+                        <th>Golongan</th>
                         <th>Agama</th>
                         <th>Jenis Kelamin</th>
                         <th>Pendidikan</th>
+                        <th>Status</th>
                         <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <?php $faker = \Faker\Factory::create() ?>
-
-                    @foreach([1,2,3,4,5] as $key)
+                    @foreach($hakims as $hakim)
 
                         <tr>
                             <td>
                                 <div class="rounded-circle"
-                                     style="width: 50px; height: 50px; background-image: url('/img/pria.png'); background-size: cover"></div>
+                                     style="width: 50px; height: 50px; background-image: url('data:image/png;base64,{{ $hakim->foto }}'); background-size: cover"></div>
                             </td>
-                            <td>{{ $faker->name }}</td>
-                            <td>{{ $faker->creditCardNumber }}</td>
-                            <td>{{ $faker->country }}</td>
-                            <td>{{ $faker->date('Y-m-d') }}</td>
-                            <td>III A / Penata Muda</td>
-                            <td>Hakim</td>
-                            <td>Islam</td>
-                            <td>Laki-Laki</td>
-                            <td>SII</td>
+                            <td>{{ $hakim->nama_lengkap }}</td>
+                            <td>{{ $hakim->nip }}</td>
+                            <td>{{ $hakim->tempat_lahir }}</td>
+                            <td>{{ $hakim->tanggal_lahir }}</td>
+                            <td>{{ $hakim->pangkat }}</td>
+                            <td>{{ $hakim->golongan }}</td>
+                            <td>{{ $hakim->agama }}</td>
+                            <td>{{ $hakim->jenis_kelamin }}</td>
+                            <td>{{ $hakim->pendidikan }}</td>
+                            <td>
+                                @if($hakim->status === \App\Models\Hakim::AKTIF)
+                                  <div class="badge badge-success">{{ $hakim->status }}</div>
+                                @else
+                                  <div class="badge badge-danger">{{ $hakim->status }}</div>
+                                @endif
+                            </td>
+
                             <td class="d-flex flex-row">
                                 <a href="{{ route('hakim.edit', 1) }}" class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
                                 </a>
-                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                <a class="btn btn-danger text-light btn-sm" data-toggle="modal" data-target="#hapusModal">
                                     {{ __('layouts.delete') }}
                                 </a>
                             </td>

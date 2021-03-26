@@ -43,6 +43,11 @@ class Hakim extends BaseModel
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    const AKTIF = 'Aktif';
+    const TIDAK_AKTIF = 'Tidak Aktif';
+
     protected $table = 'hakim';
 
     protected $fillable = [

@@ -25,7 +25,7 @@ class CreateHakimTable extends Migration
             $table->string('jenis_kelamin', 100);
             $table->string('pendidikan', 100)->nullable();
             $table->string('status', 100)->default('AKTIF');
-            $table->string('foto')->nullable();
+            $table->binary('foto')->nullable();
         });
     }
 

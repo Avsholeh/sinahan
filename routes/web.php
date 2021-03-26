@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\HakimController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
@@ -58,21 +59,12 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Hakim
      */
     Route::prefix('/hakim')->group(function () {
-        Route::get('/', function() {
-            return view('pages.hakim.index');
-        })->name('hakim.index');
-
-        Route::get('/create', function() {
-            return view('pages.hakim.create');
-        })->name('hakim.create');
-
-        Route::get('/{hakim}/edit', function() {
-            return view('pages.hakim.edit');
-        })->name('hakim.edit');
-
-        Route::delete('/delete/{hakim}', function() {
-            return null;
-        })->name('hakim.delete');
+        Route::get('/', [HakimController::class, 'index'])->name('hakim.index');
+        Route::get('/create', [HakimController::class, 'create'])->name('hakim.create');
+        Route::get('/{hakim}/edit', [HakimController::class, 'edit'])->name('hakim.edit');
+        Route::post('/', [HakimController::class, 'store'])->name('hakim.store');
+        Route::put('/{hakim}', [HakimController::class, 'update'])->name('hakim.update');
+        Route::delete('/{hakim}', [HakimController::class, 'destroy'])->name('hakim.delete');
     });
 
     /**
