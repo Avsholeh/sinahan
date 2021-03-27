@@ -29,11 +29,11 @@ class DatabaseSeeder extends Seeder
                 [
                     'username' => 'masyarakat',
                     'jenis_kelamin' => 'Laki-laki',
-                    'foto' => base64_encode(File::get(storage_path('app/public/avatar.jpg'))),
+                    'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
                 ],
             ))
             ->create();
 
-        $hakims = \App\Models\Hakim::factory(50)->create();
+//        $hakims = \App\Models\Hakim::factory(50)->create();
     }
 }

@@ -55,15 +55,19 @@ class PenggunaController extends Controller
 
         $newPassword = Hash::make($request->password);
 
-        // @TODO fix this photo upload
+        $defaultFoto = base64_encode(File::get(storage_path('app/public/avatar.png')));
 
-        $defaultFoto = base64_encode(File::get(storage_path('app/public/laki.png')));
-        if ($request->roles === 'TU-PEGAWAI') {
-            if ($request->jenis_kelamin === 'Perempuan') {
-                $defaultFoto = base64_encode(File::get(storage_path('app/public/perempuan.png')));
+        if (!$request->foto) {
+            if ($request->roles === 'TU-PEGAWAI') {
+                if ($request->jenis_kelamin === 'Perempuan') {
+                    $defaultFoto = base64_encode(File::get(storage_path('app/public/perempuan.png')));
+                } else {
+                    $defaultFoto = base64_encode(File::get(storage_path('app/public/laki.png')));
+                }
             }
         } else {
-            $defaultFoto = base64_encode(File::get(storage_path('app/public/avatar.jpg')));
+            $image = Image::make($request->file('foto')->path())->encode('png');
+            $defaultFoto = base64_encode($image);
         }
 
         Pengguna::insert([
@@ -118,14 +122,15 @@ class PenggunaController extends Controller
             'roles' => 'required',
         ]);
 
+        // update password
         $newPassword = $request->password;
-
         if ($newPassword === 'password') {
             $newPassword = auth()->user()->getAuthPassword();
         } else {
             $newPassword = Hash::make($request->password);
         }
 
+        // update pengguna info
         $updatePengguna = [
             'nama_lengkap' => $request->nama_lengkap,
             'username' => $request->username,
@@ -134,13 +139,16 @@ class PenggunaController extends Controller
             'roles' => $request->roles,
         ];
 
-        $image = Image::make($request->file('foto')->path())->encode('png');
-        $updatePengguna['foto'] = base64_encode($image);
+        // update foto
+        if ($request->foto) {
+            $image = Image::make($request->foto->path())->encode('png');
+            $updatePengguna['foto'] = base64_encode($image);
+        }
 
         $pengguna->update($updatePengguna);
 
         return redirect()->route('pengguna.index')
-            ->with('success', "Data pengguna {$pengguna->nama_lengkap} telah berhasil diperbarui.");
+            ->with('success', "Pengguna telah berhasil diperbarui.");
     }
 
     /**

@@ -20,7 +20,7 @@ class CreatePenggunaTable extends Migration
             $table->string('password');
             $table->string('jenis_kelamin');
             $table->string('roles')->default('MASYARAKAT');
-            $table->binary('foto')->nullable();
+            $table->mediumText('foto')->nullable();
             $table->rememberToken();
 //            $table->timestamps();
 //            $table->string('nama_lengkap');

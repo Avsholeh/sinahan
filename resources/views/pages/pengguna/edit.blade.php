@@ -10,7 +10,8 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
 
-                    <form action="{{ route('pengguna.update', $pengguna->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('pengguna.update', $pengguna->id) }}" method="post"
+                          enctype="multipart/form-data">
 
                         @csrf
                         @method('put')

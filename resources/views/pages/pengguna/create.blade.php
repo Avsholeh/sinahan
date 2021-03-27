@@ -12,7 +12,7 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <form action="{{ route('pengguna.store') }}" method="post">
+                    <form action="{{ route('pengguna.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
                         @method('post')
@@ -52,11 +52,11 @@
                                     id="jenis_kelamin">
                                 <option value="" readonly>Pilih jenis kelamin</option>
                                 <option
-                                    @if(old('jenis_kelamin') === 'laki-laki') {{ 'selected' }}@endif
+                                    @if(old('jenis_kelamin') === 'laki-laki'){{ 'selected' }}@endif
                                     value="laki-laki"
                                 >Laki-laki</option>
                                 <option
-                                    @if(old('jenis_kelamin') === 'perempuan') {{ 'selected' }}@endif
+                                    @if(old('jenis_kelamin') === 'perempuan'){{ 'selected' }}@endif
                                     value="perempuan"
                                 >Perempuan</option>
                             </select>
@@ -68,10 +68,10 @@
                             <select name="roles" id="roles" class="form-control">
                                 <option value="" readonly>Pilih jenis pengguna</option>
                                 <option
-                                    @if(old('roles') === 'TU-PEGAWAI') {{ 'selected' }}@endif
+                                    @if(old('roles') === 'TU-PEGAWAI'){{ 'selected' }}@endif
                                     value="TU-PEGAWAI">TU-PEGAWAI</option>
                                 <option
-                                    @if(old('roles') === 'MASYARAKAT') {{ 'selected' }}@endif
+                                    @if(old('roles') === 'MASYARAKAT'){{ 'selected' }}@endif
                                     value="MASYARAKAT">MASYARAKAT</option>
                             </select>
                         </div>
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <label for="foto">Foto</label>
                             <input name="foto" type="file" class="form-control-file" id="foto"
-                                   value="@if(old('foto')) {{ old('foto') }}@endif"
+                                   value="@if(old('foto')){{ old('foto') }}@endif"
                                    aria-describedby="foto_help">
 
                             @error('foto')

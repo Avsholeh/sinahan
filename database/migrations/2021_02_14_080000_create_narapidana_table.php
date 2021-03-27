@@ -29,7 +29,8 @@ class CreateNarapidanaTable extends Migration
             $table->string('reg_bukti');
             $table->string('kategori');
             $table->string('keterangan');
-            $table->string('status_aktif');
+            $table->string('status');
+            $table->mediumText('foto');
         });
     }
 

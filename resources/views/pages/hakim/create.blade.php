@@ -11,7 +11,7 @@
 
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('hakim.store') }}" method="post">
+                    <form action="{{ route('hakim.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
                         @method('post')
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <label for="pangkat_golongan">Pangkat/Golongan</label>
                             <select name="pangkat_golongan" id="pangkat_golongan" class="form-control">
-                                <option disabled selected>Pilih pangkat</option>
+                                <option disabled selected>Pilih pangkat/golongan</option>
                                 <option value="I A - Juru Muda">I A - Juru Muda</option>
                                 <option value="I B - Juru Muda Tingkat 1">I B - Juru Muda Tingkat 1</option>
                                 <option value="I C - Juru">I C - Juru</option>
@@ -105,13 +105,23 @@
                         {{-- AGAMA --}}
                         <div class="form-group">
                             <label for="agama">Agama</label>
-                            <select name="agama" id="agama" class="form-control">
+                            <select name="agama" id="agama" class="form-control" aria-describedby="agama_help">
                                 <option value="" readonly>Pilih agama</option>
-                                <option value="Islam" @if(old('agama') === 'Islam') {{ 'selected' }} @endif>Islam</option>
-                                <option value="Kristen" @if(old('agama') === 'Kristen') {{ 'selected' }} @endif>Kristen</option>
-                                <option value="Budha" @if(old('agama') === 'Budha') {{ 'selected' }} @endif>Budha</option>
-                                <option value="Hindu" @if(old('agama') === 'Hindu') {{ 'selected' }} @endif>Hindu</option>
-                                <option value="Konghucu" @if(old('agama') === 'Konghucu') {{ 'selected' }} @endif>Konghucu</option>
+                                <option value="Islam" @if(old('agama') === 'Islam'){{ 'selected' }}@endif>
+                                    Islam
+                                </option>
+                                <option value="Kristen" @if(old('agama') === 'Kristen'){{ 'selected' }}@endif>
+                                    Kristen
+                                </option>
+                                <option value="Budha" @if(old('agama') === 'Budha'){{ 'selected' }}@endif>
+                                    Budha
+                                </option>
+                                <option value="Hindu" @if(old('agama') === 'Hindu'){{ 'selected' }}@endif>
+                                    Hindu
+                                </option>
+                                <option value="Konghucu" @if(old('agama') === 'Konghucu'){{ 'selected' }}@endif>
+                                    Konghucu
+                                </option>
                             </select>
 
                             @error('agama')
@@ -126,8 +136,14 @@
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                 <option value="" readonly>Pilih jenis kelamin</option>
-                                <option value="Laki-Laki" @if(old('jenis_kelamin') === 'Laki-Laki') {{ 'selected' }} @endif>Laki-Laki</option>
-                                <option value="Perempuan" @if(old('jenis_kelamin') === 'Perempuan') {{ 'selected' }} @endif>Perempuan</option>
+                                <option
+                                    value="Laki-Laki" @if(old('jenis_kelamin') === 'Laki-Laki') {{ 'selected' }} @endif>
+                                    Laki-Laki
+                                </option>
+                                <option
+                                    value="Perempuan" @if(old('jenis_kelamin') === 'Perempuan') {{ 'selected' }} @endif>
+                                    Perempuan
+                                </option>
                             </select>
 
                             @error('jenis_kelamin')
@@ -152,11 +168,14 @@
 
                         {{-- STATUS --}}
                         <div class="form-group">
-                            <label for="status">Jenis Kelamin</label>
+                            <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="" readonly>Pilih status</option>
-                                <option value="Aktif" @if(old('status') === 'Aktif'){{ 'selected' }}@endif>Aktif</option>
-                                <option value="Tidak Aktif" @if(old('status') === 'Tidak Aktif'){{ 'selected' }}@endif>Tidak Aktif</option>
+                                <option value="Aktif" @if(old('status') === 'Aktif'){{ 'selected' }}@endif>Aktif
+                                </option>
+                                <option value="Tidak Aktif" @if(old('status') === 'Tidak Aktif'){{ 'selected' }}@endif>
+                                    Tidak Aktif
+                                </option>
                             </select>
 
                             @error('status')
