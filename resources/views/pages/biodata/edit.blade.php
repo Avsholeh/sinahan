@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label for="nama_lengkap">Nama Lengkap</label>
                             <input type="text" name="nama_lengkap" class="form-control" id="nama_lengkap"
-                                value="{{ auth()->user()->nama_lengkap }}" aria-describedby="nama_lengkap_help">
+                                   value="{{ auth()->user()->nama_lengkap }}" aria-describedby="nama_lengkap_help">
                             @error('nama_lengkap')
                             <small id="nama_lengkap_help" class="form-text text-danger">
                                 <i class="fa fa-info-circle"></i> {{ $message }}
@@ -33,19 +33,17 @@
                             <select class="form-control" name="jenis_kelamin"
                                     id="jenis_kelamin">
                                 <option disabled>Pilih jenis kelamin</option>
+                                <option
+                                    @if(auth()->user()->jenis_kelamin === 'Pria'){{ 'selected' }}@endif
+                                    value="Pria"
+                                >Pria
+                                </option>
 
-                                @if(auth()->user()->jenis_kelamin === 'laki-laki')
-
-                                <option selected value="laki-laki">Laki-laki</option>
-                                <option value="perempuan">Perempuan</option>
-
-                                @else
-
-                                <option value="laki-laki">Laki-laki</option>
-                                <option selected value="perempuan">Perempuan</option>
-
-                                @endif
-
+                                <option
+                                    @if(auth()->user()->jenis_kelamin === 'Wanita'){{ 'selected' }}@endif
+                                    value="Wanita"
+                                >Wanita
+                                </option>
                             </select>
                         </div>
 

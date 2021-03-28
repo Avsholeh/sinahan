@@ -137,12 +137,12 @@
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                 <option value="" readonly>Pilih jenis kelamin</option>
                                 <option
-                                    value="Laki-Laki" @if(old('jenis_kelamin') === 'Laki-Laki') {{ 'selected' }} @endif>
-                                    Laki-Laki
+                                    value="Laki-Laki" @if(old('jenis_kelamin') === 'Pria') {{ 'selected' }} @endif>
+                                    Pria
                                 </option>
                                 <option
-                                    value="Perempuan" @if(old('jenis_kelamin') === 'Perempuan') {{ 'selected' }} @endif>
-                                    Perempuan
+                                    value="Perempuan" @if(old('jenis_kelamin') === 'Wanita') {{ 'selected' }} @endif>
+                                    Wanita
                                 </option>
                             </select>
 

@@ -81,10 +81,10 @@
                                                 aria-describedby="jenis_kelamin_help"
                                                 id="jenis_kelamin">
                                             <option value="" selected>Pilih jenis kelamin</option>
-                                            <option @if(old('jenis_kelamin') === 'laki-laki') {{ 'selected' }} @endif
-                                                    value="laki-laki">Laki-laki</option>
-                                            <option @if(old('jenis_kelamin') === 'perempuan') {{ 'selected' }} @endif
-                                                    value="perempuan">Perempuan</option>
+                                            <option @if(old('jenis_kelamin') === 'Pria') {{ 'selected' }} @endif
+                                                    value="Pria">Pria</option>
+                                            <option @if(old('jenis_kelamin') === 'Wanita') {{ 'selected' }} @endif
+                                                    value="Wanita">Wanita</option>
                                         </select>
                                         @error('jenis_kelamin')
                                         <small id="jenis_kelamin_help" class="form-text text-danger">

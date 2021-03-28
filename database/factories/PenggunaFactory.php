@@ -25,7 +25,7 @@ class PenggunaFactory extends Factory
     {
         return [
             'nama_lengkap' => $this->faker->name,
-            'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
+            'jenis_kelamin' => $this->faker->randomElement(['Pria', 'Wanita']),
             'username' => $this->faker->userName,
             'password' => Hash::make('master'),
             'remember_token' => Str::random(10),

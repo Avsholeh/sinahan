@@ -22,18 +22,18 @@ class DatabaseSeeder extends Seeder
                 [
                     'nama_lengkap' => 'Novitasari',
                     'username' => 'tupegawai',
-                    'jenis_kelamin' => 'Perempuan',
+                    'jenis_kelamin' => 'Wanita',
                     'roles' => 'TU-PEGAWAI',
                     'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
                 ],
                 [
                     'username' => 'masyarakat',
-                    'jenis_kelamin' => 'Laki-laki',
+                    'jenis_kelamin' => 'Pria',
                     'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
                 ],
             ))
             ->create();
 
-//        $hakims = \App\Models\Hakim::factory(50)->create();
+        $hakims = \App\Models\Hakim::factory(1)->create();
     }
 }

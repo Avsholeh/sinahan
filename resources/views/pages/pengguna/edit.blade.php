@@ -50,19 +50,16 @@
                             <select class="form-control" name="jenis_kelamin"
                                     id="jenis_kelamin">
                                 <option disabled>Pilih jenis kelamin</option>
-
-                                @if(auth()->user()->jenis_kelamin === 'laki-laki')
-
-                                    <option selected value="laki-laki">Laki-laki</option>
-                                    <option value="perempuan">Perempuan</option>
-
-                                @else
-
-                                    <option value="laki-laki">Laki-laki</option>
-                                    <option selected value="perempuan">Perempuan</option>
-
-                                @endif
-
+                                <option
+                                    @if(auth()->user()->jenis_kelamin === 'Pria'){{ 'selected' }}@endif
+                                    value="Pria"
+                                >Pria
+                                </option>
+                                <option
+                                    @if(auth()->user()->jenis_kelamin === 'Wanita'){{ 'selected' }}@endif
+                                    value="Wanita"
+                                >Wanita
+                                </option>
                             </select>
                         </div>
 

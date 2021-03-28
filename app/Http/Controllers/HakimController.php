@@ -33,13 +33,7 @@ class HakimController extends Controller
         return view('pages.hakim.create');
     }
 
-    /**
-     * Store a newly created hakim in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function validateRules(Request $request)
     {
         $request->validate([
             'nama_lengkap' => 'required',
@@ -53,6 +47,18 @@ class HakimController extends Controller
             'status' => 'required',
 //            'foto' => 'required',
         ]);
+    }
+
+    /**
+     * Store a newly created hakim in storage.
+     *
+     * @param Request $request
+     * @return Response
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request)
+    {
+        $this->validateRules($request);
 
         if (!$request->foto) {
             if ($request->jenis_kelamin === 'Perempuan') {
@@ -102,7 +108,8 @@ class HakimController extends Controller
      */
     public function edit(Hakim $hakim)
     {
-        return view('pages.hakim.edit', compact('hakim'));
+        $pangkatGolongan = $hakim->pangkat . ' - ' . $hakim->golongan;
+        return view('pages.hakim.edit', compact('hakim', 'pangkatGolongan'));
     }
 
     /**
@@ -114,7 +121,7 @@ class HakimController extends Controller
      */
     public function update(Request $request, Hakim $hakim)
     {
-        //
+        $this->validateRules($request);
     }
 
     /**
