@@ -49,10 +49,14 @@ class Narapidana extends BaseModel
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    const AKTIF = 'Aktif';
+    const TIDAK_AKTIF = 'Tidak Aktif';
+
     protected $table = 'narapidana';
 
     protected $fillable = [
-
         'nama_lengkap',
         'tempat_lahir',
         'tanggal_lahir',
@@ -65,6 +69,10 @@ class Narapidana extends BaseModel
         'reg_perkara',
         'reg_tahanan',
         'reg_bukti',
+        'kategori',
+        'keterangan',
+        'status',
+        'foto',
     ];
 
 

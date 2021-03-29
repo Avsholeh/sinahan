@@ -32,8 +32,8 @@ class HakimFactory extends Factory
             'pangkat' => $this->faker->jobTitle,
             'golongan' => $this->faker->jobTitle,
             'agama' => $this->faker->randomElement(['Islam', 'Kristen', 'Budha']),
-            'jenis_kelamin' =>$this->faker->randomElement(['Pria', 'Wanita']),
-            'pendidikan' => $this->faker->randomElement(['SMA', 'DII', 'DIII', 'DIV', 'SI']),
+            'jenis_kelamin' => $this->faker->randomElement(['Pria', 'Wanita']),
+            'pendidikan' => $this->faker->randomElement(['SMA', 'D II', 'D III', 'D IV', 'S I']),
             'status' => $this->faker->randomElement([Hakim::AKTIF, Hakim::TIDAK_AKTIF]),
             'foto' => $this->faker->randomElement([$laki, $perempuan]),
         ];

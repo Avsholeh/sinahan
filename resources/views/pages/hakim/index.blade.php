@@ -54,19 +54,28 @@
                             <td>{{ $hakim->pendidikan }}</td>
                             <td>
                                 @if($hakim->status === \App\Models\Hakim::AKTIF)
-                                  <div class="badge badge-success">{{ $hakim->status }}</div>
+                                    <div class="badge badge-success">{{ $hakim->status }}</div>
                                 @else
-                                  <div class="badge badge-danger">{{ $hakim->status }}</div>
+                                    <div class="badge badge-danger">{{ $hakim->status }}</div>
                                 @endif
                             </td>
 
                             <td class="d-flex flex-row">
-                                <a href="{{ route('hakim.edit', 1) }}" class="btn btn-warning btn-sm text-dark mr-2">
+                                <a href="{{ route('hakim.edit', $hakim->id) }}" class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
                                 </a>
-                                <a class="btn btn-danger text-light btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                {{-- delete --}}
+                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                   data-target="#hapusModal">
                                     {{ __('layouts.delete') }}
                                 </a>
+                                <form id="form-delete-{{ $hakim->id }}"
+                                      action="{{ route('hakim.delete', $hakim->id) }}"
+                                      method="post" hidden>
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                                {{-- END delete --}}
                             </td>
                         </tr>
 
@@ -89,15 +98,18 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
+                <div class="modal-body">
+                    Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
                     tidak dapat dikembalikan.
                 </div>
+
+                {{-- delete --}}
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batalkan</button>
-                    <a class="btn btn-primary" href="javascript:void(0)"
-                       onclick="event.preventDefault(); document.getElementById('form-delete').submit()"
-                    >Konfirmasi</a>
+                    <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
+                {{-- END delete --}}
+
                 <form id="form-delete" action="#" method="post" class="d-none">
                     @csrf
                 </form>
@@ -112,6 +124,19 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
+
+            $('.btn-delete').click(function (e) {
+                e.preventDefault();
+                var $siblings = $(this).siblings();
+                console.log($siblings);
+                $('#konfirmasi').click(function (e) {
+                    e.preventDefault();
+                    // should check type of siblings
+                    // if sibling is not a form
+                    // then ignore it
+                    $siblings[1].submit();
+                });
+            });
         });
     </script>
 

@@ -5,19 +5,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\HakimController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JaksaController;
+use App\Http\Controllers\NarapidanaController;
 use App\Http\Controllers\PenggunaController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 //Route::get('/register', [RegisterController::class, 'index'])->name('register');
@@ -71,42 +62,25 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Jaksa
      */
     Route::prefix('/jaksa')->group(function () {
-        Route::get('/', function() {
-            return view('pages.jaksa.index');
-        })->name('jaksa.index');
-
-        Route::get('/create', function() {
-            return view('pages.jaksa.create');
-        })->name('jaksa.create');
-
-        Route::get('/{jaksa}/edit', function() {
-            return view('pages.jaksa.edit');
-        })->name('jaksa.edit');
-
-        Route::delete('/delete/{jaksa}', function() {
-            return null;
-        })->name('jaksa.delete');
+        Route::get('/', [JaksaController::class, 'index'])->name('jaksa.index');
+        Route::get('/create', [JaksaController::class, 'create'])->name('jaksa.create');
+        Route::get('/{jaksa}/edit', [JaksaController::class, 'edit'])->name('jaksa.edit');
+        Route::post('/', [JaksaController::class, 'store'])->name('jaksa.store');
+        Route::put('/{jaksa}', [JaksaController::class, 'update'])->name('jaksa.update');
+        Route::delete('/{jaksa}', [JaksaController::class, 'destroy'])->name('jaksa.delete');
     });
 
     /**
      * Route Kelola Data Narapidana
      */
     Route::prefix('/narapidana')->group(function () {
-        Route::get('/', function() {
-            return view('pages.narapidana.index');
-        })->name('narapidana.index');
+        Route::get('/', [NarapidanaController::class, 'index'])->name('narapidana.index');
+        Route::get('/create', [NarapidanaController::class, 'create'])->name('narapidana.create');
+        Route::get('/{narapidana}/edit', [NarapidanaController::class, 'edit'])->name('narapidana.edit');
+        Route::post('/', [NarapidanaController::class, 'store'])->name('narapidana.store');
+        Route::put('/{narapidana}', [NarapidanaController::class, 'update'])->name('narapidana.update');
+        Route::delete('/{narapidana}', [NarapidanaController::class, 'destroy'])->name('narapidana.delete');
 
-        Route::get('/create', function() {
-            return view('pages.narapidana.create');
-        })->name('narapidana.create');
-
-        Route::get('/{narapidana}/edit', function() {
-            return view('pages.narapidana.edit');
-        })->name('narapidana.edit');
-
-        Route::delete('/delete/{narapidana}', function() {
-            return null;
-        })->name('narapidana.delete');
     });
 
     /**

@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
             ))
             ->create();
 
-        $hakims = \App\Models\Hakim::factory(1)->create();
+        \App\Models\Hakim::factory(3)->create();
+        \App\Models\Jaksa::factory(3)->create();
+        \App\Models\Narapidana::factory(3)->create();
     }
 }

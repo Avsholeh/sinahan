@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Hakim;
 use App\Models\Jaksa;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\File;
 
 class JaksaFactory extends Factory
 {
@@ -21,8 +23,21 @@ class JaksaFactory extends Factory
      */
     public function definition()
     {
+        $laki = base64_encode(File::get(storage_path('app/public/laki.png')));
+        $perempuan = base64_encode(File::get(storage_path('app/public/perempuan.png')));
         return [
-            //
+            'nama_lengkap' => $this->faker->name,
+            'tempat_lahir' => $this->faker->city,
+            'tanggal_lahir' => $this->faker->date(),
+            'nip' => $this->faker->creditCardNumber,
+            'pangkat' => $this->faker->jobTitle,
+            'golongan' => $this->faker->jobTitle,
+            'jabatan' => $this->faker->jobTitle,
+            'agama' => $this->faker->randomElement(['Islam', 'Kristen', 'Budha']),
+            'jenis_kelamin' => $this->faker->randomElement(['Pria', 'Wanita']),
+            'pendidikan' => $this->faker->randomElement(['SMA', 'DII', 'DIII', 'DIV', 'SI']),
+            'status' => $this->faker->randomElement([Hakim::AKTIF, Hakim::TIDAK_AKTIF]),
+            'foto' => $this->faker->randomElement([$laki, $perempuan]),
         ];
     }
 }

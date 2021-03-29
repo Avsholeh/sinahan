@@ -48,10 +48,12 @@
                                 </a>
 
                                 {{-- delete --}}
-                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal" data-target="#hapusModal">
+                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                   data-target="#hapusModal">
                                     {{ __('layouts.delete') }}
                                 </a>
-                                <form id="form-delete-{{ $pengguna->id }}" action="{{ route('pengguna.delete', $pengguna->id) }}" method="post"
+                                <form id="form-delete-{{ $pengguna->id }}"
+                                      action="{{ route('pengguna.delete', $pengguna->id) }}" method="post"
                                       hidden>
                                     @csrf
                                     @method('delete')
@@ -105,13 +107,12 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
-            var deletedId;
 
-            $('.btn-delete').click(function(e) {
+            $('.btn-delete').click(function (e) {
                 e.preventDefault();
                 var $siblings = $(this).siblings();
                 console.log($siblings);
-                $('#konfirmasi').click(function(e) {
+                $('#konfirmasi').click(function (e) {
                     e.preventDefault();
                     // should check type of siblings
                     // if sibling is not a form

@@ -43,6 +43,25 @@ class Jaksa extends BaseModel
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $table = 'jaksa';
 
+    const AKTIF = 'Aktif';
+    const TIDAK_AKTIF = 'Tidak Aktif';
+
+    protected $fillable = [
+        'nama_lengkap',
+        'nip',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'pangkat',
+        'golongan',
+        'jabatan',
+        'agama',
+        'jenis_kelamin',
+        'pendidikan',
+        'status',
+        'foto',
+    ];
 }

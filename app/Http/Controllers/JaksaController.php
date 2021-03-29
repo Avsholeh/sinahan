@@ -3,32 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hakim;
+use App\Models\Jaksa;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
-class HakimController extends Controller
+class JaksaController extends Controller
 {
     /**
-     * Display a listing of the hakim.
+     * Display a listing of the jaksa.
      *
      * @return Response
      */
     public function index()
     {
-        $hakims = Hakim::all();
-        return view('pages.hakim.index', compact('hakims'));
+        $jaksas = Jaksa::all();
+        return view('pages.jaksa.index', compact('jaksas'));
     }
 
     /**
-     * Show the form for creating a new hakim.
+     * Show the form for creating a new jaksa.
      *
      * @return Response
      */
     public function create()
     {
-        return view('pages.hakim.create');
+        return view('pages.jaksa.create');
     }
 
     public function validateRules(Request $request)
@@ -39,6 +40,7 @@ class HakimController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'pangkat_golongan' => 'required',
+            'jabatan' => 'required',
             'agama' => 'required',
             'jenis_kelamin' => 'required',
             'pendidikan' => 'required',
@@ -62,7 +64,7 @@ class HakimController extends Controller
     }
 
     /**
-     * Store a newly created hakim in storage.
+     * Store a newly created jaksa in storage.
      *
      * @param Request $request
      * @return Response
@@ -73,13 +75,14 @@ class HakimController extends Controller
 
         $defaultFoto = $this->defaultFoto($request);
 
-        Hakim::create([
+        Jaksa::create([
             'nama_lengkap' => $request->nama_lengkap,
             'nip' => $request->nip,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'pangkat' => explode(' - ', $request->pangkat_golongan)[0],
             'golongan' => explode(' - ', $request->pangkat_golongan)[1],
+            'jabatan' => $request->jabatan,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'pendidikan' => $request->pendidikan,
@@ -87,53 +90,54 @@ class HakimController extends Controller
             'foto' => $defaultFoto,
         ]);
 
-        return redirect()->route('hakim.index')
-            ->with('success', "Hakim telah berhasil ditambah.");
+        return redirect()->route('jaksa.index')
+            ->with('success', "Jaksa telah berhasil ditambah.");
     }
 
     /**
-     * Display the specified hakim.
+     * Display the specified jaksa.
      *
-     * @param Hakim $hakim
+     * @param Jaksa $jaksa
      * @return Response
      */
-    public function show(Hakim $hakim)
+    public function show(Jaksa $jaksa)
     {
         //
     }
 
     /**
-     * Show the form for editing the specified hakim.
+     * Show the form for editing the specified jaksa.
      *
-     * @param Hakim $hakim
+     * @param Jaksa $jaksa
      * @return Response
      */
-    public function edit(Hakim $hakim)
+    public function edit(Jaksa $jaksa)
     {
-        $pangkatGolongan = $hakim->pangkat . ' - ' . $hakim->golongan;
-        return view('pages.hakim.edit', compact('hakim', 'pangkatGolongan'));
+        $pangkatGolongan = $jaksa->pangkat . ' - ' . $jaksa->golongan;
+        return view('pages.jaksa.edit', compact('jaksa', 'pangkatGolongan'));
     }
 
     /**
-     * Update the specified hakim in storage.
+     * Update the specified jaksa in storage.
      *
      * @param Request $request
-     * @param Hakim $hakim
+     * @param Jaksa $jaksa
      * @return Response
      */
-    public function update(Request $request, Hakim $hakim)
+    public function update(Request $request, Jaksa $jaksa)
     {
         $this->validateRules($request);
 
         $defaultFoto = $this->defaultFoto($request);
 
-        $hakim->update([
+        $jaksa->update([
             'nama_lengkap' => $request->nama_lengkap,
             'nip' => $request->nip,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'pangkat' => explode(' - ', $request->pangkat_golongan)[0],
             'golongan' => explode(' - ', $request->pangkat_golongan)[1],
+            'jabatan' => $request->jabatan,
             'agama' => $request->agama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'pendidikan' => $request->pendidikan,
@@ -141,20 +145,20 @@ class HakimController extends Controller
             'foto' => $defaultFoto,
         ]);
 
-        return redirect()->route('hakim.index')
-            ->with('success', 'Hakim telah berhasil diperbarui');
+        return redirect()->route('jaksa.index')
+            ->with('success', 'Jaksa telah berhasil diperbarui');
     }
 
     /**
-     * Remove the specified hakim from storage.
+     * Remove the specified jaksa from storage.
      *
-     * @param Hakim $hakim
+     * @param Jaksa $jaksa
      * @return Response
      */
-    public function destroy(Hakim $hakim)
+    public function destroy(Jaksa $jaksa)
     {
-        $hakim->delete();
-        return redirect()->route('hakim.index')
-            ->with('success', 'Hakim telah berhasil dihapus');
+        $jaksa->delete();
+        return redirect()->route('jaksa.index')
+            ->with('success', 'Jaksa telah berhasil dihapus');
     }
 }

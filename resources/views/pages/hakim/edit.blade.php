@@ -205,6 +205,25 @@
                             @enderror
                         </div>
 
+                        {{-- STATUS --}}
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" class="form-control">
+                                <option value="" readonly>Pilih status</option>
+                                <option value="Aktif" @if($hakim->status === 'Aktif'){{ 'selected' }}@endif>Aktif
+                                </option>
+                                <option value="Tidak Aktif" @if($hakim->status === 'Tidak Aktif'){{ 'selected' }}@endif>
+                                    Tidak Aktif
+                                </option>
+                            </select>
+
+                            @error('status')
+                            <small id="status_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
                         {{-- Foto --}}
                         <div class="form-group">
                             <label for="foto">Upload foto</label>

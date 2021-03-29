@@ -155,7 +155,7 @@
 
                         {{-- PENDIDIKAN --}}
                         <div class="form-group">
-                            <label for="pendidikan">Pendidikan</label>
+                            <label for="pendidikan">Pendidikan Terakhir</label>
                             <input name="pendidikan" type="text" class="form-control" id="pendidikan"
                                    value="@if(old('pendidikan')) {{ old('pendidikan') }}@endif">
 
