@@ -109,10 +109,6 @@
                     <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
                 {{-- END delete --}}
-
-                <form id="form-delete" action="#" method="post" class="d-none">
-                    @csrf
-                </form>
             </div>
         </div>
     </div>

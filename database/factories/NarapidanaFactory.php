@@ -37,7 +37,7 @@ class NarapidanaFactory extends Factory
             'reg_perkara' => "PDM–{$this->faker->randomNumber()}/TBK/E.3.2/01/2020",
             'reg_tahanan' => "T–{$this->faker->randomNumber()}/TBK/E.3.2/01/2020",
             'reg_bukti' => "B–{$this->faker->randomNumber()}/TBK/E.3.2/01/2020",
-            'kategori' => $this->faker->domainName,
+//            'kategori' => $this->faker->domainName,
             'keterangan' => $this->faker->randomElement(['KETERANGAN SAKSI', 'PUTUSAN', 'DAKWAAN', 'TUNTUTAN', 'BUKAN TAHANAN JAKSA']),
             'status' => $this->faker->randomElement([Narapidana::AKTIF, Narapidana::TIDAK_AKTIF]),
             'foto' => $this->faker->randomElement([$laki, $perempuan]),

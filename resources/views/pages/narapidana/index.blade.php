@@ -16,8 +16,8 @@
                 <div class="alert alert-success">{{ $message }}</div>
             @endif
 
-            <div class="table-responsive overflow-auto">
-                <table class="table table-bordered" id="dataTable">
+            <div class="table-responsive">
+                <table class="table table-bordered display responsive nowrap" id="dataTable">
                     <thead>
                     <tr>
                         <th>Foto</th>
@@ -33,10 +33,10 @@
                         <th>Reg Perkara</th>
                         <th>Reg Tahanan</th>
                         <th>Reg Bukti</th>
-                        <th>Kategori</th>
+{{--                        <th>Kategori</th>--}}
                         <th>Keterangan</th>
                         <th>Status</th>
-                        <th>#</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,8 @@
                         <tr>
                             <td>
                                 <div class="rounded-circle"
-                                     style="width: 50px; height: 50px; background-image: url('data:image/png;base64,{{ $narapidana->foto }}'); background-size: cover"></div>
+                                     style="width: 50px; height: 50px; background-image: url('data:image/png;base64,{{ $narapidana->foto }}'); background-size: cover">
+                                </div>
                             </td>
 
                             <td>{{ $narapidana->nama_lengkap }}</td>
@@ -61,7 +62,7 @@
                             <td>{{ $narapidana->reg_perkara }}</td>
                             <td>{{ $narapidana->reg_tahanan }}</td>
                             <td>{{ $narapidana->reg_bukti }}</td>
-                            <td>{{ $narapidana->kategori }}</td>
+{{--                            <td>{{ $narapidana->kategori }}</td>--}}
                             <td>{{ $narapidana->keterangan }}</td>
 
                             <td>
@@ -72,8 +73,10 @@
                                 @endif
                             </td>
 
-                            <td class="d-flex flex-row">
-                                <a href="{{ route('narapidana.edit', $narapidana->id) }}" class="btn btn-warning btn-sm text-dark mr-2">
+                            <td>
+{{--                                <span class="d-flex flex-row">--}}
+                                <a href="{{ route('narapidana.edit', $narapidana->id) }}"
+                                   class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
                                 </a>
                                 {{-- delete --}}
@@ -82,12 +85,13 @@
                                     {{ __('layouts.delete') }}
                                 </a>
                                 <form id="form-delete-{{ $narapidana->id }}"
-                                      action="{{ route('hakim.delete', $narapidana->id) }}"
+                                      action="{{ route('narapidana.delete', $narapidana->id) }}"
                                       method="post" hidden>
                                     @csrf
                                     @method('delete')
                                 </form>
                                 {{-- END delete --}}
+{{--                                </span>--}}
                             </td>
                         </tr>
 
@@ -99,6 +103,7 @@
         </div>
     </div>
 
+{{--    @include('layouts.confirmation_modal')--}}
     <!-- Hapus Modal-->
     <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel"
          aria-hidden="true">
@@ -121,10 +126,6 @@
                     <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
                 {{-- END delete --}}
-
-                <form id="form-delete" action="#" method="post" class="d-none">
-                    @csrf
-                </form>
             </div>
         </div>
     </div>
@@ -135,17 +136,17 @@
 
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                responsive: false
+            });
 
             $('.btn-delete').click(function (e) {
                 e.preventDefault();
                 var $siblings = $(this).siblings();
-                console.log($siblings);
                 $('#konfirmasi').click(function (e) {
                     e.preventDefault();
                     // should check type of siblings
-                    // if sibling is not a form
-                    // then ignore it
+                    // if sibling is not a form then ignore it
                     $siblings[1].submit();
                 });
             });

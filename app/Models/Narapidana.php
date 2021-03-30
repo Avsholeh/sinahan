@@ -69,7 +69,7 @@ class Narapidana extends BaseModel
         'reg_perkara',
         'reg_tahanan',
         'reg_bukti',
-        'kategori',
+//        'kategori',
         'keterangan',
         'status',
         'foto',
