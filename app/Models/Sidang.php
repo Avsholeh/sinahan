@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Sidang
@@ -33,14 +34,46 @@ class Sidang extends BaseModel
 {
     use HasFactory;
 
+    const KET_SAKSI = 'Keterangan Saksi';
+    const KET_PUTUSAN = 'Putusan';
+    const KET_DAKWAAN = 'Dakwaan';
+    const KET_TUNTUTAN = 'Tuntuan';
+    const KET_BUKAN_TAHANAN_JAKSA = 'Bukan Tahanan Jaksa';
+
     protected $table = 'sidang';
 
     protected $fillable = [
-        'hakim_id',
-        'narapidana_id',
         'tanggal',
+        'hakim_id',
+        'jaksa_id',
+        'narapidana_id',
         'pasal',
-        'jpu',
+//        'jpu',
         'keterangan',
     ];
+
+    public function hakim()
+    {
+        return $this->belongsTo(Hakim::class);
+    }
+
+    public function jaksa()
+    {
+        return $this->belongsTo(Jaksa::class);
+    }
+
+    public function narapidana()
+    {
+        return $this->belongsTo(Narapidana::class);
+    }
+
+    public function getNewTanggalAttribute($value)
+    {
+        return Carbon::parse($this->tanggal)->format('Y-m-d\TH:i:s');
+    }
+
+    public function getTanggalIdnAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal'])->translatedFormat('l, d F Y');
+    }
 }

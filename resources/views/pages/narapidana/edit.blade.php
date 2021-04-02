@@ -9,10 +9,11 @@
 
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <form action="{{ route('narapidana.update', $narapidana->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('narapidana.update', $narapidana->id) }}" method="post"
+                          enctype="multipart/form-data">
 
                         @csrf
-                        @method('post')
+                        @method('put')
 
                         {{-- NAMA LENGKAP --}}
                         <div class="form-group">
@@ -32,6 +33,7 @@
                         <div class="form-group">
                             <label for="tempat_lahir">Tempat Lahir</label>
                             <input name="tempat_lahir" type="text" class="form-control" id="tempat_lahir"
+                                   value="{{ $narapidana->tempat_lahir }}"
                                    aria-describedby="tempat_lahir_help">
 
                             @error('tempat_lahir')
@@ -45,6 +47,7 @@
                         <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir</label>
                             <input name="tanggal_lahir" type="date" class="form-control" id="tanggal_lahir"
+                                   value="{{ $narapidana->tanggal_lahir }}"
                                    aria-describedby="tanggal_lahir_help">
 
                             @error('tanggal_lahir')
@@ -60,11 +63,11 @@
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                 <option value="" readonly>Pilih jenis kelamin</option>
                                 <option
-                                    value="Pria" @if(old('jenis_kelamin') === 'Pria') {{ 'selected' }} @endif>
+                                    value="Pria" @if($narapidana->jenis_kelamin === 'Pria') {{ 'selected' }} @endif>
                                     Pria
                                 </option>
                                 <option
-                                    value="Wanita" @if(old('jenis_kelamin') === 'Wanita') {{ 'selected' }} @endif>
+                                    value="Wanita" @if($narapidana->jenis_kelamin === 'Wanita') {{ 'selected' }} @endif>
                                     Wanita
                                 </option>
                             </select>
@@ -80,6 +83,7 @@
                         <div class="form-group">
                             <label for="kebangsaan">Kebangsaan</label>
                             <input name="kebangsaan" type="text" class="form-control" id="kebangsaan"
+                                   value="{{ $narapidana->kebangsaan }}"
                                    aria-describedby="kebangsaan_help">
 
                             @error('kebangsaan')
@@ -93,6 +97,7 @@
                         <div class="form-group">
                             <label for="tempat_tinggal">Alamat/Tempat Tinggal</label>
                             <input name="tempat_tinggal" type="text" class="form-control" id="tempat_tinggal"
+                                   value="{{ $narapidana->tempat_tinggal }}"
                                    aria-describedby="tempat_tinggal_help">
 
                             @error('tempat_tinggal')
@@ -107,19 +112,19 @@
                             <label for="agama">Agama</label>
                             <select name="agama" id="agama" class="form-control" aria-describedby="agama_help">
                                 <option value="" readonly>Pilih agama</option>
-                                <option value="Islam" @if(old('agama') === 'Islam'){{ 'selected' }}@endif>
+                                <option value="Islam" @if($narapidana->agama === 'Islam'){{ 'selected' }}@endif>
                                     Islam
                                 </option>
-                                <option value="Kristen" @if(old('agama') === 'Kristen'){{ 'selected' }}@endif>
+                                <option value="Kristen" @if($narapidana->agama === 'Kristen'){{ 'selected' }}@endif>
                                     Kristen
                                 </option>
-                                <option value="Budha" @if(old('agama') === 'Budha'){{ 'selected' }}@endif>
+                                <option value="Budha" @if($narapidana->agama === 'Budha'){{ 'selected' }}@endif>
                                     Budha
                                 </option>
-                                <option value="Hindu" @if(old('agama') === 'Hindu'){{ 'selected' }}@endif>
+                                <option value="Hindu" @if($narapidana->agama === 'Hindu'){{ 'selected' }}@endif>
                                     Hindu
                                 </option>
-                                <option value="Konghucu" @if(old('agama') === 'Konghucu'){{ 'selected' }}@endif>
+                                <option value="Konghucu" @if($narapidana->agama === 'Konghucu'){{ 'selected' }}@endif>
                                     Konghucu
                                 </option>
                             </select>
@@ -135,6 +140,7 @@
                         <div class="form-group">
                             <label for="pekerjaan">Pekerjaan</label>
                             <input name="pekerjaan" type="text" class="form-control" id="pekerjaan"
+                                   value="{{ $narapidana->pekerjaan }}"
                                    aria-describedby="pekerjaan_help">
 
                             @error('pekerjaan')
@@ -148,6 +154,7 @@
                         <div class="form-group">
                             <label for="pendidikan">Pendidikan</label>
                             <input name="pendidikan" type="text" class="form-control" id="pendidikan"
+                                   value="{{ $narapidana->pendidikan }}"
                                    aria-describedby="pendidikan_help">
 
                             @error('pendidikan')
@@ -161,6 +168,7 @@
                         <div class="form-group">
                             <label for="reg_perkara">Reg Perkara</label>
                             <input name="reg_perkara" type="text" class="form-control" id="reg_perkara"
+                                   value="{{ $narapidana->reg_perkara }}"
                                    aria-describedby="reg_perkara_help">
 
                             @error('reg_perkara')
@@ -174,6 +182,7 @@
                         <div class="form-group">
                             <label for="reg_tahanan">Reg Tahanan</label>
                             <input name="reg_tahanan" type="text" class="form-control" id="reg_tahanan"
+                                   value="{{ $narapidana->reg_tahanan }}"
                                    aria-describedby="reg_tahanan_help">
 
                             @error('reg_tahanan')
@@ -187,6 +196,7 @@
                         <div class="form-group">
                             <label for="reg_bukti">Reg Bukti</label>
                             <input name="reg_bukti" type="text" class="form-control" id="reg_bukti"
+                                   value="{{ $narapidana->reg_bukti }}"
                                    aria-describedby="reg_bukti_help">
 
                             @error('reg_bukti')
@@ -202,23 +212,29 @@
                             <select name="keterangan" id="keterangan" class="form-control"
                                     aria-describedby="keterangan_help">
                                 <option value="" readonly>Pilih keterangan</option>
-                                <option value="Keterangan Saksi" @if(old('keterangan') === 'Keterangan Saksi'){{ 'selected' }}@endif>
+                                <option
+                                    value="Keterangan Saksi"
+                                @if($narapidana->keterangan === 'Keterangan Saksi'){{ 'selected' }}@endif>
                                     Keterangan Saksi
                                 </option>
                                 <option
-                                    value="Putusan" @if(old('keterangan') === 'Putusan'){{ 'selected' }}@endif>
+                                    value="Putusan"
+                                @if($narapidana->keterangan === 'Putusan'){{ 'selected' }}@endif>
                                     Putusan
                                 </option>
                                 <option
-                                    value="Dakwaan" @if(old('keterangan') === 'Dakwaan'){{ 'selected' }}@endif>
+                                    value="Dakwaan"
+                                @if($narapidana->keterangan === 'Dakwaan'){{ 'selected' }}@endif>
                                     Dakwaan
                                 </option>
                                 <option
-                                    value="Tuntuan" @if(old('keterangan') === 'Tuntuan'){{ 'selected' }}@endif>
+                                    value="Tuntuan"
+                                @if($narapidana->keterangan === 'Tuntuan'){{ 'selected' }}@endif>
                                     Tuntuan
                                 </option>
                                 <option
-                                    value="Bukan Tahanan Jaksa" @if(old('keterangan') === 'Bukan Tahanan Jaksa'){{ 'selected' }}@endif>
+                                    value="Bukan Tahanan Jaksa"
+                                @if($narapidana->keterangan === 'Bukan Tahanan Jaksa'){{ 'selected' }}@endif>
                                     Bukan Tahanan Jaksa
                                 </option>
                             </select>
@@ -235,9 +251,9 @@
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="" readonly>Pilih status</option>
-                                <option value="Aktif" @if(old('status') === 'Aktif'){{ 'selected' }}@endif>Aktif
+                                <option value="Aktif" @if($narapidana->status === 'Aktif'){{ 'selected' }}@endif>Aktif
                                 </option>
-                                <option value="Tidak Aktif" @if(old('status') === 'Tidak Aktif'){{ 'selected' }}@endif>
+                                <option value="Tidak Aktif" @if($narapidana->statusap === 'Tidak Aktif'){{ 'selected' }}@endif>
                                     Tidak Aktif
                                 </option>
                             </select>
@@ -256,7 +272,8 @@
                                    aria-describedby="foto_help">
                         </div>
 
-                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>                    </form>
+                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+                    </form>
                     </form>
                 </div>
             </div>

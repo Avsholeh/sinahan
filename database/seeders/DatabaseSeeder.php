@@ -34,8 +34,18 @@ class DatabaseSeeder extends Seeder
             ))
             ->create();
 
-        \App\Models\Hakim::factory(3)->create();
-        \App\Models\Jaksa::factory(3)->create();
-        \App\Models\Narapidana::factory(3)->create();
+        foreach ([1,2,3,4,5] as $number) {
+
+            $hakim = \App\Models\Hakim::factory()->create();
+            $jaksa = \App\Models\Jaksa::factory()->create();
+            $narapidana = \App\Models\Narapidana::factory()->create();
+
+            $sidang = \App\Models\Sidang::factory(3)
+                ->for($hakim)
+                ->for($jaksa)
+                ->for($narapidana)
+                ->create();
+
+        }
     }
 }

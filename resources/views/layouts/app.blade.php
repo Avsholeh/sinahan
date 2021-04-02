@@ -18,7 +18,7 @@
 
     @if(request()->routeIs('*.index'))
         <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-        <link href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css" rel="stylesheet">
+{{--        <link href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css" rel="stylesheet">--}}
     @endif
 
     <!-- Custom styles for this template-->
@@ -111,7 +111,7 @@
 @if(request()->routeIs('*.index'))
 <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+{{--<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>--}}
 @endif
 
 @yield('scripts')

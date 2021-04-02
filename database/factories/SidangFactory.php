@@ -22,7 +22,19 @@ class SidangFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tanggal' => $this->faker->dateTime(),
+//            'hakim_id',
+//            'jaksa_id',
+//            'narapidana_id',
+            'pasal' => "Pasal {$this->faker->randomNumber(3)} KUHP",
+//            'jpu',
+            'keterangan' => $this->faker->randomElement([
+                Sidang::KET_SAKSI,
+                Sidang::KET_BUKAN_TAHANAN_JAKSA,
+                Sidang::KET_DAKWAAN,
+                Sidang::KET_PUTUSAN,
+                Sidang::KET_TUNTUTAN,
+            ]),
         ];
     }
 }

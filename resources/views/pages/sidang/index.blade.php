@@ -6,44 +6,71 @@
 
     <div class="card mb-4">
         <div class="card-body p-3">
-            <div class="row mb-5">
+            <div class="row mb-4">
                 <div class="col">
-                    <button class="btn btn-primary">Tambah Baru</button>
+                    <a href="{{ route('sidang.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
             <div class="table-responsive overflow-auto">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Tanggal</th>
+                        <th>Hakim</th>
+                        <th>Jaksa</th>
                         <th>Narapidana</th>
                         <th>Pasal</th>
-                        <th>JPU</th>
-                        <th>Hakim</th>
                         <th>Keterangan</th>
                         <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <?php $faker = \Faker\Factory::create() ?>
-
-                    @foreach([1,2,3,4,5] as $key)
+                    @foreach($sidangs as $sidang)
 
                         <tr>
-                            <td>{{ $faker->date }}</td>
-                            <td>{{ $faker->name }}</td>
-                            <td>{{ $faker->randomElement(['UU RI No. 17/2006', 'UU RI No. 35/2006', 'UU RI No. 35/2009' ]) }}</td>
-                            <td>{{ $faker->name }}, S.H</td>
-                            <td>{{ $faker->name }}, S.H</td>
-                            <td>{{ $faker->randomElement(['Tuntutan', 'Pledoi', 'Ket.Saksi']) }}</td>
+                            <td>{{ $sidang->id }}</td>
+                            <td class="font-weight-bold">{{ $sidang->tanggal_idn }}</td>
+                            <td>
+                                @if($sidang->hakim)
+                                    {{ $sidang->hakim->nama_lengkap }}
+                                @else
+                                    <div class="badge badge-danger">Tidak Ada</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if($sidang->jaksa)
+                                    {{ $sidang->jaksa->nama_lengkap }}
+                                @else
+                                    <div class="badge badge-danger">Tidak Ada</div>
+                                @endif
+                            </td>
+                            <td>
+                                @if($sidang->narapidana)
+                                    {{ $sidang->narapidana->nama_lengkap }}
+                                @else
+                                    <div class="badge badge-danger">Tidak Ada</div>
+                                @endif
+                            </td>
+                            <td>{{ $sidang->pasal }}</td>
+                            <td>{{ $sidang->keterangan }}</td>
+
                             <td class="d-flex flex-row">
-                                <a href="{{ route('sidang.edit', 1) }}" class="btn btn-warning btn-sm text-dark mr-2">
+                                <a href="{{ route('sidang.edit', $sidang->id) }}"
+                                   class="btn btn-warning btn-sm text-dark mr-2">
                                     {{ __('layouts.update') }}
                                 </a>
-                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                {{-- delete --}}
+                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                   data-target="#hapusModal">
                                     {{ __('layouts.delete') }}
                                 </a>
+                                <form action="{{ route('sidang.delete', $sidang->id) }}" method="post" hidden>
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                                {{-- END delete --}}
                             </td>
                         </tr>
 
@@ -66,15 +93,18 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
+                <div class="modal-body">
+                    Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
                     tidak dapat dikembalikan.
                 </div>
+
+                {{-- delete --}}
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batalkan</button>
-                    <a class="btn btn-primary" href="javascript:void(0)"
-                       onclick="event.preventDefault(); document.getElementById('form-delete').submit()"
-                    >Konfirmasi</a>
+                    <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
+                {{-- END delete --}}
+
                 <form id="form-delete" action="#" method="post" class="d-none">
                     @csrf
                 </form>
@@ -87,9 +117,22 @@
 @section('scripts')
 
     <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+
+            $('.btn-delete').click(function (e) {
+                e.preventDefault();
+                var $siblings = $(this).siblings();
+                console.log($siblings);
+                $('#konfirmasi').click(function (e) {
+                    e.preventDefault();
+                    // should check type of siblings
+                    // if sibling is not a form
+                    // then ignore it
+                    $siblings[1].submit();
+                });
+            });
+        });
     </script>
 
 @endsection

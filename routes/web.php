@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JaksaController;
 use App\Http\Controllers\NarapidanaController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\SidangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -87,21 +88,13 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Sidang
      */
     Route::prefix('/sidang')->group(function () {
-        Route::get('/', function() {
-            return view('pages.sidang.index');
-        })->name('sidang.index');
+        Route::get('/', [SidangController::class, 'index'])->name('sidang.index');
+        Route::get('/create', [SidangController::class, 'create'])->name('sidang.create');
+        Route::get('/{sidang}/edit', [SidangController::class, 'edit'])->name('sidang.edit');
+        Route::post('/', [SidangController::class, 'store'])->name('sidang.store');
+        Route::put('/{sidang}', [SidangController::class, 'update'])->name('sidang.update');
+        Route::delete('/{sidang}', [SidangController::class, 'destroy'])->name('sidang.delete');
 
-        Route::get('/create', function() {
-            return view('pages.sidang.create');
-        })->name('sidang.create');
-
-        Route::get('/{sidang}/edit', function() {
-            return view('pages.sidang.edit');
-        })->name('sidang.edit');
-
-        Route::delete('/delete/{sidang}', function() {
-            return null;
-        })->name('sidang.delete');
     });
 
     /**

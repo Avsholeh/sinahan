@@ -40,7 +40,17 @@
                             <td>{{ $pengguna->nama_lengkap }}</td>
                             <td>{{ $pengguna->username }}</td>
                             <td>{{ $pengguna->jenis_kelamin }}</td>
-                            <td>{{ $pengguna->roles }}</td>
+                            <td>
+                                @if($pengguna->roles === 'TU-PEGAWAI')
+                                <div class="badge badge-danger">
+                                    {{ $pengguna->roles }}
+                                </div>
+                                @else
+                                <div class="badge badge-success">
+                                    {{ $pengguna->roles }}
+                                </div>
+                                @endif
+                            </td>
                             <td class="d-flex flex-row">
                                 <a href="{{ route('pengguna.edit', $pengguna->id) }}"
                                    class="btn btn-warning btn-sm text-dark mr-2">
@@ -120,8 +130,6 @@
                     $siblings[1].submit();
                 });
             });
-
-
         });
     </script>
 
