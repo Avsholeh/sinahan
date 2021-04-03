@@ -15,7 +15,7 @@ class CreateDataPengunjungTable extends Migration
     {
         Schema::create('data_pengunjung', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kunjungan_id')->constrained('kunjungan');
+            $table->foreignId('pengguna_id')->constrained('pengguna');
             $table->string('nama_lengkap');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

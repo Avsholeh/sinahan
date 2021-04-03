@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPengunjung;
 use App\Models\Kunjungan;
+use App\Models\Narapidana;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -27,7 +29,9 @@ class KunjunganController extends Controller
      */
     public function create()
     {
-        return view('pages.kunjungan.create');
+        $narapidanas = Narapidana::all();
+        $dataPengunjungs = DataPengunjung::all();
+        return view('pages.kunjungan.create', compact('narapidanas', 'dataPengunjungs'));
     }
 
     /**

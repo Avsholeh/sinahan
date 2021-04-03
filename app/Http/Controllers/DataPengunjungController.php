@@ -15,7 +15,7 @@ class DataPengunjungController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.data_pengunjung.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class DataPengunjungController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.data_pengunjung.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class DataPengunjungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -58,7 +58,7 @@ class DataPengunjungController extends Controller
      */
     public function edit(DataPengunjung $dataPengunjung)
     {
-        //
+        return view('pages.data_pengunjung.edit');
     }
 
     /**

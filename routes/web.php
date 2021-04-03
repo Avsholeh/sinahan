@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\DataPengunjungController;
 use App\Http\Controllers\HakimController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JaksaController;
@@ -13,8 +12,6 @@ use App\Http\Controllers\SidangController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route::get('/register', [RegisterController::class, 'index'])->name('register');
-//Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::middleware(['auth', 'web'])->group(function() {
 
@@ -113,6 +110,20 @@ Route::middleware(['auth', 'web'])->group(function() {
 
         Route::post('/verify', [KunjunganController::class, 'verify'])->name('kunjungan.verify');
         Route::post('/batal-verify', [KunjunganController::class, 'cancelVerify'])->name('kunjungan.cancel_verify');
+
+    });
+
+    /**
+     * Route Kunjungan
+     */
+    Route::prefix('/data-pengunjung')->group(function () {
+
+        Route::get('/', [DataPengunjungController::class, 'index'])->name('data_pengunjung.index');
+        Route::get('/create', [DataPengunjungController::class, 'create'])->name('data_pengunjung.create');
+        Route::get('/{data_pengunjung}/edit', [DataPengunjungController::class, 'edit'])->name('data_pengunjung.edit');
+        Route::post('/', [DataPengunjungController::class, 'store'])->name('data_pengunjung.store');
+        Route::put('/{data_pengunjung}', [DataPengunjungController::class, 'update'])->name('data_pengunjung.update');
+        Route::delete('/{data_pengunjung}', [DataPengunjungController::class, 'destroy'])->name('data_pengunjung.delete');
 
     });
 

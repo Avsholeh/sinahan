@@ -18,12 +18,10 @@
 
     @if(request()->routeIs('*.index'))
         <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-{{--        <link href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css" rel="stylesheet">--}}
     @endif
 
-    <!-- Custom styles for this template-->
+    <link href="{{ asset('vendor/chosen/chosen.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 
 <body id="page-top">
@@ -106,13 +104,15 @@
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('vendor/chosen/chosen.jquery.min.js') }}"></script>
 <script src="{{ asset('js/app.min.js') }}"></script>
 
 @if(request()->routeIs('*.index'))
 <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-{{--<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>--}}
 @endif
+
+
 
 @yield('scripts')
 

@@ -11,6 +11,7 @@ return [
     // Menu Level 2
     'dashboard' => 'Dashboard',
     'biodata' => 'Biodata',
+    'data_pengunjung' => 'Data Pengunjung',
     'pengguna' => 'Pengguna',
     'hakim' => 'Hakim',
     'jaksa' => 'Jaksa',

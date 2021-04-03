@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
                             <div id="image-profile" class="rounded-circle"
-                                 style="width: 200px; height: 200px; background-image: url('/img/perempuan.png'); background-size: cover">
+                                 style="width: 200px; height: 200px; background-image: url('data:image/png;base64,{{ auth()->user()->foto }}'); background-size: cover">
                             </div>
                         </div>
                     </div>
@@ -96,10 +96,6 @@
                             <input type="password" class="form-control" id="password" value="password" disabled>
                         </div>
 
-{{--                        <div class="form-group mt-2">--}}
-{{--                            <a href="{{ route('biodata.edit') }}" class="btn btn-primary">Perbarui</a>--}}
-{{--                        </div>--}}
-
                     </form>
 
                 </div>
@@ -113,11 +109,8 @@
 
 @section('scripts')
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+{{--    <script src="vendor/datatables/jquery.dataTables.min.js"></script>--}}
+{{--    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>--}}
+{{--    <script src="js/demo/datatables-demo.js"></script>--}}
 
 @endsection

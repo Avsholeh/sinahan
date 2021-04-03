@@ -19,7 +19,7 @@ class CreateKunjunganTable extends Migration
                 ->constrained('narapidana')->nullOnDelete();
             $table->foreignId('pengguna_id')->nullable()
                 ->constrained('pengguna')->nullOnDelete();
-            $table->string('keperluan');
+            $table->text('keperluan');
             $table->string('status')->default('BELUM DIVERIFIKASI');
         });
     }
