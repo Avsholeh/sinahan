@@ -22,7 +22,9 @@ class KunjunganFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'narapidana_id' => $this->faker->randomNumber(1),
+            'pengguna_id' => $this->faker->randomElement([1, 2]),
+            'keperluan' => $this->faker->paragraph,
         ];
     }
 }

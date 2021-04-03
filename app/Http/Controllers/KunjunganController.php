@@ -3,35 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kunjungan;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class KunjunganController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        //
+        $kunjungans = Kunjungan::all();
+        return view('pages.kunjungan.index', compact('kunjungans'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('pages.kunjungan.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -41,8 +44,8 @@ class KunjunganController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kunjungan  $kunjungan
-     * @return \Illuminate\Http\Response
+     * @param Kunjungan $kunjungan
+     * @return Response
      */
     public function show(Kunjungan $kunjungan)
     {
@@ -52,20 +55,20 @@ class KunjunganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kunjungan  $kunjungan
-     * @return \Illuminate\Http\Response
+     * @param Kunjungan $kunjungan
+     * @return Response
      */
     public function edit(Kunjungan $kunjungan)
     {
-        //
+        return view('pages.kunjungan.edit', compact('kunjungan'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kunjungan  $kunjungan
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Kunjungan $kunjungan
+     * @return Response
      */
     public function update(Request $request, Kunjungan $kunjungan)
     {
@@ -75,11 +78,26 @@ class KunjunganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kunjungan  $kunjungan
-     * @return \Illuminate\Http\Response
+     * @param Kunjungan $kunjungan
+     * @return Response
+     * @throws Exception
      */
     public function destroy(Kunjungan $kunjungan)
     {
-        //
+        $kunjungan->delete();
+        return redirect()->route('kunjungan.index')
+            ->with('success', 'Kunjungan telah berhasil dihapus');
+    }
+
+    public function verify(Kunjungan $kunjungan)
+    {
+        return redirect()->route('kunjungan.index')
+            ->with('success', 'Kunjungan telah berhasil diverifikasi');
+    }
+
+    public function cancelVerify(Kunjungan $kunjungan)
+    {
+        return redirect()->route('kunjungan.index')
+            ->with('success', 'Verifikasi Kunjungan telah dibatalkan');
     }
 }

@@ -32,6 +32,6 @@ class CreateDataPengunjungTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengunjungs');
+        Schema::dropIfExists('pengunjung');
     }
 }

@@ -38,6 +38,9 @@ class Pengguna extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+    const ROLES_ADMIN = 'TU-PEGAWAI';
+    const ROLES_USER = 'MASYARAKAT';
+
     protected $table = 'pengguna';
 
     public $timestamps = false;

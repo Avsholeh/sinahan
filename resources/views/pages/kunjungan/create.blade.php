@@ -27,12 +27,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="berlaku">Berlaku Hingga</label>
-                            <input name="berlaku" type="date" class="form-control" id="berlaku"
-                                   aria-describedby="berlaku" value="" disabled>
-                        </div>
-
-                        <div class="form-group">
                             <label for="keperluan">Keperluan</label>
                             <textarea name="keperluan" class="form-control" id="keperluan" cols="30" rows="3"
                                       aria-describedby="keperluan"></textarea>

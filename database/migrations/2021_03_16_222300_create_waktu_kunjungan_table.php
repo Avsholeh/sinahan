@@ -29,6 +29,6 @@ class CreateWaktuKunjunganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waktu_kunjungans');
+        Schema::dropIfExists('waktu_kunjungan');
     }
 }

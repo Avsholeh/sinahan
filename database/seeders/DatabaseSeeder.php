@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kunjungan;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -34,6 +35,8 @@ class DatabaseSeeder extends Seeder
             ))
             ->create();
 
+//        $kunjungan = Kunjungan::factory(5)->create();
+
         foreach ([1,2,3,4,5] as $number) {
 
             $hakim = \App\Models\Hakim::factory()->create();
@@ -46,6 +49,9 @@ class DatabaseSeeder extends Seeder
                 ->for($narapidana)
                 ->create();
 
+            $kunjungan = Kunjungan::factory(5)
+                ->for($narapidana)
+                ->create();
         }
     }
 }

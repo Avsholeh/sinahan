@@ -25,12 +25,34 @@ class Kunjungan extends BaseModel
 {
     use HasFactory;
 
+    const STS_BLM_VERIFIKASI = 'BELUM DIVERIFIKASI';
+    const STS_SDH_VERIFIKASI = 'DITERIMA';
+
     protected $table = 'kunjungan';
 
     protected $fillable = [
         'narapidana_id',
-        'user_id',
-        'berlaku',
+        'pengguna_id',
         'keperluan',
     ];
+
+    public function narapidana()
+    {
+        return $this->belongsTo(Narapidana::class);
+    }
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class);
+    }
+
+    public function dataPengunjung()
+    {
+        return $this->hasMany(DataPengunjung::class);
+    }
+
+    public function waktuKunjungan()
+    {
+        return $this->hasMany(WaktuKunjungan::class);
+    }
 }

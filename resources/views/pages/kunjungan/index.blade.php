@@ -11,44 +11,100 @@
                     <a href="{{ route('kunjungan.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
+
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success">{{ $message }}</div>
+            @endif
+
             <div class="table-responsive overflow-auto">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
-                        <th>Status</th>
+                        <th>ID</th>
+
+                        {{-- FOR TU-PEGAWAI ONLY --}}
+                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                            <th>Pengguna</th>
+                        @endif
+                        {{-- END FOR TU-PEGAWAI ONLY --}}
+
                         <th>Narapidana</th>
-                        <th>Berlaku Hingga</th>
                         <th>Keperluan</th>
+                        <th>Status</th>
+
+                        {{-- FOR TU-PEGAWAI ONLY --}}
+                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                            <th>Verifikasi</th>
+                        @endif
+                        {{-- END FOR TU-PEGAWAI ONLY --}}
+
                         <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <?php $faker = \Faker\Factory::create() ?>
-
-                    @foreach(['BELUM DISETUJUI','BELUM DISETUJUI','BELUM DISETUJUI','TELAH DISETUJUI','TELAH DISETUJUI'] as $status)
+                    @foreach($kunjungans as $kunjungan)
 
                         <tr>
+                            <td>{{ $kunjungan->id }}</td>
+
+                            {{-- FOR TU-PEGAWAI ONLY --}}
+                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                                <td>{{ $kunjungan->pengguna->nama_lengkap }}</td>
+                            @endif
+                            {{-- END FOR TU-PEGAWAI ONLY --}}
+
+                            <td>{{ $kunjungan->narapidana->nama_lengkap }}</td>
+                            <td>{{ $kunjungan->keperluan }}</td>
                             <td>
-                                <span class="badge badge-{{ $status === 'TELAH DISETUJUI' ? 'success' : 'primary' }}">
-                                    {{ $status }}
+                                <span
+                                    class="badge badge-{{ $kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI ? 'danger' : 'primary' }}">
+                                    {{ $kunjungan->status }}
                                 </span>
                             </td>
-                            <td>{{ $faker->name }}</td>
-                            <td>{{ $faker->date('Y-m-d') }}</td>
-                            <td>{{ $faker->text }}</td>
-                            <td class="d-flex flex-row">
-                                <a href="{{ route('kunjungan.verify', 1) }}"
-                                   class="btn btn-success btn-sm text-light mr-2">
-                                    {{ __('layouts.verify') }}
-                                </a>
-                                <a href="{{ route('kunjungan.edit', 1) }}"
-                                   class="btn btn-warning btn-sm text-dark mr-2">
-                                    {{ __('layouts.update') }}
-                                </a>
-                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
-                                    {{ __('layouts.delete') }}
-                                </a>
+                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                                <td>
+                                    <div class="d-flex flex-row">
+                                        {{-- VERIFY --}}
+                                        @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)
+                                            <form id="verify-{{ $kunjungan->id }}"
+                                                  action="{{ route('kunjungan.verify', 1) }}"
+                                                  method="post">
+                                                @csrf
+                                                @method('post')
+                                            </form>
+                                            <button class="btn btn-success btn-sm mr-2"
+                                                    onclick="event.preventDefault(); document.getElementById('verify-{{ $kunjungan->id }}').submit()">
+                                                {{ __('layouts.verify') }}
+                                            </button>
+                                            {{-- END --}}
+                                        @else
+                                            {{-- CANCEL VERIFY --}}
+                                            <form id="batal-verify-{{ $kunjungan->id }}"
+                                                  action="{{ route('kunjungan.cancel_verify', 1) }}" method="post">
+                                                @csrf
+                                                @method('post')
+                                            </form>
+                                            <button class="btn btn-primary btn-sm text-light mr-2"
+                                                    onclick="event.preventDefault(); document.getElementById('batal-verify-{{ $kunjungan->id }}').submit()">
+                                                {{ __('layouts.cancel_verify') }}
+                                            </button>
+                                            {{-- END --}}
+                                        @endif
+                                    </div>
+                                </td>
+                            @endif
+
+                            <td>
+                                <div class="d-flex flex-row">
+                                    <a href="{{ route('kunjungan.edit', 1) }}"
+                                       class="btn btn-warning btn-sm text-dark mr-2">
+                                        {{ __('layouts.update') }}
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                        {{ __('layouts.delete') }}
+                                    </a>
+                                </div>
                             </td>
                         </tr>
 

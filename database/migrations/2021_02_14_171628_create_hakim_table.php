@@ -36,6 +36,6 @@ class CreateHakimTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hakims');
+        Schema::dropIfExists('hakim');
     }
 }

@@ -41,6 +41,6 @@ class CreateNarapidanaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('narapidanas');
+        Schema::dropIfExists('narapidana');
     }
 }

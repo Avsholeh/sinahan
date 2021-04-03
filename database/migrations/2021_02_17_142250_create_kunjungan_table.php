@@ -20,6 +20,7 @@ class CreateKunjunganTable extends Migration
             $table->foreignId('pengguna_id')->nullable()
                 ->constrained('pengguna')->nullOnDelete();
             $table->string('keperluan');
+            $table->string('status')->default('BELUM DIVERIFIKASI');
         });
     }
 
@@ -30,6 +31,6 @@ class CreateKunjunganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kunjungans');
+        Schema::dropIfExists('kunjungan');
     }
 }

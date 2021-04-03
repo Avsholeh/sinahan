@@ -6,6 +6,7 @@ use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\HakimController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JaksaController;
+use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\NarapidanaController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SidangController;
@@ -88,6 +89,7 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Sidang
      */
     Route::prefix('/sidang')->group(function () {
+
         Route::get('/', [SidangController::class, 'index'])->name('sidang.index');
         Route::get('/create', [SidangController::class, 'create'])->name('sidang.create');
         Route::get('/{sidang}/edit', [SidangController::class, 'edit'])->name('sidang.edit');
@@ -98,28 +100,20 @@ Route::middleware(['auth', 'web'])->group(function() {
     });
 
     /**
-     * Route Layanan Kunjungan
+     * Route Kunjungan
      */
     Route::prefix('/kunjungan')->group(function () {
-        Route::get('/', function() {
-            return view('pages.kunjungan.index');
-        })->name('kunjungan.index');
 
-        Route::get('/create', function() {
-            return view('pages.kunjungan.create');
-        })->name('kunjungan.create');
+        Route::get('/', [KunjunganController::class, 'index'])->name('kunjungan.index');
+        Route::get('/create', [KunjunganController::class, 'create'])->name('kunjungan.create');
+        Route::get('/{kunjungan}/edit', [KunjunganController::class, 'edit'])->name('kunjungan.edit');
+        Route::post('/', [KunjunganController::class, 'store'])->name('kunjungan.store');
+        Route::put('/{kunjungan}', [KunjunganController::class, 'update'])->name('kunjungan.update');
+        Route::delete('/{kunjungan}', [KunjunganController::class, 'destroy'])->name('kunjungan.delete');
 
-        Route::get('/{kunjungan}/edit', function() {
-            return view('pages.kunjungan.edit');
-        })->name('kunjungan.edit');
+        Route::post('/verify', [KunjunganController::class, 'verify'])->name('kunjungan.verify');
+        Route::post('/batal-verify', [KunjunganController::class, 'cancelVerify'])->name('kunjungan.cancel_verify');
 
-        Route::delete('/delete/{kunjungan}', function() {
-            return null;
-        })->name('kunjungan.delete');
-
-        Route::post('/verify/{kunjungan}', function() {
-            return null;
-        })->name('kunjungan.verify');
     });
 
 });

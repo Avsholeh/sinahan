@@ -32,6 +32,6 @@ class CreateSidangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sidangs');
+        Schema::dropIfExists('sidang');
     }
 }
