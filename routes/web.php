@@ -79,14 +79,12 @@ Route::middleware(['auth', 'web'])->group(function() {
         Route::post('/', [NarapidanaController::class, 'store'])->name('narapidana.store');
         Route::put('/{narapidana}', [NarapidanaController::class, 'update'])->name('narapidana.update');
         Route::delete('/{narapidana}', [NarapidanaController::class, 'destroy'])->name('narapidana.delete');
-
     });
 
     /**
      * Route Kelola Data Sidang
      */
     Route::prefix('/sidang')->group(function () {
-
         Route::get('/', [SidangController::class, 'index'])->name('sidang.index');
         Route::get('/create', [SidangController::class, 'create'])->name('sidang.create');
         Route::get('/{sidang}/edit', [SidangController::class, 'edit'])->name('sidang.edit');
@@ -100,7 +98,6 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kunjungan
      */
     Route::prefix('/kunjungan')->group(function () {
-
         Route::get('/', [KunjunganController::class, 'index'])->name('kunjungan.index');
         Route::get('/create', [KunjunganController::class, 'create'])->name('kunjungan.create');
         Route::get('/{kunjungan}/edit', [KunjunganController::class, 'edit'])->name('kunjungan.edit');
@@ -110,21 +107,18 @@ Route::middleware(['auth', 'web'])->group(function() {
 
         Route::post('/verify', [KunjunganController::class, 'verify'])->name('kunjungan.verify');
         Route::post('/batal-verify', [KunjunganController::class, 'cancelVerify'])->name('kunjungan.cancel_verify');
-
     });
 
     /**
      * Route Kunjungan
      */
     Route::prefix('/data-pengunjung')->group(function () {
-
         Route::get('/', [DataPengunjungController::class, 'index'])->name('data_pengunjung.index');
         Route::get('/create', [DataPengunjungController::class, 'create'])->name('data_pengunjung.create');
         Route::get('/{data_pengunjung}/edit', [DataPengunjungController::class, 'edit'])->name('data_pengunjung.edit');
         Route::post('/', [DataPengunjungController::class, 'store'])->name('data_pengunjung.store');
         Route::put('/{data_pengunjung}', [DataPengunjungController::class, 'update'])->name('data_pengunjung.update');
         Route::delete('/{data_pengunjung}', [DataPengunjungController::class, 'destroy'])->name('data_pengunjung.delete');
-
     });
 
 });

@@ -28,7 +28,7 @@ class NarapidanaFactory extends Factory
             'nama_lengkap' => $this->faker->name,
             'tempat_lahir' => $this->faker->city,
             'tanggal_lahir' => $this->faker->date(),
-            'jenis_kelamin' =>$this->faker->randomElement(['Pria', 'Wanita']),
+            'jenis_kelamin' => $this->faker->randomElement(['Pria', 'Wanita']),
             'kebangsaan' => $this->faker->country,
             'tempat_tinggal' => $this->faker->address,
             'agama' => $this->faker->randomElement(['Islam', 'Kristen', 'Budha']),
@@ -38,7 +38,13 @@ class NarapidanaFactory extends Factory
             'reg_tahanan' => "T–{$this->faker->randomNumber()}/TBK/E.3.2/01/2020",
             'reg_bukti' => "B–{$this->faker->randomNumber()}/TBK/E.3.2/01/2020",
 //            'kategori' => $this->faker->domainName,
-            'keterangan' => $this->faker->randomElement(['KETERANGAN SAKSI', 'PUTUSAN', 'DAKWAAN', 'TUNTUTAN', 'BUKAN TAHANAN JAKSA']),
+            'keterangan' => $this->faker->randomElement([
+                Narapidana::KET_SAKSI,
+                Narapidana::KET_PUTUSAN,
+                Narapidana::KET_DAKWAAN,
+                Narapidana::KET_TUNTUTAN,
+                Narapidana::KET_BUKAN_TAHANAN_JAKSA,
+            ]),
             'status' => $this->faker->randomElement([Narapidana::AKTIF, Narapidana::TIDAK_AKTIF]),
             'foto' => $this->faker->randomElement([$laki, $perempuan]),
         ];

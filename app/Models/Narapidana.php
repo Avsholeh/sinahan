@@ -54,6 +54,12 @@ class Narapidana extends BaseModel
     const AKTIF = 'Aktif';
     const TIDAK_AKTIF = 'Tidak Aktif';
 
+    const KET_SAKSI = 'KETERANGAN SAKSI';
+    const KET_PUTUSAN = 'PUTUSAN';
+    const KET_DAKWAAN = 'DAKWAAN';
+    const KET_TUNTUTAN = 'TUNTUTAN';
+    const KET_BUKAN_TAHANAN_JAKSA = 'BUKAN TAHANAN JAKSA';
+
     protected $table = 'narapidana';
 
     protected $fillable = [

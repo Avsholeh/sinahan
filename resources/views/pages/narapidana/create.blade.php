@@ -203,24 +203,30 @@
                             <select name="keterangan" id="keterangan" class="form-control"
                                     aria-describedby="keterangan_help">
                                 <option value="" readonly>Pilih keterangan</option>
-                                <option value="Keterangan Saksi" @if(old('keterangan') === 'Keterangan Saksi'){{ 'selected' }}@endif>
-                                    Keterangan Saksi
+                                <option
+                                    value="{{ \App\Models\Narapidana::KET_SAKSI }}"
+                                @if(old('keterangan') === \App\Models\Narapidana::KET_SAKSI){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_SAKSI }}
                                 </option>
                                 <option
-                                    value="Putusan" @if(old('keterangan') === 'Putusan'){{ 'selected' }}@endif>
-                                    Putusan
+                                    value="{{ \App\Models\Narapidana::KET_PUTUSAN }}"
+                                @if(old('keterangan') === \App\Models\Narapidana::KET_PUTUSAN){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_PUTUSAN }}
                                 </option>
                                 <option
-                                    value="Dakwaan" @if(old('keterangan') === 'Dakwaan'){{ 'selected' }}@endif>
-                                    Dakwaan
+                                    value="{{ \App\Models\Narapidana::KET_DAKWAAN }}"
+                                @if(old('keterangan') === \App\Models\Narapidana::KET_DAKWAAN){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_DAKWAAN }}
                                 </option>
                                 <option
-                                    value="Tuntuan" @if(old('keterangan') === 'Tuntuan'){{ 'selected' }}@endif>
-                                    Tuntuan
+                                    value="{{ \App\Models\Narapidana::KET_TUNTUTAN }}"
+                                @if(old('keterangan') === \App\Models\Narapidana::KET_TUNTUTAN){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_TUNTUTAN }}
                                 </option>
                                 <option
-                                    value="Bukan Tahanan Jaksa" @if(old('keterangan') === 'Bukan Tahanan Jaksa'){{ 'selected' }}@endif>
-                                    Bukan Tahanan Jaksa
+                                    value="{{ \App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA }}"
+                                @if(old('keterangan') === \App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA }}
                                 </option>
                             </select>
 
@@ -236,9 +242,12 @@
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="" readonly>Pilih status</option>
-                                <option value="Aktif" @if(old('status') === 'Aktif'){{ 'selected' }}@endif>Aktif
+                                <option value="{{ \App\Models\Narapidana::AKTIF }}"
+                                @if(old('status') === \App\Models\Narapidana::AKTIF){{ 'selected' }}@endif>
+                                    Aktif
                                 </option>
-                                <option value="Tidak Aktif" @if(old('status') === 'Tidak Aktif'){{ 'selected' }}@endif>
+                                <option value="{{ \App\Models\Narapidana::TIDAK_AKTIF }}"
+                                @if(old('status') === \App\Models\Narapidana::TIDAK_AKTIF){{ 'selected' }}@endif>
                                     Tidak Aktif
                                 </option>
                             </select>
