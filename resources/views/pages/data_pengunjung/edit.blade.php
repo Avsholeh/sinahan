@@ -1,47 +1,118 @@
 @extends('layouts.app')
 
-@section('title', 'Perbarui Kunjungan')
+@section('title', 'Perbarui Data Pengunjung')
 
 @section('content')
 
     <div class="row">
         <div class="col-lg-6 col-xl-6">
-            <!-- KUNJUNGAN -->
-            <div class="card shadow mb-4">
+
+            <div class="card mb-4">
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="narapidana">Narapidana</label>
-                            <input name="narapidana" type="text" class="form-control" id="narapidana"
-                                   aria-describedby="narapidana_help">
+
+                    <form action="{{ route('dataPengunjung.update', $dataPengunjung->id) }}" method="post" enctype="multipart/form-data">
+
+                        @csrf
+                        @method('put')
+
+                        {{-- PENGGUNA ID (HIDDEN) --}}
+                        <div class="form-group d-none">
+                            <label for="nama_lengkap"></label>
+                            <input id="pengguna_id" name="pengguna_id" type="text"
+                                   value="{{ auth()->user()->id }}">
                         </div>
 
+                        {{-- NAMA LENGKAP --}}
                         <div class="form-group">
-                            <label for="berlaku">Berlaku Hingga</label>
-                            <input name="berlaku" type="date" class="form-control" id="berlaku"
-                                   aria-describedby="berlaku" value="" readonly>
+                            <label for="nama_lengkap">Nama Lengkap</label>
+                            <input name="nama_lengkap" type="text" class="form-control" id="nama_lengkap"
+                                   value="{{ $dataPengunjung->nama_lengkap }}"
+                                   aria-describedby="nama_lengkap_help">
+
+                            @error('nama_lengkap')
+                            <small id="nama_lengkap_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
+                        {{-- TEMPAT LAHIR --}}
                         <div class="form-group">
-                            <label for="status">Status</label>
-                            <input name="status" type="text" class="form-control" id="status"
-                                   aria-describedby="status" value="BELUM DISETUJUI" readonly>
+                            <label for="tempat_lahir">Tempat Lahir</label>
+                            <input name="tempat_lahir" type="text" class="form-control" id="tempat_lahir"
+                                   value="{{ $dataPengunjung->tempat_lahir }}"
+                                   aria-describedby="tempat_lahir_help">
+
+                            @error('tempat_lahir')
+                            <small id="tempat_lahir_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
+                        {{-- TANGGAL LAHIR --}}
                         <div class="form-group">
-                            <label for="keperluan">Keperluan</label>
-                            <textarea name="keperluan" class="form-control" id="keperluan" cols="30" rows="3"
-                                      aria-describedby="keperluan"></textarea>
+                            <label for="tanggal_lahir">Tanggal Lahir</label>
+                            <input name="tanggal_lahir" type="date" class="form-control" id="tanggal_lahir"
+                                   value="{{ $dataPengunjung->tanggal_lahir }}"
+                                   aria-describedby="tanggal_lahir_help">
+
+                            @error('tanggal_lahir')
+                            <small id="tanggal_lahir_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
-                        <hr>
+                        {{-- ALAMAT --}}
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <textarea name="alamat" type="text" class="form-control" id="alamat"
+                                      aria-describedby="alamat_help">{{ $dataPengunjung->alamat }}</textarea>
 
-                        <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+                            @error('alamat')
+                            <small id="alamat_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
+                        {{-- PEKERJAAN --}}
+                        <div class="form-group">
+                            <label for="pekerjaan">Pekerjaan</label>
+                            <input name="pekerjaan" type="text" class="form-control" id="pekerjaan"
+                                   value="{{ $dataPengunjung->pekerjaan }}"
+                                   aria-describedby="pekerjaan_help">
+
+                            @error('pekerjaan')
+                            <small id="pekerjaan_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
+                        {{-- HUBUNGAN --}}
+                        <div class="form-group">
+                            <label for="hubungan">Hubungan</label>
+                            <input name="hubungan" type="text" class="form-control" id="hubungan"
+                                   value="{{ $dataPengunjung->hubungan }}"
+                                   aria-describedby="hubungan_help">
+
+                            @error('hubungan')
+                            <small id="hubungan_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a href="{{ route('biodata.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
             </div>
-            <!-- END KUNJUNGAN -->
+
         </div>
+
     </div>
 
 @endsection

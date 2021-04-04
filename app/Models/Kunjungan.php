@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Kunjungan
@@ -46,13 +47,13 @@ class Kunjungan extends BaseModel
         return $this->belongsTo(Pengguna::class);
     }
 
-    public function dataPengunjung()
-    {
-        return $this->hasMany(DataPengunjung::class);
-    }
-
     public function waktuKunjungan()
     {
         return $this->hasMany(WaktuKunjungan::class);
+    }
+
+    public function getDibuatPadaAttribute()
+    {
+        return Carbon::parse($this->attributes['dibuat_pada'])->translatedFormat('l, d F Y');
     }
 }

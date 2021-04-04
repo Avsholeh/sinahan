@@ -12,11 +12,12 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <form action="{{ route('data_pengunjung.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('dataPengunjung.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
                         @method('post')
 
+                        {{-- PENGGUNA ID (HIDDEN) --}}
                         <div class="form-group d-none">
                             <label for="nama_lengkap"></label>
                             <input id="pengguna_id" name="pengguna_id" type="text"

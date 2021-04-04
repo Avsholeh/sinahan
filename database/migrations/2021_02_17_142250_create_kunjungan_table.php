@@ -15,6 +15,8 @@ class CreateKunjunganTable extends Migration
     {
         Schema::create('kunjungan', function (Blueprint $table) {
             $table->id();
+            $table->string('no_surat')->nullable();
+            $table->timestamp('dibuat_pada')->useCurrent();
             $table->foreignId('narapidana_id')->nullable()
                 ->constrained('narapidana')->nullOnDelete();
             $table->foreignId('pengguna_id')->nullable()

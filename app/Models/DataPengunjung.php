@@ -38,7 +38,7 @@ class DataPengunjung extends BaseModel
     public $timestamps = false;
 
     protected $fillable = [
-        'kunjungan_id',
+        'pengguna_id',
         'nama_lengkap',
         'tempat_lahir',
         'tanggal_lahir',
@@ -46,4 +46,9 @@ class DataPengunjung extends BaseModel
         'pekerjaan',
         'hubungan',
     ];
+
+    public function pengguna()
+    {
+        return $this->belongsTo(Pengguna::class);
+    }
 }

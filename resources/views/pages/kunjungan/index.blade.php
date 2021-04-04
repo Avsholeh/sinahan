@@ -21,6 +21,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Dibuat pada</th>
 
                         {{-- FOR TU-PEGAWAI ONLY --}}
                         @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
@@ -48,6 +49,7 @@
 
                         <tr>
                             <td>{{ $kunjungan->id }}</td>
+                            <td>{{ $kunjungan->dibuat_pada }}</td>
 
                             {{-- FOR TU-PEGAWAI ONLY --}}
                             @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
@@ -58,13 +60,7 @@
                             <td>{{ $kunjungan->narapidana->nama_lengkap }}</td>
                             <td>{{ $kunjungan->keperluan }}</td>
                             <td>
-                                @if($kunjungan->data_pengujung)
-
-                                @else
-
-                                    <a class="btn btn-primary" href="#">Data Pengunjung</a>
-
-                                @endif
+                                <button class="btn btn-primary"><i class="fa fa-user"></i></button>
                             </td>
                             <td>
                                 <span

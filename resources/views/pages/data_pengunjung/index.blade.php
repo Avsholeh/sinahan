@@ -8,7 +8,7 @@
         <div class="card-body p-3">
             <div class="row mb-5">
                 <div class="col">
-                    <a href="{{ route('kunjungan.create') }}" class="btn btn-primary">Tambah Baru</a>
+                    <a href="{{ route('dataPengunjung.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
 
@@ -20,104 +20,50 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
-                        <th>ID</th>
-
-                        {{-- FOR TU-PEGAWAI ONLY --}}
-                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                            <th>Pengguna</th>
-                        @endif
-                        {{-- END FOR TU-PEGAWAI ONLY --}}
-
-                        <th>Narapidana</th>
-                        <th>Keperluan</th>
-                        <th>Pengunjung</th>
-                        <th>Status</th>
-
-                        {{-- FOR TU-PEGAWAI ONLY --}}
-                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                            <th>Verifikasi</th>
-                        @endif
-                        {{-- END FOR TU-PEGAWAI ONLY --}}
-
+                        <th>No</th>
+                        <th>Nama Lengkap</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Alamat</th>
+                        <th>Pekerjaan</th>
+                        <th>Hubungan</th>
                         <th>#</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    @foreach($kunjungans as $kunjungan)
+                    <?php $no = 1 ?>
+                    @foreach($dataPengunjungs as $dataPengunjung)
 
                         <tr>
-                            <td>{{ $kunjungan->id }}</td>
+                            <td>{{ $no }}</td>
+                            <td>{{ $dataPengunjung->nama_lengkap }}</td>
+                            <td>{{ $dataPengunjung->tempat_lahir }}</td>
+                            <td>{{ $dataPengunjung->tanggal_lahir }}</td>
+                            <td>{{ $dataPengunjung->alamat }}</td>
+                            <td>{{ $dataPengunjung->pekerjaan }}</td>
+                            <td>{{ $dataPengunjung->hubungan }}</td>
+                            <td class="d-flex flex-row">
+                                <a href="{{ route('dataPengunjung.edit', $dataPengunjung->id) }}"
+                                   class="btn btn-warning btn-sm text-dark mr-2">
+                                    {{ __('layouts.update') }}
+                                </a>
 
-                            {{-- FOR TU-PEGAWAI ONLY --}}
-                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                                <td>{{ $kunjungan->pengguna->nama_lengkap }}</td>
-                            @endif
-                            {{-- END FOR TU-PEGAWAI ONLY --}}
-
-                            <td>{{ $kunjungan->narapidana->nama_lengkap }}</td>
-                            <td>{{ $kunjungan->keperluan }}</td>
-                            <td>
-                                @if($kunjungan->data_pengujung)
-
-                                @else
-
-                                    <a class="btn btn-primary" href="#">Data Pengunjung</a>
-
-                                @endif
-                            </td>
-                            <td>
-                                <span
-                                    class="badge badge-{{ $kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI ? 'danger' : 'primary' }}">
-                                    {{ $kunjungan->status }}
-                                </span>
-                            </td>
-                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                                <td>
-                                    <div class="d-flex flex-row">
-                                        {{-- VERIFY --}}
-                                        @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)
-                                            <form id="verify-{{ $kunjungan->id }}"
-                                                  action="{{ route('kunjungan.verify', 1) }}"
-                                                  method="post">
-                                                @csrf
-                                                @method('post')
-                                            </form>
-                                            <button class="btn btn-success btn-sm mr-2"
-                                                    onclick="event.preventDefault(); document.getElementById('verify-{{ $kunjungan->id }}').submit()">
-                                                {{ __('layouts.verify') }}
-                                            </button>
-                                            {{-- END --}}
-                                        @else
-                                            {{-- CANCEL VERIFY --}}
-                                            <form id="batal-verify-{{ $kunjungan->id }}"
-                                                  action="{{ route('kunjungan.cancel_verify', 1) }}" method="post">
-                                                @csrf
-                                                @method('post')
-                                            </form>
-                                            <button class="btn btn-primary btn-sm text-light mr-2"
-                                                    onclick="event.preventDefault(); document.getElementById('batal-verify-{{ $kunjungan->id }}').submit()">
-                                                {{ __('layouts.cancel_verify') }}
-                                            </button>
-                                            {{-- END --}}
-                                        @endif
-                                    </div>
-                                </td>
-                            @endif
-
-                            <td>
-                                <div class="d-flex flex-row">
-                                    <a href="{{ route('kunjungan.edit', 1) }}"
-                                       class="btn btn-warning btn-sm text-dark mr-2">
-                                        {{ __('layouts.update') }}
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
-                                        {{ __('layouts.delete') }}
-                                    </a>
-                                </div>
+                                {{-- delete --}}
+                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                   data-target="#hapusModal">
+                                    {{ __('layouts.delete') }}
+                                </a>
+                                <form action="{{ route('dataPengunjung.delete', $dataPengunjung->id) }}" method="post"
+                                      hidden>
+                                    @csrf
+                                    @method('delete')
+                                </form>
+                                {{-- END delete --}}
                             </td>
                         </tr>
 
+                        <?php $no++ ?>
                     @endforeach
 
                     </tbody>
@@ -137,15 +83,18 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
+                <div class="modal-body">
+                    Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
                     tidak dapat dikembalikan.
                 </div>
+
+                {{-- delete --}}
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batalkan</button>
-                    <a class="btn btn-primary" href="javascript:void(0)"
-                       onclick="event.preventDefault(); document.getElementById('form-delete').submit()"
-                    >Konfirmasi</a>
+                    <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
+                {{-- END delete --}}
+
                 <form id="form-delete" action="#" method="post" class="d-none">
                     @csrf
                 </form>
@@ -166,6 +115,19 @@
     <script>
         $(document).ready(function () {
             $('#dataTable').DataTable();
+
+            $('.btn-delete').click(function (e) {
+                e.preventDefault();
+                var $siblings = $(this).siblings();
+                console.log($siblings);
+                $('#konfirmasi').click(function (e) {
+                    e.preventDefault();
+                    // should check type of siblings
+                    // if sibling is not a form
+                    // then ignore it
+                    $siblings[1].submit();
+                });
+            });
         });
     </script>
 

@@ -30,25 +30,25 @@
         </a>
     </li>
 
-    <li class="nav-item{{ request()->is('data_pengunjung') || request()->is('data_pengunjung/*') ? ' active' : '' }}">
-        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#data_pengunjung"
-           aria-expanded="false"
-           aria-controls="data_pengunjung">
-            <i class="fas fa-fw fa-business-time"></i>
-            <span>{{ __('layouts.data_pengunjung') }}</span>
-        </a>
-        <div id="data_pengunjung" class="collapse{{ request()->is('data_pengunjung') || request()->is('data_pengunjung/*') ? ' show' : '' }}"
-             aria-labelledby="headingPages"
-             data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item{{ request()->is('data_pengunjung') ? ' active' : '' }}"
-                   href="{{ route('data_pengunjung.index') }}">{{ __('layouts.index') }}</a>
+{{--    <li class="nav-item{{ request()->is('dataPengunjung') || request()->is('dataPengunjung/*') ? ' active' : '' }}">--}}
+{{--        <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#data_pengunjung"--}}
+{{--           aria-expanded="false"--}}
+{{--           aria-controls="data_pengunjung">--}}
+{{--            <i class="fas fa-fw fa-business-time"></i>--}}
+{{--            <span>{{ __('layouts.data_pengunjung') }}</span>--}}
+{{--        </a>--}}
+{{--        <div id="data_pengunjung" class="collapse{{ request()->is('dataPengunjung') || request()->is('dataPengunjung/*') ? ' show' : '' }}"--}}
+{{--             aria-labelledby="headingPages"--}}
+{{--             data-parent="#accordionSidebar">--}}
+{{--            <div class="bg-white py-2 collapse-inner rounded">--}}
+{{--                <a class="collapse-item{{ request()->is('dataPengunjung') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('dataPengunjung.index') }}">{{ __('layouts.index') }}</a>--}}
 
-                <a class="collapse-item{{ request()->is('kunjungan/create') ? ' active' : '' }}"
-                   href="{{ route('data_pengunjung.create') }}">{{ __('layouts.create') }}</a>
-            </div>
-        </div>
-    </li>
+{{--                <a class="collapse-item{{ request()->is('dataPengunjung/create') ? ' active' : '' }}"--}}
+{{--                   href="{{ route('dataPengunjung.create') }}">{{ __('layouts.create') }}</a>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 
     <li class="nav-item{{ request()->is('kunjungan') || request()->is('kunjungan/*') ? ' active' : '' }}">
         <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#kunjungan"

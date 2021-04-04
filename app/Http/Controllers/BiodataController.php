@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\DataPengunjung;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,8 @@ class BiodataController extends Controller
 
     public function index()
     {
-        return view('pages.biodata.index');
+        $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
+        return view('pages.biodata.index', compact('dataPengunjungs'));
     }
 
     public function edit()

@@ -59,4 +59,9 @@ class Pengguna extends Authenticatable
         'remember_token',
     ];
 
+    public function dataPengunjung()
+    {
+        return $this->hasMany(DataPengunjung::class);
+    }
+
 }

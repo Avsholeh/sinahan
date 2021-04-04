@@ -113,12 +113,12 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kunjungan
      */
     Route::prefix('/data-pengunjung')->group(function () {
-        Route::get('/', [DataPengunjungController::class, 'index'])->name('data_pengunjung.index');
-        Route::get('/create', [DataPengunjungController::class, 'create'])->name('data_pengunjung.create');
-        Route::get('/{data_pengunjung}/edit', [DataPengunjungController::class, 'edit'])->name('data_pengunjung.edit');
-        Route::post('/', [DataPengunjungController::class, 'store'])->name('data_pengunjung.store');
-        Route::put('/{data_pengunjung}', [DataPengunjungController::class, 'update'])->name('data_pengunjung.update');
-        Route::delete('/{data_pengunjung}', [DataPengunjungController::class, 'destroy'])->name('data_pengunjung.delete');
+        Route::get('/', [DataPengunjungController::class, 'index'])->name('dataPengunjung.index');
+        Route::get('/create', [DataPengunjungController::class, 'create'])->name('dataPengunjung.create');
+        Route::get('/{dataPengunjung}/edit', [DataPengunjungController::class, 'edit'])->name('dataPengunjung.edit');
+        Route::post('/', [DataPengunjungController::class, 'store'])->name('dataPengunjung.store');
+        Route::put('/{data_pengunjung}', [DataPengunjungController::class, 'update'])->name('dataPengunjung.update');
+        Route::delete('/{data_pengunjung}', [DataPengunjungController::class, 'destroy'])->name('dataPengunjung.delete');
     });
 
 });

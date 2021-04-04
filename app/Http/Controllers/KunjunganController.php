@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\DataPengunjung;
 use App\Models\Kunjungan;
 use App\Models\Narapidana;
+use App\Models\Pengguna;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class KunjunganController extends Controller
 {
@@ -18,7 +20,12 @@ class KunjunganController extends Controller
      */
     public function index()
     {
-        $kunjungans = Kunjungan::all();
+        if (auth()->user()->roles === Pengguna::ROLES_ADMIN) {
+            $kunjungans = Kunjungan::all();
+        } else {
+            $kunjungans = Kunjungan::where('user_id', auth()->user()->id);
+        }
+
         return view('pages.kunjungan.index', compact('kunjungans'));
     }
 
@@ -29,8 +36,9 @@ class KunjunganController extends Controller
      */
     public function create()
     {
-        $narapidanas = Narapidana::all();
-        $dataPengunjungs = DataPengunjung::all();
+        $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
+        $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
+
         return view('pages.kunjungan.create', compact('narapidanas', 'dataPengunjungs'));
     }
 
@@ -42,7 +50,11 @@ class KunjunganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+
+        $request->validate([
+
+        ]);
     }
 
     /**
