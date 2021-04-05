@@ -20,12 +20,7 @@ class KunjunganController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->roles === Pengguna::ROLES_ADMIN) {
-            $kunjungans = Kunjungan::all();
-        } else {
-            $kunjungans = Kunjungan::where('user_id', auth()->user()->id);
-        }
-
+        $kunjungans = Kunjungan::all();
         return view('pages.kunjungan.index', compact('kunjungans'));
     }
 

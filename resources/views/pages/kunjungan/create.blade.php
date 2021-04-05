@@ -16,24 +16,13 @@
                         @csrf
                         @method('post')
 
-                        {{-- NARAPIDANA --}}
-                        <div class="form-group">
-                            <label for="narapidana">Narapidana</label>
-                            <select name="narapidana" id="narapidana" class="form-control chosen-select">
-                                <option value="" disabled selected>Pilih narapidana</option>
-                                @foreach($narapidanas as $narapidana)
-                                    <option value="{{ $narapidana->id }}">{{ $narapidana->nama_lengkap }} ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})</option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         {{-- DATA PENGUNJUNG --}}
                         <div class="form-group">
                             <label for="data_pengunjung">Data Pengunjung</label>
 
                             @if(count($dataPengunjungs))
 
-                                <select multiple name="data_pengunjung" id="data_pengunjung"
+                                <select multiple name="data_pengunjung[]" id="data_pengunjung"
                                         class="form-control chosen-select">
                                     @foreach($dataPengunjungs as $dataPengunjung)
                                         <option
@@ -57,6 +46,17 @@
                                data-keyboard="false">
                                 <i class="fas fa-plus pr-3"></i> Tambah Data Pengunjung
                             </a>
+                        </div>
+
+                        {{-- NARAPIDANA --}}
+                        <div class="form-group">
+                            <label for="narapidana">Narapidana</label>
+                            <select name="narapidana" id="narapidana" class="form-control chosen-select">
+                                <option value="" disabled selected>Pilih narapidana</option>
+                                @foreach($narapidanas as $narapidana)
+                                    <option value="{{ $narapidana->id }}">{{ $narapidana->nama_lengkap }} ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         {{-- KEPERLUAN --}}

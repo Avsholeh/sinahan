@@ -47,6 +47,8 @@
 
                     @foreach($kunjungans as $kunjungan)
 
+                        @can('view', $kunjungan)
+
                         <tr>
                             <td>{{ $kunjungan->id }}</td>
                             <td>{{ $kunjungan->dibuat_pada }}</td>
@@ -113,6 +115,8 @@
                                 </div>
                             </td>
                         </tr>
+
+                        @endcan
 
                     @endforeach
 

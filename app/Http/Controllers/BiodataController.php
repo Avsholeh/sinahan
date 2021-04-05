@@ -15,7 +15,7 @@ class BiodataController extends Controller
 
     public function index()
     {
-        $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
+        $dataPengunjungs = DataPengunjung::all();
         return view('pages.biodata.index', compact('dataPengunjungs'));
     }
 

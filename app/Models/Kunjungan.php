@@ -35,6 +35,7 @@ class Kunjungan extends BaseModel
         'narapidana_id',
         'pengguna_id',
         'keperluan',
+        'no_surat',
     ];
 
     public function narapidana()

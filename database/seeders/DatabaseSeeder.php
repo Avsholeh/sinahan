@@ -17,27 +17,47 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Create Actors
-        $admin = \App\Models\Pengguna::factory()
-            ->count(2)
-            ->state(new Sequence(
-                [
-                    'nama_lengkap' => 'Novitasari',
-                    'username' => 'tupegawai',
-                    'jenis_kelamin' => 'Wanita',
-                    'roles' => 'TU-PEGAWAI',
-                    'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
-                ],
-                [
-                    'username' => 'masyarakat',
-                    'jenis_kelamin' => 'Pria',
-                    'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
-                ],
-            ))
+//        $admin = \App\Models\Pengguna::factory()
+//            ->count(2)
+//            ->state(new Sequence(
+//                [
+//                    'nama_lengkap' => 'Novitasari',
+//                    'username' => 'tupegawai',
+//                    'jenis_kelamin' => 'Wanita',
+//                    'roles' => 'TU-PEGAWAI',
+//                    'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
+//                ],
+//                [
+//                    'username' => 'masyarakat',
+//                    'jenis_kelamin' => 'Pria',
+//                    'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
+//                ],
+//            ))
+//            ->create();
+
+        $tuPegawai = \App\Models\Pengguna::factory()->make([
+            'nama_lengkap' => 'Novitasari',
+            'username' => 'tupegawai',
+            'jenis_kelamin' => 'Wanita',
+            'roles' => 'TU-PEGAWAI',
+            'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
+        ]);
+
+        $user = \App\Models\Pengguna::factory()->make([
+            'username' => 'masyarakat',
+            'jenis_kelamin' => 'Pria',
+            'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
+        ]);
+
+        \App\Models\DataPengunjung::factory(1)
+            ->for($tuPegawai)
             ->create();
 
-//        $kunjungan = Kunjungan::factory(5)->create();
+        \App\Models\DataPengunjung::factory(3)
+            ->for($user)
+            ->create();
 
-        foreach ([1,2,3,4,5] as $number) {
+        foreach ([1, 2, 3, 4, 5] as $number) {
 
             $hakim = \App\Models\Hakim::factory()->create();
             $jaksa = \App\Models\Jaksa::factory()->create();

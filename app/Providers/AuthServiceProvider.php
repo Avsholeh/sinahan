@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Pengguna;
+use App\Models\DataPengunjung;
+use App\Models\Kunjungan;
+use App\Policies\DataPengunjungPolicy;
+use App\Policies\KunjunganPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+         Kunjungan::class => KunjunganPolicy::class,
+         DataPengunjung::class => DataPengunjungPolicy::class,
     ];
 
     /**

@@ -218,6 +218,7 @@
                                 <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>ID</th>
                                     <th>Nama Lengkap</th>
                                     <th>Tempat Lahir</th>
                                     <th>Tanggal Lahir</th>
@@ -233,39 +234,50 @@
 
                                 @foreach($dataPengunjungs as $dataPengunjung)
 
-                                    <tr>
-                                        <td>{{ $no }}</td>
-                                        <td>{{ $dataPengunjung->nama_lengkap }}</td>
-                                        <td>{{ $dataPengunjung->tempat_lahir }}</td>
-                                        <td>{{ $dataPengunjung->tanggal_lahir }}</td>
-                                        <td>{{ $dataPengunjung->alamat }}</td>
-                                        <td>{{ $dataPengunjung->pekerjaan }}</td>
-                                        <td>{{ $dataPengunjung->hubungan }}</td>
-                                        <td>
-                                            <div class="d-flex flex-row">
-                                                <a href="{{ route('dataPengunjung.edit', $dataPengunjung->id) }}"
-                                                   class="btn btn-warning btn-sm text-dark mr-2">
-                                                    {{ __('layouts.update') }}
-                                                </a>
+                                    @can('view', $dataPengunjung)
 
-                                                {{-- delete --}}
-                                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
-                                                   data-target="#hapusModal">
-                                                    {{ __('layouts.delete') }}
-                                                </a>
-                                                <form action="{{ route('dataPengunjung.delete', $dataPengunjung->id) }}"
-                                                      method="post"
-                                                      hidden>
-                                                    @csrf
-                                                    @method('delete')
-                                                </form>
-                                                {{-- END delete --}}
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN and auth()->user()->id === $dataPengunjung->pengguna_id)
+                                            <tr class="bg-gray-200">
+                                        @else
+                                            <tr>
+                                                @endif
+                                                <td>{{ $no }}</td>
+                                                <td>{{ $dataPengunjung->id }}</td>
+                                                <td>{{ $dataPengunjung->nama_lengkap }}</td>
+                                                <td>{{ $dataPengunjung->tempat_lahir }}</td>
+                                                <td>{{ $dataPengunjung->tanggal_lahir }}</td>
+                                                <td>{{ $dataPengunjung->alamat }}</td>
+                                                <td>{{ $dataPengunjung->pekerjaan }}</td>
+                                                <td>{{ $dataPengunjung->hubungan }}</td>
+                                                <td>
+                                                    <div class="d-flex flex-row">
+                                                        <a href="{{ route('dataPengunjung.edit', $dataPengunjung->id) }}"
+                                                           class="btn btn-warning btn-sm text-dark mr-2">
+                                                            {{ __('layouts.update') }}
+                                                        </a>
 
-                                    <?php $no++ ?>
-                                @endforeach
+                                                        {{-- delete --}}
+                                                        <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                                           data-toggle="modal"
+                                                           data-target="#hapusModal">
+                                                            {{ __('layouts.delete') }}
+                                                        </a>
+                                                        <form
+                                                            action="{{ route('dataPengunjung.delete', $dataPengunjung->id) }}"
+                                                            method="post"
+                                                            hidden>
+                                                            @csrf
+                                                            @method('delete')
+                                                        </form>
+                                                        {{-- END delete --}}
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <?php $no++ ?>
+
+                                        @endcan
+                                        @endforeach
 
                                 </tbody>
                             </table>

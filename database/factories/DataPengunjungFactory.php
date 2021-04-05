@@ -22,7 +22,12 @@ class DataPengunjungFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama_lengkap' => $this->faker->name,
+            'tempat_lahir' => $this->faker->city,
+            'tanggal_lahir' => $this->faker->date(),
+            'alamat' => $this->faker->address,
+            'pekerjaan' => $this->faker->jobTitle,
+            'hubungan' => $this->faker->jobTitle,
         ];
     }
 }
