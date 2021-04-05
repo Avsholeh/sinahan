@@ -69,8 +69,14 @@ class DatabaseSeeder extends Seeder
                 ->for($narapidana)
                 ->create();
 
-            $kunjungan = Kunjungan::factory(5)
+            $kunjungan1 = Kunjungan::factory(3)
                 ->for($narapidana)
+                ->for($tuPegawai)
+                ->create();
+
+            $kunjungan2 = Kunjungan::factory(3)
+                ->for($narapidana)
+                ->for($user)
                 ->create();
         }
     }

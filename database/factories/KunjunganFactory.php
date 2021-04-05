@@ -23,8 +23,8 @@ class KunjunganFactory extends Factory
     {
         return [
             'no_surat' => $this->faker->creditCardNumber,
-            'narapidana_id' => $this->faker->randomNumber(1),
-            'pengguna_id' => $this->faker->randomElement([1, 2]),
+//            'narapidana_id' => $this->faker->randomNumber(1),
+//            'pengguna_id' => $this->faker->randomElement([1, 2]),
             'keperluan' => $this->faker->paragraph,
         ];
     }
