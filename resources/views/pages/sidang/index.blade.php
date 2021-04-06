@@ -15,7 +15,7 @@
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">{{ $message }}</div>
             @endif
-            
+
             <div class="table-responsive overflow-auto">
                 <table class="table table-bordered" id="dataTable">
                     <thead>
