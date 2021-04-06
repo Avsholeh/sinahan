@@ -112,9 +112,7 @@
                 </div>
                 {{-- END delete --}}
 
-                <form id="form-delete" action="#" method="post" class="d-none">
-                    @csrf
-                </form>
+
             </div>
         </div>
     </div>

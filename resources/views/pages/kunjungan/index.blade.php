@@ -305,6 +305,20 @@
                     }
                 ]
             });
+
+            $('.btn-delete').click(function (e) {
+                e.preventDefault();
+                var $siblings = $(this).siblings();
+                console.log($siblings);
+                $('#konfirmasi').click(function (e) {
+                    e.preventDefault();
+                    // should check type of siblings
+                    // if sibling is not a form
+                    // then ignore it
+                    console.log($siblings);
+                    $siblings[1].submit();
+                });
+            });
         });
     </script>
 
