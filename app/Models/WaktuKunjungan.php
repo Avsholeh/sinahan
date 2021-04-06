@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\WaktuKunjungan
@@ -23,9 +24,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|WaktuKunjungan whereTanggal($value)
  * @mixin \Eloquent
  */
-class WaktuKunjungan extends BaseModel
+class WaktuKunjungan extends Model
 {
     use HasFactory;
 
     protected $table = 'waktu_kunjungan';
+
+    public $timestamps = false;
 }

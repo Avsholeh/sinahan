@@ -16,114 +16,245 @@
                 <div class="alert alert-success">{{ $message }}</div>
             @endif
 
-            <div class="table-responsive overflow-auto">
-                <table class="table table-bordered" id="dataTable">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Dibuat pada</th>
+            @foreach($kunjungans as $kunjungan)
 
-                        {{-- FOR TU-PEGAWAI ONLY --}}
-                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                            <th>Pengguna</th>
-                        @endif
-                        {{-- END FOR TU-PEGAWAI ONLY --}}
+                <div class="row">
+                    <div class="col-xl-8 mb-4">
+                        <div class="card h-100 py-2">
+                            <div class="card-body">
 
-                        <th>Narapidana</th>
-                        <th>Keperluan</th>
-                        <th>Pengunjung</th>
-                        <th>Status</th>
+                                <div class="row no-gutters align-items-start">
 
-                        {{-- FOR TU-PEGAWAI ONLY --}}
-                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                            <th>Verifikasi</th>
-                        @endif
-                        {{-- END FOR TU-PEGAWAI ONLY --}}
-
-                        <th>#</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    @foreach($kunjungans as $kunjungan)
-
-                        @can('view', $kunjungan)
-
-                        <tr>
-                            <td>{{ $kunjungan->id }}</td>
-                            <td>{{ $kunjungan->dibuat_pada }}</td>
-
-                            {{-- FOR TU-PEGAWAI ONLY --}}
-                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                                <td>{{ $kunjungan->pengguna->nama_lengkap }}</td>
-                            @endif
-                            {{-- END FOR TU-PEGAWAI ONLY --}}
-
-                            <td>{{ $kunjungan->narapidana->nama_lengkap }}</td>
-                            <td>{{ $kunjungan->keperluan }}</td>
-                            <td>
-                                <button class="btn btn-primary"><i class="fa fa-user"></i></button>
-                            </td>
-                            <td>
-                                <span
-                                    class="badge badge-{{ $kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI ? 'danger' : 'primary' }}">
-                                    {{ $kunjungan->status }}
-                                </span>
-                            </td>
-                            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
-                                <td>
-                                    <div class="d-flex flex-row">
-                                        {{-- VERIFY --}}
-                                        @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)
-                                            <form id="verify-{{ $kunjungan->id }}"
-                                                  action="{{ route('kunjungan.verify', 1) }}"
-                                                  method="post">
-                                                @csrf
-                                                @method('post')
-                                            </form>
-                                            <button class="btn btn-success btn-sm mr-2"
-                                                    onclick="event.preventDefault(); document.getElementById('verify-{{ $kunjungan->id }}').submit()">
-                                                {{ __('layouts.verify') }}
-                                            </button>
-                                            {{-- END --}}
-                                        @else
-                                            {{-- CANCEL VERIFY --}}
-                                            <form id="batal-verify-{{ $kunjungan->id }}"
-                                                  action="{{ route('kunjungan.cancel_verify', 1) }}" method="post">
-                                                @csrf
-                                                @method('post')
-                                            </form>
-                                            <button class="btn btn-primary btn-sm text-light mr-2"
-                                                    onclick="event.preventDefault(); document.getElementById('batal-verify-{{ $kunjungan->id }}').submit()">
-                                                {{ __('layouts.cancel_verify') }}
-                                            </button>
-                                            {{-- END --}}
-                                        @endif
+                                    <div class="col-1 mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            ID
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{ $kunjungan->id }}
+                                        </div>
                                     </div>
-                                </td>
-                            @endif
 
-                            <td>
-                                <div class="d-flex flex-row">
-                                    <a href="{{ route('kunjungan.edit', 1) }}"
-                                       class="btn btn-warning btn-sm text-dark mr-2">
-                                        {{ __('layouts.update') }}
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
-                                        {{ __('layouts.delete') }}
-                                    </a>
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Dibuat pada
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{ $kunjungan->dibuat_pada }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Pengguna
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{ $kunjungan->pengguna->nama_lengkap }}
+                                        </div>
+                                    </div>
+
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Narapidana
+                                        </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            {{ $kunjungan->narapidana->nama_lengkap }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-8 mr-2 mt-4">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Keperluan
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <small>{{ $kunjungan->keperluan }}</small>
+                                            </div>
+                                            <div class="col-2 mr-2 mt-4 d-flex align-items-center">
+                                                @if($kunjungan->status === \App\Models\Kunjungan::STS_SDH_VERIFIKASI)
+                                                    <span class="badge badge-success">
+                                            {{ $kunjungan->status }}
+                                        </span>
+                                                @else
+                                                    <span class="badge badge-warning">
+                                            {{ $kunjungan->status }}
+                                        </span>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
-                            </td>
-                        </tr>
 
-                        @endcan
+                                <hr>
 
-                    @endforeach
+                                <div class="row no-gutters">
+                                    <div class="col-6">
+                                        <button class="btn btn-primary btn-icon-split btn-sm mr-1">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <span class="text">Pengunjung</span>
+                                        </button>
 
-                    </tbody>
-                </table>
-            </div>
+                                        <button class="btn btn-primary btn-icon-split btn-sm">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-clock"></i>
+                                            </span>
+                                            <span class="text">Waktu</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <a href="#" class="btn btn-success btn-sm mr-2">
+                                            Verifikasi
+                                        </a>
+                                        <a href="#" class="btn btn-warning btn-sm mr-2">
+                                            Perbarui
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
+                                            Hapus
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            @endforeach
+
+            {{ $kunjungans->links() }}
+
+            {{--            <div class="table-responsive overflow-auto">--}}
+            {{--                <table class="table table-bordered" id="dataTable" width="100%">--}}
+            {{--                    <thead>--}}
+            {{--                    <tr>--}}
+            {{--                        <th>ID</th>--}}
+            {{--                        <th>Dibuat pada</th>--}}
+
+            {{--                        --}}{{-- FOR TU-PEGAWAI ONLY --}}
+            {{--                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
+            {{--                            <th>Pengguna</th>--}}
+            {{--                        @endif--}}
+            {{--                        --}}{{-- END FOR TU-PEGAWAI ONLY --}}
+
+            {{--                        <th>Narapidana</th>--}}
+            {{--                        <th>Keperluan</th>--}}
+            {{--                        <th>Info</th>--}}
+            {{--                        <th>Status</th>--}}
+
+            {{--                        --}}{{-- FOR TU-PEGAWAI ONLY --}}
+            {{--                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
+            {{--                            <th>Verifikasi</th>--}}
+            {{--                        @endif--}}
+            {{--                        --}}{{-- END FOR TU-PEGAWAI ONLY --}}
+
+            {{--                        <th>#</th>--}}
+            {{--                    </tr>--}}
+            {{--                    </thead>--}}
+            {{--                    <tbody>--}}
+
+            {{--                    @foreach($kunjungans as $kunjungan)--}}
+
+            {{--                        @can('view', $kunjungan)--}}
+
+            {{--                            <tr>--}}
+            {{--                                <td>{{ $kunjungan->id }}</td>--}}
+            {{--                                <td>{{ $kunjungan->dibuat_pada }}</td>--}}
+
+            {{--                                --}}{{-- FOR TU-PEGAWAI ONLY --}}
+            {{--                                @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
+            {{--                                    <td>{{ $kunjungan->pengguna->nama_lengkap }}</td>--}}
+            {{--                                @endif--}}
+            {{--                                --}}{{-- END FOR TU-PEGAWAI ONLY --}}
+
+            {{--                                <td>{{ $kunjungan->narapidana->nama_lengkap }}</td>--}}
+            {{--                                <td>{{ $kunjungan->keperluan }}</td>--}}
+
+            {{--                                --}}{{-- INFO --}}
+            {{--                                <td>--}}
+            {{--                                    <div class="d-flex flex-row">--}}
+            {{--                                        <button class="btn btn-primary btn-icon-split btn-sm m-1">--}}
+            {{--                                            <span class="icon text-white-50">--}}
+            {{--                                                <i class="fas fa-user"></i>--}}
+            {{--                                            </span>--}}
+            {{--                                            <span class="text">Pengunjung</span>--}}
+            {{--                                        </button>--}}
+
+            {{--                                        <button class="btn btn-primary btn-icon-split btn-sm m-1">--}}
+            {{--                                            <span class="icon text-white-50">--}}
+            {{--                                                <i class="fas fa-clock"></i>--}}
+            {{--                                            </span>--}}
+            {{--                                            <span class="text">Waktu</span>--}}
+            {{--                                        </button>--}}
+            {{--                                    </div>--}}
+            {{--                                </td>--}}
+            {{--                                --}}{{-- END INFO --}}
+
+            {{--                                <td>--}}
+            {{--                                <span--}}
+            {{--                                    class="badge badge-{{ $kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI ? 'danger' : 'primary' }}">--}}
+            {{--                                    {{ $kunjungan->status }}--}}
+            {{--                                </span>--}}
+            {{--                                </td>--}}
+
+            {{--                                @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
+            {{--                                    <td>--}}
+            {{--                                        <div class="d-flex flex-row">--}}
+            {{--                                            --}}{{-- VERIFY --}}
+            {{--                                            @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)--}}
+            {{--                                                <form id="verify-{{ $kunjungan->id }}"--}}
+            {{--                                                      action="{{ route('kunjungan.verify', 1) }}"--}}
+            {{--                                                      method="post">--}}
+            {{--                                                    @csrf--}}
+            {{--                                                    @method('post')--}}
+            {{--                                                </form>--}}
+            {{--                                                <button class="btn btn-success btn-sm mr-2"--}}
+            {{--                                                        onclick="event.preventDefault(); document.getElementById('verify-{{ $kunjungan->id }}').submit()">--}}
+            {{--                                                    {{ __('layouts.verify') }}--}}
+            {{--                                                </button>--}}
+            {{--                                                --}}{{-- END --}}
+            {{--                                            @else--}}
+            {{--                                                --}}{{-- CANCEL VERIFY --}}
+            {{--                                                <form id="batal-verify-{{ $kunjungan->id }}"--}}
+            {{--                                                      action="{{ route('kunjungan.cancel_verify', 1) }}" method="post">--}}
+            {{--                                                    @csrf--}}
+            {{--                                                    @method('post')--}}
+            {{--                                                </form>--}}
+            {{--                                                <button class="btn btn-primary btn-sm text-light mr-2"--}}
+            {{--                                                        onclick="event.preventDefault(); document.getElementById('batal-verify-{{ $kunjungan->id }}').submit()">--}}
+            {{--                                                    {{ __('layouts.cancel_verify') }}--}}
+            {{--                                                </button>--}}
+            {{--                                                --}}{{-- END --}}
+            {{--                                            @endif--}}
+            {{--                                        </div>--}}
+            {{--                                    </td>--}}
+            {{--                                @endif--}}
+
+            {{--                                <td>--}}
+            {{--                                    <div class="d-flex flex-row">--}}
+            {{--                                        <a href="{{ route('kunjungan.edit', 1) }}"--}}
+            {{--                                           class="btn btn-warning btn-sm text-dark mr-2">--}}
+            {{--                                            {{ __('layouts.update') }}--}}
+            {{--                                        </a>--}}
+            {{--                                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">--}}
+            {{--                                            {{ __('layouts.delete') }}--}}
+            {{--                                        </a>--}}
+            {{--                                    </div>--}}
+            {{--                                </td>--}}
+            {{--                            </tr>--}}
+
+            {{--                        @endcan--}}
+
+            {{--                    @endforeach--}}
+
+            {{--                    </tbody>--}}
+            {{--                </table>--}}
         </div>
+    </div>
     </div>
 
     <!-- Hapus Modal-->
@@ -165,7 +296,15 @@
 
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                columnDefs: [
+                    {
+                        targets: -5,
+                        className: 'no-wrap',
+                        width: '200px'
+                    }
+                ]
+            });
         });
     </script>
 

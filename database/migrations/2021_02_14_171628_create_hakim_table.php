@@ -27,6 +27,9 @@ class CreateHakimTable extends Migration
             $table->string('status', 100)->default('AKTIF');
             $table->mediumText('foto')->nullable();
         });
+
+        DB::statement("ALTER TABLE hakim MODIFY foto MEDIUMBLOB");
+
     }
 
     /**

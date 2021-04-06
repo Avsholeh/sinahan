@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPengunjung;
+use App\Models\DataPengunjungKunjungan;
 use App\Models\Kunjungan;
 use App\Models\Narapidana;
 use App\Models\Pengguna;
@@ -20,7 +21,7 @@ class KunjunganController extends Controller
      */
     public function index()
     {
-        $kunjungans = Kunjungan::all();
+        $kunjungans = Kunjungan::orderBy('dibuat_pada', 'desc')->paginate(10);
         return view('pages.kunjungan.index', compact('kunjungans'));
     }
 
@@ -45,11 +46,31 @@ class KunjunganController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-
         $request->validate([
-
+            'data_pengunjung' => 'required',
+            'narapidana_id' => 'required',
+            'pengguna_id' => 'required',
+            'keperluan' => 'required',
         ]);
+
+        //dd($request->all());
+
+        $kunjungan = Kunjungan::create($request->only([
+            'narapidana_id', 'pengguna_id', 'keperluan'
+        ]));
+
+        if ($kunjungan) {
+            foreach ($request->data_pengunjung as $data_pengunjung_id) {
+                DataPengunjungKunjungan::create([
+                    'data_pengunjung_id' => $data_pengunjung_id,
+                    'kunjungan_id' => $kunjungan->id
+                ]);
+            }
+        }
+
+        return redirect()->route('kunjungan.index')
+            ->with('success', 'Kunjungan telah berhasil ditambah');
+
     }
 
     /**

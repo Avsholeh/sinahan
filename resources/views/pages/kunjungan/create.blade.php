@@ -16,6 +16,8 @@
                         @csrf
                         @method('post')
 
+                        <input name="pengguna_id" class="d-none" type="text" value="{{ auth()->user()->id }}">
+
                         {{-- DATA PENGUNJUNG --}}
                         <div class="form-group">
                             <label for="data_pengunjung">Data Pengunjung</label>
@@ -41,22 +43,39 @@
 
                             @endif
 
-                            <a class="btn btn-warning btn-sm text-dark mt-1" data-toggle="modal"
+                            @error('data_pengunjung')
+                            <small id="data_pengunjung_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+
+                            <a class="btn btn-primary btn-icon-split btn-sm mt-3" data-toggle="modal"
                                data-target="#tambahDataPengunjungModal" data-backdrop="static"
                                data-keyboard="false">
-                                <i class="fas fa-plus pr-3"></i> Tambah Data Pengunjung
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-plus"></i>
+                                        </span>
+                                <span class="text">Tambah Data Pengunjung</span>
                             </a>
                         </div>
 
                         {{-- NARAPIDANA --}}
                         <div class="form-group">
                             <label for="narapidana">Narapidana</label>
-                            <select name="narapidana" id="narapidana" class="form-control chosen-select">
+                            <select name="narapidana_id" id="narapidana" class="form-control chosen-select">
                                 <option value="" disabled selected>Pilih narapidana</option>
                                 @foreach($narapidanas as $narapidana)
-                                    <option value="{{ $narapidana->id }}">{{ $narapidana->nama_lengkap }} ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})</option>
+                                    <option value="{{ $narapidana->id }}">{{ $narapidana->nama_lengkap }}
+                                        ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})
+                                    </option>
                                 @endforeach
                             </select>
+
+                            @error('narapidana_id')
+                            <small id="data_pengunjung_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
                         {{-- KEPERLUAN --}}
@@ -64,6 +83,12 @@
                             <label for="keperluan">Keperluan</label>
                             <textarea name="keperluan" class="form-control" id="keperluan" cols="30" rows="3"
                                       aria-describedby="keperluan"></textarea>
+
+                            @error('keperluan')
+                            <small id="data_pengunjung_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary">Simpan</button>

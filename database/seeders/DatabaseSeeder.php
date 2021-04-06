@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 //            ))
 //            ->create();
 
-        $tuPegawai = \App\Models\Pengguna::factory()->make([
+        $tuPegawai = \App\Models\Pengguna::factory()->create([
             'nama_lengkap' => 'Novitasari',
             'username' => 'tupegawai',
             'jenis_kelamin' => 'Wanita',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'foto' => base64_encode(File::get(storage_path('app/public/perempuan.png'))),
         ]);
 
-        $user = \App\Models\Pengguna::factory()->make([
+        $user = \App\Models\Pengguna::factory()->create([
             'username' => 'masyarakat',
             'jenis_kelamin' => 'Pria',
             'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
@@ -67,11 +67,6 @@ class DatabaseSeeder extends Seeder
                 ->for($hakim)
                 ->for($jaksa)
                 ->for($narapidana)
-                ->create();
-
-            $kunjungan1 = Kunjungan::factory(3)
-                ->for($narapidana)
-                ->for($tuPegawai)
                 ->create();
 
             $kunjungan2 = Kunjungan::factory(3)

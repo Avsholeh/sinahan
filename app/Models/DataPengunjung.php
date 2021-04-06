@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\DataPengunjung
@@ -28,8 +29,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjung whereTanggalLahir($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjung whereTempatLahir($value)
  * @mixin \Eloquent
+ * @property int $pengguna_id
+ * @property-read \App\Models\Pengguna $pengguna
+ * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjung wherePenggunaId($value)
  */
-class DataPengunjung extends BaseModel
+class DataPengunjung extends Model
 {
     use HasFactory;
 

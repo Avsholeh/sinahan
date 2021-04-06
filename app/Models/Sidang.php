@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
@@ -29,8 +30,13 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Sidang wherePasal($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Sidang whereTanggal($value)
  * @mixin \Eloquent
+ * @property-read mixed $new_tanggal
+ * @property-read mixed $tanggal_idn
+ * @property-read \App\Models\Hakim|null $hakim
+ * @property-read \App\Models\Jaksa|null $jaksa
+ * @property-read \App\Models\Narapidana|null $narapidana
  */
-class Sidang extends BaseModel
+class Sidang extends Model
 {
     use HasFactory;
 
@@ -51,6 +57,8 @@ class Sidang extends BaseModel
 //        'jpu',
         'keterangan',
     ];
+
+    public $timestamps = false;
 
     public function hakim()
     {

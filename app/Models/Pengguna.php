@@ -32,6 +32,8 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereRoles($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Pengguna whereUsername($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DataPengunjung[] $dataPengunjung
+ * @property-read int|null $data_pengunjung_count
  */
 class Pengguna extends Authenticatable
 {

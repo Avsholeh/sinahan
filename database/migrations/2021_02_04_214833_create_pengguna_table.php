@@ -22,17 +22,9 @@ class CreatePenggunaTable extends Migration
             $table->string('roles')->default('MASYARAKAT');
             $table->mediumText('foto')->nullable();
             $table->rememberToken();
-//            $table->timestamps();
-//            $table->string('nama_lengkap');
-//            $table->string('tempat_lahir')->nullable();
-//            $table->date('tanggal_lahir')->nullable();
-//            $table->string('jenis_kelamin')->nullable();
-//            $table->string('agama')->nullable();
-//            $table->string('pekerjaan')->nullable();
-//            $table->string('pendidikan')->nullable();
-//            $table->string('email')->unique();
-//            $table->timestamp('email_verified_at')->nullable();
         });
+
+         DB::statement("ALTER TABLE pengguna MODIFY foto MEDIUMBLOB");
     }
 
     /**

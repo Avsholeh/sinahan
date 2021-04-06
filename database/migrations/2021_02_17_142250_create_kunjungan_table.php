@@ -24,6 +24,7 @@ class CreateKunjunganTable extends Migration
             $table->text('keperluan');
             $table->string('status')->default('BELUM DIVERIFIKASI');
         });
+
     }
 
     /**

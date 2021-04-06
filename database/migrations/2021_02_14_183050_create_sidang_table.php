@@ -23,6 +23,8 @@ class CreateSidangTable extends Migration
 //            $table->string('jpu');
             $table->string('keterangan');
         });
+
+
     }
 
     /**

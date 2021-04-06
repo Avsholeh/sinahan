@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
@@ -21,8 +22,18 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereNarapidanaId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan wherePenggunaId($value)
  * @mixin \Eloquent
+ * @property string|null $no_surat
+ * @property string $dibuat_pada
+ * @property string $status
+ * @property-read \App\Models\Narapidana|null $narapidana
+ * @property-read \App\Models\Pengguna|null $pengguna
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\WaktuKunjungan[] $waktuKunjungan
+ * @property-read int|null $waktu_kunjungan_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereDibuatPada($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereNoSurat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereStatus($value)
  */
-class Kunjungan extends BaseModel
+class Kunjungan extends Model
 {
     use HasFactory;
 
@@ -37,6 +48,8 @@ class Kunjungan extends BaseModel
         'keperluan',
         'no_surat',
     ];
+
+    public $timestamps = false;
 
     public function narapidana()
     {

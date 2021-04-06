@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Hakim
@@ -39,7 +40,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Hakim whereTempatLahir($value)
  * @mixin \Eloquent
  */
-class Hakim extends BaseModel
+class Hakim extends Model
 {
     use HasFactory;
 
@@ -49,6 +50,8 @@ class Hakim extends BaseModel
     const TIDAK_AKTIF = 'Tidak Aktif';
 
     protected $table = 'hakim';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'nama_lengkap',

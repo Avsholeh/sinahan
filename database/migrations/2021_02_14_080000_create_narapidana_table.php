@@ -32,6 +32,8 @@ class CreateNarapidanaTable extends Migration
             $table->string('status');
             $table->mediumText('foto');
         });
+
+        DB::statement("ALTER TABLE narapidana MODIFY foto MEDIUMBLOB");
     }
 
     /**

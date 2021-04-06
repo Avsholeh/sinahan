@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Narapidana
@@ -44,8 +45,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Narapidana whereTempatLahir($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Narapidana whereTempatTinggal($value)
  * @mixin \Eloquent
+ * @property string $status
+ * @property mixed|null $foto
+ * @method static \Illuminate\Database\Eloquent\Builder|Narapidana whereFoto($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Narapidana whereStatus($value)
  */
-class Narapidana extends BaseModel
+class Narapidana extends Model
 {
     use HasFactory;
 
@@ -61,6 +66,8 @@ class Narapidana extends BaseModel
     const KET_BUKAN_TAHANAN_JAKSA = 'BUKAN TAHANAN JAKSA';
 
     protected $table = 'narapidana';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'nama_lengkap',

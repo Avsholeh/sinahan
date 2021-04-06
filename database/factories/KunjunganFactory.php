@@ -23,9 +23,11 @@ class KunjunganFactory extends Factory
     {
         return [
             'no_surat' => $this->faker->creditCardNumber,
+            'dibuat_pada' => $this->faker->date(),
 //            'narapidana_id' => $this->faker->randomNumber(1),
 //            'pengguna_id' => $this->faker->randomElement([1, 2]),
             'keperluan' => $this->faker->paragraph,
+            'status' => $this->faker->randomElement([Kunjungan::STS_BLM_VERIFIKASI, Kunjungan::STS_SDH_VERIFIKASI]),
         ];
     }
 }

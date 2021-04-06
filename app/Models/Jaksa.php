@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Models\Jaksa
@@ -39,7 +40,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|Jaksa whereTempatLahir($value)
  * @mixin \Eloquent
  */
-class Jaksa extends BaseModel
+class Jaksa extends Model
 {
     use HasFactory;
 
@@ -49,6 +50,8 @@ class Jaksa extends BaseModel
 
     const AKTIF = 'Aktif';
     const TIDAK_AKTIF = 'Tidak Aktif';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'nama_lengkap',
