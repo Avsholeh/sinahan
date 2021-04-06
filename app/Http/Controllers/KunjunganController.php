@@ -6,11 +6,11 @@ use App\Models\DataPengunjung;
 use App\Models\DataPengunjungKunjungan;
 use App\Models\Kunjungan;
 use App\Models\Narapidana;
-use App\Models\Pengguna;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Gate;
+
+// TODO fix hapus kunjungan/index.php
 
 class KunjunganController extends Controller
 {
