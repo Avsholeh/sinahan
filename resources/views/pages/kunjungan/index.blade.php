@@ -116,7 +116,7 @@
                                         <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
                                             Hapus
                                         </a>
-                                        <form action="{{ route('jaksa.delete', $jaksa->id) }}"
+                                        <form action="{{ route('jaksa.delete', $kunjungan->id) }}"
                                               method="post" hidden>
                                             @csrf
                                             @method('delete')
