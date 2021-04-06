@@ -116,6 +116,11 @@
                                         <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusModal">
                                             Hapus
                                         </a>
+                                        <form action="{{ route('jaksa.delete', $jaksa->id) }}"
+                                              method="post" hidden>
+                                            @csrf
+                                            @method('delete')
+                                        </form>
                                     </div>
 
                                 </div>
@@ -316,7 +321,7 @@
                     // if sibling is not a form
                     // then ignore it
                     console.log($siblings);
-                    $siblings[1].submit();
+                    $siblings('form').submit();
                 });
             });
         });
