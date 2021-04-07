@@ -20,6 +20,7 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
+                        <th>No</th>
                         <th>Foto</th>
                         <th>Nama Lengkap</th>
                         <th>Tempat Lahir</th>
@@ -44,6 +45,7 @@
                     @foreach($narapidanas as $narapidana)
 
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
                                 <div class="rounded-circle"
                                      style="width: 50px; height: 50px; background-image: url('data:image/png;base64,{{ $narapidana->foto }}'); background-size: cover">

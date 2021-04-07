@@ -20,7 +20,7 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>Tanggal</th>
                         <th>Hakim</th>
                         <th>Jaksa</th>
@@ -35,7 +35,7 @@
                     @foreach($sidangs as $sidang)
 
                         <tr>
-                            <td>{{ $sidang->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td class="font-weight-bold">{{ $sidang->tanggal_idn }}</td>
                             <td>
                                 @if($sidang->hakim)
