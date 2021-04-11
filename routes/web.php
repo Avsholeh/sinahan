@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BiodataController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPengunjungController;
 use App\Http\Controllers\HakimController;
 use App\Http\Controllers\HomeController;
@@ -19,9 +20,7 @@ Route::middleware(['auth', 'web'])->group(function() {
      * Route Kelola Data Dashboard
      */
     Route::prefix('/dashboard')->group(function () {
-        Route::get('/', function() {
-            return view('pages.dashboard.index');
-        })->name('dashboard.index');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     });
 
     /**

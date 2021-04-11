@@ -66,4 +66,9 @@ class Pengguna extends Authenticatable
         return $this->hasMany(DataPengunjung::class);
     }
 
+    public function kunjungan()
+    {
+        return $this->hasMany(Kunjungan::class);
+    }
+
 }

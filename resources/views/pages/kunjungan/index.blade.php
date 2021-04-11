@@ -62,29 +62,28 @@
                                     </div>
 
 
-                                    <div class="row">
-                                        <div class="col-8 mr-2 mt-4">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Keperluan
-                                            </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <small>{{ $kunjungan->keperluan }}</small>
-                                            </div>
-                                            <div class="col-2 mr-2 mt-4 d-flex align-items-center">
-                                                @if($kunjungan->status === \App\Models\Kunjungan::STS_SDH_VERIFIKASI)
-                                                    <span class="badge badge-success">
-                                            {{ $kunjungan->status }}
-                                        </span>
-                                                @else
-                                                    <span class="badge badge-warning">
-                                            {{ $kunjungan->status }}
-                                        </span>
-                                                @endif
-                                            </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-8 mr-2 mt-4">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Keperluan
                                         </div>
-
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <small>{{ $kunjungan->keperluan }}</small>
+                                        </div>
+                                        <div class="col-2 mr-2 mt-4 d-flex align-items-center">
+                                            @if($kunjungan->status === \App\Models\Kunjungan::STS_SDH_VERIFIKASI)
+                                                <span class="badge badge-success">
+                                            {{ $kunjungan->status }}
+                                        </span>
+                                            @else
+                                                <span class="badge badge-warning">
+                                            {{ $kunjungan->status }}
+                                        </span>
+                                            @endif
+                                        </div>
                                     </div>
-
 
                                 </div>
 
