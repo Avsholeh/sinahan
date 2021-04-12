@@ -36,47 +36,68 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <!-- Informasi Pribadi -->
+            <div class="card mb-4 animated--grow-in">
                 <div class="card-header">
                     Informasi Pribadi
                 </div>
-                <div class="card-body">
+                <div class="card-body h-100">
 
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">{{ $message }}</div>
                     @endif
 
-                    <form>
-                        <div class="form-group">
-                            <label for="pengguna_id">ID</label>
-                            <input type="text" class="form-control" id="pengguna_id"
-                                   value="{{ auth()->user()->id }}" disabled>
+                    <div class="row no-gutters align-items-center mb-3">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                User ID
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" id="nama_lengkap"
-                                   value="{{ auth()->user()->nama_lengkap }}" disabled>
+                        <div class="col">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ auth()->user()->id }}
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <input type="text" class="form-control" id="jenis_kelamin"
-                                   value="{{ auth()->user()->jenis_kelamin }}" disabled>
+                    <div class="row no-gutters align-items-center mb-3">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Nama Lengkap
+                            </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" value="{{ auth()->user()->username }}"
-                                   disabled>
+                        <div class="col">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ auth()->user()->nama_lengkap }}
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" value="password" disabled>
+                    <div class="row no-gutters align-items-center mb-3">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Jenis Kelamin
+                            </div>
                         </div>
+                        <div class="col">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ auth()->user()->jenis_kelamin }}
+                            </div>
+                        </div>
+                    </div>
 
-                    </form>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Username
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ auth()->user()->username }}
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -193,6 +214,13 @@
                 </div>
             </div>
 
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
             <div class="card mb-4">
                 <div class="card-header">
                     Biodata Kunjungan Anda
@@ -263,9 +291,9 @@
                                                             {{ __('layouts.delete') }}
                                                         </a>
                                                         <form
-                                                            action="{{ route('dataPengunjung.delete', $dataPengunjung->id) }}"
-                                                            method="post"
-                                                            hidden>
+                                                                action="{{ route('dataPengunjung.delete', $dataPengunjung->id) }}"
+                                                                method="post"
+                                                                hidden>
                                                             @csrf
                                                             @method('delete')
                                                         </form>
@@ -287,7 +315,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Hapus Modal-->
