@@ -17,8 +17,10 @@ class DashboardController extends Controller
             $totalHakim = Hakim::all()->count();
             $totalJaksa = Jaksa::all()->count();
 
+            $lastKunjungan = Kunjungan::orderBy('dibuat_pada', 'desc')->limit(3)->get();
+
             return view('pages.dashboard.index',
-                compact('totalKunjungan', 'totalPengguna', 'totalHakim', 'totalJaksa'));
+                compact('totalKunjungan', 'totalPengguna', 'totalHakim', 'totalJaksa', 'lastKunjungan'));
         } else {
 
             $kunjungans = auth()->user()->kunjungan()->orderBy('dibuat_pada', 'desc');
