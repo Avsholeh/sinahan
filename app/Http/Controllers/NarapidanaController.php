@@ -135,6 +135,7 @@ class NarapidanaController extends Controller
     {
         $this->validateRules($request);
 
+
         $defaultFoto = $this->defaultFoto($request);
 
         $narapidana->update([

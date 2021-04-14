@@ -62,20 +62,25 @@
                             <td>{{ $sidang->keterangan }}</td>
 
                             <td class="d-flex flex-row">
-                                <a href="{{ route('sidang.edit', $sidang->id) }}"
-                                   class="btn btn-warning btn-sm text-dark mr-2">
-                                    {{ __('layouts.update') }}
-                                </a>
-                                {{-- delete --}}
-                                <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
-                                   data-target="#hapusModal">
-                                    {{ __('layouts.delete') }}
-                                </a>
-                                <form action="{{ route('sidang.delete', $sidang->id) }}" method="post" hidden>
-                                    @csrf
-                                    @method('delete')
-                                </form>
-                                {{-- END delete --}}
+                                @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                                    <a href="{{ route('sidang.edit', $sidang->id) }}"
+                                       class="btn btn-warning btn-sm text-dark mr-2">
+                                        {{ __('layouts.update') }}
+                                    </a>
+
+                                    {{-- delete --}}
+                                    <a href="#" class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                       data-target="#hapusModal">
+                                        {{ __('layouts.delete') }}
+                                    </a>
+                                    <form action="{{ route('sidang.delete', $sidang->id) }}" method="post" hidden>
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                    {{-- END delete --}}
+                                @else
+                                    #
+                                @endif
                             </td>
                         </tr>
 

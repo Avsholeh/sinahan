@@ -61,29 +61,38 @@
                 <!-- Card Body -->
                 <div class="card-body">
 
-                    @foreach($lastKunjungan as $kunjungan)
-                        <div class="card mb-3">
-                            <div class="card-body">
+                    @if($lastKunjungan->count() > 0)
+                        @foreach($lastKunjungan as $kunjungan)
+                            <div class="card mb-3">
+                                <div class="card-body">
 
-                                <div class="row">
-                                    <div class="col-4">
-                                        <strong>Dibuat pada: </strong>
-                                        <span>{{ $kunjungan->dibuat_pada }}</span>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <strong>Dibuat pada: </strong>
+                                            <span>{{ $kunjungan->dibuat_pada }}</span>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <strong>Narapidana: </strong>
+                                            <span>{{ $kunjungan->narapidana->nama_lengkap }}</span>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <span class="badge badge-success">{{ $kunjungan->status }}</span>
+                                        </div>
                                     </div>
 
-                                    <div class="col-4">
-                                        <strong>Narapidana: </strong>
-                                        <span>{{ $kunjungan->narapidana->nama_lengkap }}</span>
-                                    </div>
-
-                                    <div class="col-4">
-                                        <span class="badge badge-success">{{ $kunjungan->status }}</span>
-                                    </div>
                                 </div>
-
                             </div>
+                        @endforeach
+                    @else
+
+                        <div class="alert alert-danger">
+                            Anda belum memiliki kunjungan! Silahkan buat izin kunjungan melalui link berikut ini.
+                            <a href="{{ route('kunjungan.create') }}">Buat kunjungan</a>
                         </div>
-                    @endforeach
+
+                    @endif
 
                 </div>
             </div>

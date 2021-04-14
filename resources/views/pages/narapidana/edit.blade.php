@@ -63,11 +63,11 @@
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
                                 <option value="" readonly>Pilih jenis kelamin</option>
                                 <option
-                                    value="Pria" @if($narapidana->jenis_kelamin === 'Pria') {{ 'selected' }} @endif>
+                                        value="Pria" @if($narapidana->jenis_kelamin === 'Pria') {{ 'selected' }} @endif>
                                     Pria
                                 </option>
                                 <option
-                                    value="Wanita" @if($narapidana->jenis_kelamin === 'Wanita') {{ 'selected' }} @endif>
+                                        value="Wanita" @if($narapidana->jenis_kelamin === 'Wanita') {{ 'selected' }} @endif>
                                     Wanita
                                 </option>
                             </select>
@@ -213,29 +213,29 @@
                                     aria-describedby="keterangan_help">
                                 <option value="" readonly>Pilih keterangan</option>
                                 <option
-                                    value="Keterangan Saksi"
-                                @if($narapidana->keterangan === 'Keterangan Saksi'){{ 'selected' }}@endif>
-                                    Keterangan Saksi
+                                        value="{{ \App\Models\Narapidana::KET_SAKSI }}"
+                                @if($narapidana->keterangan === \App\Models\Narapidana::KET_SAKSI){{ 'selected' }}@endif>
+                                    {{\App\Models\Narapidana::KET_SAKSI}}
                                 </option>
                                 <option
-                                    value="Putusan"
-                                @if($narapidana->keterangan === 'Putusan'){{ 'selected' }}@endif>
-                                    Putusan
+                                        value="{{ \App\Models\Narapidana::KET_PUTUSAN }}"
+                                @if($narapidana->keterangan === \App\Models\Narapidana::KET_PUTUSAN){{ 'selected' }}@endif>
+                                    {{ \App\Models\Narapidana::KET_PUTUSAN}}
                                 </option>
                                 <option
-                                    value="Dakwaan"
-                                @if($narapidana->keterangan === 'Dakwaan'){{ 'selected' }}@endif>
-                                    Dakwaan
+                                        value="{{ \App\Models\Narapidana::KET_DAKWAAN }}"
+                                @if($narapidana->keterangan === \App\Models\Narapidana::KET_DAKWAAN){{ 'selected' }}@endif>
+                                    {{\App\Models\Narapidana::KET_DAKWAAN}}
                                 </option>
                                 <option
-                                    value="Tuntuan"
-                                @if($narapidana->keterangan === 'Tuntuan'){{ 'selected' }}@endif>
-                                    Tuntuan
+                                        value="{{ \App\Models\Narapidana::KET_TUNTUTAN }}"
+                                @if($narapidana->keterangan === \App\Models\Narapidana::KET_TUNTUTAN){{ 'selected' }}@endif>
+                                    {{\App\Models\Narapidana::KET_TUNTUTAN}}
                                 </option>
                                 <option
-                                    value="Bukan Tahanan Jaksa"
-                                @if($narapidana->keterangan === 'Bukan Tahanan Jaksa'){{ 'selected' }}@endif>
-                                    Bukan Tahanan Jaksa
+                                        value="{{ \App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA }}"
+                                @if($narapidana->keterangan === \App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA){{ 'selected' }}@endif>
+                                    {{\App\Models\Narapidana::KET_BUKAN_TAHANAN_JAKSA}}
                                 </option>
                             </select>
 
@@ -251,9 +251,10 @@
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="" readonly>Pilih status</option>
-                                <option value="Aktif" @if($narapidana->status === 'Aktif'){{ 'selected' }}@endif>Aktif
+                                <option value="{{ \App\Models\Narapidana::AKTIF }}" @if($narapidana->status === \App\Models\Narapidana::AKTIF){{ 'selected' }}@endif>
+                                    Aktif
                                 </option>
-                                <option value="Tidak Aktif" @if($narapidana->statusap === 'Tidak Aktif'){{ 'selected' }}@endif>
+                                <option value="{{ \App\Models\Narapidana::TIDAK_AKTIF }}" @if($narapidana->status === \App\Models\Narapidana::TIDAK_AKTIF){{ 'selected' }}@endif>
                                     Tidak Aktif
                                 </option>
                             </select>

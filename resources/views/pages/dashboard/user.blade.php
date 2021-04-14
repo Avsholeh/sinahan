@@ -29,7 +29,11 @@
                             Kunjungan Terakhir
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{ $kunjungans->first()->dibuat_pada }}
+                            @if($kunjungans->count() > 0)
+                                {{ $kunjungans->first()->dibuat_pada }}
+                            @else
+                                Belum ada
+                            @endif
                         </div>
                     </div>
                     <div class="col-auto">
@@ -49,7 +53,12 @@
                             Status Kunjungan Terakhir
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            {{ $kunjungans->first()->status }}
+                            @if($kunjungans->count() > 0)
+                                {{ $kunjungans->first()->status }}
+                            @else
+                                Belum ada
+                            @endif
+
                         </div>
                     </div>
                     <div class="col-auto">

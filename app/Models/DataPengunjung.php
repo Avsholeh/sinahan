@@ -55,4 +55,9 @@ class DataPengunjung extends Model
     {
         return $this->belongsTo(Pengguna::class);
     }
+
+    public function dataPengunjungKunjungan()
+    {
+        return $this->hasMany(DataPengunjungKunjungan::class);
+    }
 }

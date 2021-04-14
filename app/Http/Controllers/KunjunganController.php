@@ -6,6 +6,7 @@ use App\Models\DataPengunjung;
 use App\Models\DataPengunjungKunjungan;
 use App\Models\Kunjungan;
 use App\Models\Narapidana;
+use App\Models\Pengguna;
 use App\Models\WaktuKunjungan;
 use Exception;
 use Illuminate\Http\Request;
@@ -33,8 +34,12 @@ class KunjunganController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->roles === Pengguna::ROLES_ADMIN) {
+            $dataPengunjungs = DataPengunjung::all();
+        } else {
+            $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
+        }
         $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
-        $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
         return view('pages.kunjungan.create', compact('narapidanas', 'dataPengunjungs'));
     }
 
@@ -52,8 +57,6 @@ class KunjunganController extends Controller
             'pengguna_id' => 'required',
             'keperluan' => 'required',
         ]);
-
-        //dd($request->all());
 
         $kunjungan = Kunjungan::create($request->only([
             'narapidana_id', 'pengguna_id', 'keperluan'
