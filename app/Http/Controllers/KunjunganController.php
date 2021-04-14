@@ -6,6 +6,7 @@ use App\Models\DataPengunjung;
 use App\Models\DataPengunjungKunjungan;
 use App\Models\Kunjungan;
 use App\Models\Narapidana;
+use App\Models\WaktuKunjungan;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -34,7 +35,6 @@ class KunjunganController extends Controller
     {
         $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
         $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
-
         return view('pages.kunjungan.create', compact('narapidanas', 'dataPengunjungs'));
     }
 
@@ -121,15 +121,53 @@ class KunjunganController extends Controller
             ->with('success', 'Kunjungan telah berhasil dihapus');
     }
 
-    public function verify(Kunjungan $kunjungan)
+    public function storeVerifikasi(Request $request)
     {
-        return redirect()->route('kunjungan.index')
-            ->with('success', 'Kunjungan telah berhasil diverifikasi');
+        $kunjungan = Kunjungan::whereId($request->kunjungan_id)->first();
+
+        if ($kunjungan->waktuKunjungan->count() > 0) {
+
+            $kunjungan->status = Kunjungan::STS_SDH_VERIFIKASI;
+            $kunjungan->save();
+
+            return redirect()->route('kunjungan.index')
+                ->with('success', "Kunjungan {$kunjungan->id} telah berhasil diverifikasi");
+        }
+
+        return redirect()->route('kunjungan.verifikasi.create', $request->kunjungan_id)
+            ->with('danger', 'Waktu kunjungan belum ditentukan.
+            Silahkan tambah waktu kunjungan sebelum diverifikasi');
     }
 
-    public function cancelVerify(Kunjungan $kunjungan)
+    public function createVerifikasi(Kunjungan $kunjungan)
+    {
+        return view('pages.verifikasi.create', compact('kunjungan'));
+    }
+
+    public function cancelVerifikasi(Kunjungan $kunjungan)
     {
         return redirect()->route('kunjungan.index')
             ->with('success', 'Verifikasi Kunjungan telah dibatalkan');
+    }
+
+    public function storeWaktuKunjungan(Request $request)
+    {
+        $request->validate([
+            'kunjungan_id' => 'required',
+            'tanggal' => 'required',
+            'dari_jam' => 'required',
+            'hingga_jam' => 'required',
+        ]);
+
+        WaktuKunjungan::create($request->only(['kunjungan_id', 'tanggal', 'dari_jam', 'hingga_jam']));
+
+        return redirect()->route('kunjungan.verifikasi.create', $request->kunjungan_id);
+    }
+
+    public function destroyWaktuKunjungan(WaktuKunjungan $waktuKunjungan)
+    {
+        $waktuKunjungan->delete();
+        return redirect()->back()
+            ->with('success', 'Kunjungan telah berhasil dihapus');
     }
 }

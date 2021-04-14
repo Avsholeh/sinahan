@@ -104,8 +104,12 @@ Route::middleware(['auth', 'web'])->group(function() {
         Route::put('/{kunjungan}', [KunjunganController::class, 'update'])->name('kunjungan.update');
         Route::delete('/{kunjungan}', [KunjunganController::class, 'destroy'])->name('kunjungan.delete');
 
-        Route::post('/verify', [KunjunganController::class, 'verify'])->name('kunjungan.verify');
-        Route::post('/batal-verify', [KunjunganController::class, 'cancelVerify'])->name('kunjungan.cancel_verify');
+        Route::get('/verifikasi/{kunjungan}', [KunjunganController::class, 'createVerifikasi'])->name('kunjungan.verifikasi.create');
+        Route::post('/verifikasi', [KunjunganController::class, 'storeVerifikasi'])->name('kunjungan.verifikasi.store');
+        Route::post('/batal-verifikasi', [KunjunganController::class, 'cancelVerifikasi'])->name('kunjungan.cancel_verifikasi');
+
+        Route::post('/waktu-kunjungan/', [KunjunganController::class, 'storeWaktuKunjungan'])->name('kunjungan.waktu_kunjungan.store');
+        Route::delete('/waktu-kunjungan/{waktuKunjungan}', [KunjunganController::class, 'destroyWaktuKunjungan'])->name('kunjungan.waktu_kunjungan.delete');
     });
 
     /**

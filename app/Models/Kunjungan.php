@@ -70,4 +70,9 @@ class Kunjungan extends Model
     {
         return Carbon::parse($this->attributes['dibuat_pada'])->translatedFormat('l, d F Y');
     }
+
+    public function dataPengunjungKunjungan()
+    {
+        return $this->hasMany( DataPengunjungKunjungan::class);
+    }
 }

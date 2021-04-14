@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\WaktuKunjungan
@@ -31,4 +32,18 @@ class WaktuKunjungan extends Model
     protected $table = 'waktu_kunjungan';
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'kunjungan_id', 'tanggal', 'dari_jam', 'hingga_jam'
+    ];
+
+    public function kunjungan()
+    {
+        return $this->belongsTo(WaktuKunjungan::class);
+    }
+
+    public function getTanggalAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal'])->translatedFormat('l, d F Y');
+    }
 }

@@ -45,7 +45,7 @@
 
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Pengguna
+                                            Diajukan oleh
                                         </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             {{ $kunjungan->pengguna->nama_lengkap }}
@@ -95,6 +95,7 @@
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-user"></i>
                                             </span>
+                                            @foreach($kunjungan->pen)
                                             <span class="text">Pengunjung</span>
                                         </button>
 
@@ -106,9 +107,14 @@
                                         </button>
                                     </div>
                                     <div class="col-6 d-flex justify-content-end">
-                                        <a href="#" class="btn btn-success btn-sm mr-2">
-                                            Verifikasi
-                                        </a>
+
+                                        @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)
+                                            <a href="{{ route('kunjungan.verifikasi.create', $kunjungan->id) }}"
+                                               class="btn btn-success btn-sm mr-2">
+                                                Verifikasi
+                                            </a>
+                                        @endif
+
                                         <a href="#" class="btn btn-warning btn-sm mr-2">
                                             Perbarui
                                         </a>

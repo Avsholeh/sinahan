@@ -31,4 +31,9 @@ class DataPengunjungKunjungan extends Model
         'data_pengunjung_id',
         'kunjungan_id',
     ];
+
+    public function dataPengunjung()
+    {
+        return $this->belongsTo(DataPengunjung::class);
+    }
 }
