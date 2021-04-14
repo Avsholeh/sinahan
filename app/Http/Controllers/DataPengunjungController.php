@@ -6,6 +6,7 @@ use App\Models\DataPengunjung;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Intervention\Image\Facades\Image;
 
 class DataPengunjungController extends Controller
 {
@@ -44,22 +45,33 @@ class DataPengunjungController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->ajax()) {
-            $request->validate([
-                'pengguna_id' => 'required',
-                'nama_lengkap' => 'required',
-                'tempat_lahir' => 'required',
-                'tanggal_lahir' => 'required',
-                'alamat' => 'required',
-                'pekerjaan' => 'required',
-                'hubungan' => 'required',
-            ]);
+        $request->validate([
+            'pengguna_id' => 'required',
+            'nama_lengkap' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'pekerjaan' => 'required',
+            'hubungan' => 'required',
+            'ktp' => 'required',
+        ]);
 
-            DataPengunjung::create($request->all());
+        $uploadedKtp = Image::make($request->file('ktp')->path())->encode('png');
+        $ktp = base64_encode($uploadedKtp);
 
-            return redirect()->back()
-                ->with('dataPengunjung_success', "Data Pengunjung telah berhasil ditambah.");
-        }
+        DataPengunjung::create([
+            'pengguna_id' => $request->pengguna_id,
+            'nama_lengkap' => $request->nama_lengkap,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'pekerjaan' => $request->pekerjaan,
+            'hubungan' => $request->hubungan,
+            'ktp' => $ktp,
+        ]);
+
+        return redirect()->back()
+            ->with('dataPengunjung_success', "Data Pengunjung telah berhasil ditambah.");
     }
 
     /**

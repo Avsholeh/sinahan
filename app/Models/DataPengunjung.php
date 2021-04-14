@@ -49,6 +49,7 @@ class DataPengunjung extends Model
         'alamat',
         'pekerjaan',
         'hubungan',
+        'ktp',
     ];
 
     public function pengguna()

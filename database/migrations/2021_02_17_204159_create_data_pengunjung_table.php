@@ -22,7 +22,10 @@ class CreateDataPengunjungTable extends Migration
             $table->string('alamat');
             $table->string('pekerjaan');
             $table->string('hubungan');
+            $table->binary('ktp')->nullable();
         });
+
+        DB::statement("ALTER TABLE data_pengunjung MODIFY ktp MEDIUMBLOB");
     }
 
     /**

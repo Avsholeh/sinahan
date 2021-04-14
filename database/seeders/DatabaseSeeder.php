@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $environment = 'prod'; //prod
+        $environment = 'dev'; //prod
 
         // Create Actors
 
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
                 ->for($user)
                 ->create();
 
-            foreach ([1, 2, 3, 4, 5] as $number) {
+            foreach ([1, 2, 3] as $number) {
 
                 $hakim = \App\Models\Hakim::factory()->create();
                 $jaksa = \App\Models\Jaksa::factory()->create();

@@ -8,6 +8,7 @@ use App\Models\DataPengunjung;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class BiodataController extends Controller
 {
@@ -42,8 +43,6 @@ class BiodataController extends Controller
         } else {
             $newPassword = Hash::make($request->password);
         }
-
-//        dd($request->all());
 
         $pengguna = Pengguna::find(auth()->user()->id);
         $pengguna->update([
