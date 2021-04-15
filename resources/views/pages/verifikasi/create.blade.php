@@ -102,6 +102,104 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Data Pengunjung
+                </div>
+                <div class="card-body">
+
+                    @foreach($kunjungan->dataPengunjungKunjungan as $dataPengunjungKunjungan)
+
+                        <div class="row mb-2">
+                            {{--                        <div class="col-12">--}}
+                            {{--                            <img src="data:image/png;base64,{{ $dataPengunjungKunjungan->dataPengunjung->ktp }}"--}}
+                            {{--                                width="200">--}}
+                            {{--                        </div>--}}
+                            <div class="col-12">
+                                <div class="card  border-left-info">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Nama Lengkap
+                                                </div>
+                                                <div class="row no-gutters align-items-center mb-1">
+                                                    <div class="col-auto">
+                                                        <div class="mb-0 mr-3 text-gray-800">
+                                                            {{ $dataPengunjungKunjungan->dataPengunjung->nama_lengkap }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Pekerjaan
+                                                </div>
+                                                <div class="row no-gutters align-items-center mb-1">
+                                                    <div class="col-auto">
+                                                        <div class="mb-0 mr-3 text-gray-800">
+                                                            {{ $dataPengunjungKunjungan->dataPengunjung->pekerjaan }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                    Hubungan
+                                                </div>
+                                                <div class="row no-gutters align-items-center mb-1">
+                                                    <div class="col-auto">
+                                                        <div class="mb-0 mr-3 text-gray-800">
+                                                            {{ $dataPengunjungKunjungan->dataPengunjung->hubungan }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col d-flex align-content-center justify-content-end">
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#ktpModal">
+                                                    Lihat KTP
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="ktpModal"
+                                                     role="dialog"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">KTP</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-center">
+                                                                <img src="data:image/png;base64,{{ $dataPengunjungKunjungan->dataPengunjung->ktp }}"
+                                                                     width="400">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">
+                                                                    Tutup
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+            </div>
+
         </div>
 
         <div class="col-lg-6 col-xl-6">
@@ -120,7 +218,7 @@
 
                         {{-- Kunjungan ID --}}
                         <div class="form-group">
-                            <label for="kunjungan_id">Pengguna</label>
+                            <label for="kunjungan_id">ID Kunjungan</label>
                             <input name="kunjungan_id" type="text" class="form-control"
                                    value="{{ $kunjungan->id }}" id="kunjungan_id"
                                    readonly>
@@ -182,6 +280,10 @@
                     </form>
                 </div>
             </div>
+        </div>
+
+        <div class="col-lg-6">
+
         </div>
     </div>
 

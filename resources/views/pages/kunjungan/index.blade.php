@@ -147,11 +147,11 @@
                                                 </a>
                                             @endif
 
-                                            <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                            <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
                                                data-target="#hapusModal">
                                                 Hapus
                                             </a>
-                                            <form action="{{ route('jaksa.delete', $kunjungan->id) }}"
+                                            <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"
                                                   method="post" hidden>
                                                 @csrf
                                                 @method('delete')
@@ -192,18 +192,16 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
+                <div class="modal-body">
+                    Jika anda memilih untuk menghapus, maka data akan dihapus dari penyimpanan dan
                     tidak dapat dikembalikan.
                 </div>
+                {{-- delete --}}
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batalkan</button>
-                    <a class="btn btn-primary" href="javascript:void(0)"
-                       onclick="event.preventDefault(); document.getElementById('form-delete').submit()"
-                    >Konfirmasi</a>
+                    <a id="konfirmasi" class="btn btn-primary" href="javascript:void(0)">Konfirmasi</a>
                 </div>
-                <form id="form-delete" action="#" method="post" class="d-none">
-                    @csrf
-                </form>
+                {{-- END delete --}}
             </div>
         </div>
     </div>
@@ -233,14 +231,12 @@
             $('.btn-delete').click(function (e) {
                 e.preventDefault();
                 var $siblings = $(this).siblings();
-                console.log($siblings);
                 $('#konfirmasi').click(function (e) {
                     e.preventDefault();
                     // should check type of siblings
                     // if sibling is not a form
                     // then ignore it
-                    console.log($siblings);
-                    $siblings('form').submit();
+                    $siblings[2].submit();
                 });
             });
         });
