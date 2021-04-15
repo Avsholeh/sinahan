@@ -145,17 +145,23 @@
                                                 <a href="#" class="btn btn-warning btn-sm mr-2 d-inline-block">
                                                     Perbarui
                                                 </a>
+
+                                                <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
+                                                   data-target="#hapusModal">
+                                                    Hapus
+                                                </a>
+
+                                                <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"
+                                                      method="post" hidden>
+                                                    @csrf
+                                                    @method('delete')
+                                                </form>
+                                            @else
+                                                <a href="{{ route('kunjungan.genpdf', $kunjungan->id) }}" class="btn btn-danger btn-sm mr-2 d-inline-block">
+                                                    <i class="fa fa-file-pdf"></i> PDF
+                                                </a>
                                             @endif
 
-                                            <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
-                                               data-target="#hapusModal">
-                                                Hapus
-                                            </a>
-                                            <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"
-                                                  method="post" hidden>
-                                                @csrf
-                                                @method('delete')
-                                            </form>
                                         </div>
                                     </div>
 

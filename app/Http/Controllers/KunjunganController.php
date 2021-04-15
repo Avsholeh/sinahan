@@ -8,11 +8,11 @@ use App\Models\Kunjungan;
 use App\Models\Narapidana;
 use App\Models\Pengguna;
 use App\Models\WaktuKunjungan;
+use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-// TODO fix hapus kunjungan/index.php
 
 class KunjunganController extends Controller
 {
@@ -122,6 +122,14 @@ class KunjunganController extends Controller
         $kunjungan->delete();
         return redirect()->route('kunjungan.index')
             ->with('success', 'Kunjungan telah berhasil dihapus');
+    }
+
+    public function genPDF(Kunjungan $kunjungan)
+    {
+        $pdf = PDF::loadView('pdf.kunjungan', compact('kunjungan'));
+//        return $pdf->download('kunjungan.pdf');
+        return $pdf->stream();
+//        return view('pdf.kunjungan');
     }
 
     public function storeVerifikasi(Request $request)

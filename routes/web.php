@@ -103,6 +103,7 @@ Route::middleware(['auth', 'web'])->group(function() {
         Route::post('/', [KunjunganController::class, 'store'])->name('kunjungan.store');
         Route::put('/{kunjungan}', [KunjunganController::class, 'update'])->name('kunjungan.update');
         Route::delete('/{kunjungan}', [KunjunganController::class, 'destroy'])->name('kunjungan.delete');
+        Route::get('genPDF/{kunjungan}', [KunjunganController::class, 'genPDF'])->name('kunjungan.genpdf');
 
         Route::get('/verifikasi/{kunjungan}', [KunjunganController::class, 'createVerifikasi'])->name('kunjungan.verifikasi.create');
         Route::post('/verifikasi', [KunjunganController::class, 'storeVerifikasi'])->name('kunjungan.verifikasi.store');

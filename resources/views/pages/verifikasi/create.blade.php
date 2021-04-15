@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-header">
                     Data Pengunjung
                 </div>
