@@ -142,7 +142,7 @@
                                                     Verifikasi
                                                 </a>
 
-                                                <a href="#" class="btn btn-warning btn-sm mr-2 d-inline-block">
+                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}" class="btn btn-warning btn-sm mr-2 d-inline-block">
                                                     Perbarui
                                                 </a>
 

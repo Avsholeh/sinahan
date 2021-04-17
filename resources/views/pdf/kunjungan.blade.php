@@ -172,6 +172,10 @@
             </tbody>
         </table>
 
+        @if($kunjungan->dataPengunjungKunjungan->count() > 2)
+            <div class="page-break"></div>
+        @endif
+
         <div style="padding-left: 300px">
             <p style="text-align: center; margin-bottom: 80px">Dikeluarkan di: Tanjung Balai Karimun<br>
                 <span style="text-decoration: underline">Pada Tanggal : 08 Februari 2020</span><br><br>
@@ -192,7 +196,9 @@
             </p>
         </div>
 
-        <div class="page-break"></div>
+        @if($kunjungan->dataPengunjungKunjungan->count() < 3)
+            <div class="page-break"></div>
+        @endif
 
         <p style="margin-top: 50px"><strong>TEMBUSAN:</strong></p>
         <table>

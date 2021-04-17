@@ -12,6 +12,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
 
 
 class KunjunganController extends Controller
@@ -95,7 +96,13 @@ class KunjunganController extends Controller
      */
     public function edit(Kunjungan $kunjungan)
     {
-        return view('pages.kunjungan.edit', compact('kunjungan'));
+        if (auth()->user()->roles === Pengguna::ROLES_ADMIN) {
+            $dataPengunjungs = DataPengunjung::all();
+        } else {
+            $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
+        }
+        $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
+        return view('pages.kunjungan.edit', compact('kunjungan', 'dataPengunjungs', 'narapidanas'));
     }
 
     /**
@@ -107,7 +114,38 @@ class KunjunganController extends Controller
      */
     public function update(Request $request, Kunjungan $kunjungan)
     {
-        //
+        $request->validate([
+            'data_pengunjung' => 'required',
+            'narapidana_id' => 'required',
+            'pengguna_id' => 'required',
+            'keperluan' => 'required',
+        ]);
+
+//        $kunjungan = Kunjungan::create($request->only([
+//            'narapidana_id', 'pengguna_id', 'keperluan'
+//        ]));
+
+        $kunjungan->update([
+            'narapidana_id' => $request->narapidana_id,
+            'pengguna_id' => $request->pengguna_id,
+            'keperluan' => $request->keperluan,
+        ]);
+
+        $deletedDataPengunjung = DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id);
+
+        if (!$deletedDataPengunjung or !$kunjungan) abort(404);
+
+//        if ($kunjungan) {
+            foreach ($request->data_pengunjung as $data_pengunjung_id) {
+                DataPengunjungKunjungan::create([
+                    'data_pengunjung_id' => $data_pengunjung_id,
+                    'kunjungan_id' => $kunjungan->id
+                ]);
+            }
+//        }
+
+        return redirect()->route('kunjungan.index')
+            ->with('success', 'Kunjungan telah berhasil diperbarui');
     }
 
     /**
@@ -127,9 +165,9 @@ class KunjunganController extends Controller
     public function genPDF(Kunjungan $kunjungan)
     {
         $pdf = PDF::loadView('pdf.kunjungan', compact('kunjungan'));
-//        return $pdf->download('kunjungan.pdf');
-        return $pdf->stream();
-//        return view('pdf.kunjungan');
+        $pdfName = hash('adler32', $kunjungan->id) . '-surat-kunjungan.pdf';
+//            Hash::make($kunjungan->id) . '-kunjungan.pdf';
+        return $pdf->download($pdfName);
     }
 
     public function storeVerifikasi(Request $request)
