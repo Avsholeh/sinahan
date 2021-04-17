@@ -31,7 +31,7 @@
 
         <h3 style="text-align: center">
             <span style="text-decoration: underline">SURAT MENGUNJUNGI TAHANAN</span>
-            <br><span style="text-decoration: none">NOMOR:05/L.10.12.3/EP.1/02/2020</span>
+            <br><span style="text-decoration: none">NOMOR:{{ $kunjungan->no_surat }}</span>
         </h3>
 
     </div>
@@ -178,7 +178,7 @@
 
         <div style="padding-left: 300px">
             <p style="text-align: center; margin-bottom: 80px">Dikeluarkan di: Tanjung Balai Karimun<br>
-                <span style="text-decoration: underline">Pada Tanggal : 08 Februari 2020</span><br><br>
+                <span style="text-decoration: underline">Pada Tanggal : {{ $kunjungan->dibuat_pada }}</span><br><br>
                 <strong >
                     An. KEPALA KEJAKSAAN NEGERI KARIMUN
                     Ub KEPALA SEKSI TINDAK PIDANA UMUM

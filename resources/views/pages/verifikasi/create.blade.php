@@ -112,10 +112,6 @@
                     @foreach($kunjungan->dataPengunjungKunjungan as $dataPengunjungKunjungan)
 
                         <div class="row mb-2">
-                            {{--                        <div class="col-12">--}}
-                            {{--                            <img src="data:image/png;base64,{{ $dataPengunjungKunjungan->dataPengunjung->ktp }}"--}}
-                            {{--                                width="200">--}}
-                            {{--                        </div>--}}
                             <div class="col-12">
                                 <div class="card  border-left-info">
                                     <div class="card-body">
@@ -266,6 +262,18 @@
                                    readonly>
 
                             @error('keperluan')
+                            <small class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
+                        {{-- Nomor Surat --}}
+                        <div class="form-group">
+                            <label for="no_surat">No Surat <small style="color: red"> * mohon diisi sebelum melakukan verifikasi</small></label>
+                            <input name="no_surat" type="text" class="form-control" id="no_surat">
+
+                            @error('no_surat')
                             <small class="form-text text-danger">
                                 <i class="fa fa-info-circle"></i> {{ $message }}
                             </small>

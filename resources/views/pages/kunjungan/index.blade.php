@@ -142,7 +142,8 @@
                                                     Verifikasi
                                                 </a>
 
-                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}" class="btn btn-warning btn-sm mr-2 d-inline-block">
+                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
+                                                   class="btn btn-warning btn-sm mr-2 d-inline-block">
                                                     Perbarui
                                                 </a>
 
@@ -157,7 +158,25 @@
                                                     @method('delete')
                                                 </form>
                                             @else
-                                                <a href="{{ route('kunjungan.genpdf', $kunjungan->id) }}" class="btn btn-danger btn-sm mr-2 d-inline-block">
+                                                @if (auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                                                    <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
+                                                       class="btn btn-warning btn-sm mr-2 d-inline-block">
+                                                        Perbarui
+                                                    </a>
+
+                                                    <a class="btn btn-danger btn-sm btn-delete mr-2" data-toggle="modal"
+                                                       data-target="#hapusModal">
+                                                        Hapus
+                                                    </a>
+
+                                                    <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"
+                                                          method="post" hidden>
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+                                                @endif
+                                                <a href="{{ route('kunjungan.genpdf', $kunjungan->id) }}"
+                                                   class="btn btn-danger btn-sm mr-2 d-inline-block">
                                                     <i class="fa fa-file-pdf"></i> PDF
                                                 </a>
                                             @endif
@@ -236,13 +255,14 @@
 
             $('.btn-delete').click(function (e) {
                 e.preventDefault();
-                var $siblings = $(this).siblings();
+                var $form = $(this).siblings('form');
+                // console.log($siblings);
                 $('#konfirmasi').click(function (e) {
                     e.preventDefault();
                     // should check type of siblings
                     // if sibling is not a form
                     // then ignore it
-                    $siblings[2].submit();
+                    $form.submit();
                 });
             });
         });

@@ -47,6 +47,7 @@ class Kunjungan extends Model
         'pengguna_id',
         'keperluan',
         'no_surat',
+        'dibuat_pada',
     ];
 
     public $timestamps = false;
@@ -69,6 +70,11 @@ class Kunjungan extends Model
     public function getDibuatPadaAttribute()
     {
         return Carbon::parse($this->attributes['dibuat_pada'])->translatedFormat('l, d F Y');
+    }
+
+    public function getDibuatPadaBulanTahunAttribute()
+    {
+        return Carbon::parse($this->attributes['dibuat_pada'])->translatedFormat('F Y');
     }
 
     public function dataPengunjungKunjungan()

@@ -60,7 +60,7 @@ class KunjunganController extends Controller
         ]);
 
         $kunjungan = Kunjungan::create($request->only([
-            'narapidana_id', 'pengguna_id', 'keperluan'
+            'narapidana_id', 'pengguna_id', 'keperluan', 'dibuat_pada'
         ]));
 
         if ($kunjungan) {
@@ -131,7 +131,7 @@ class KunjunganController extends Controller
             'keperluan' => $request->keperluan,
         ]);
 
-        $deletedDataPengunjung = DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id);
+        $deletedDataPengunjung = DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id)->delete();
 
         if (!$deletedDataPengunjung or !$kunjungan) abort(404);
 
@@ -157,6 +157,8 @@ class KunjunganController extends Controller
      */
     public function destroy(Kunjungan $kunjungan)
     {
+        DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id)->delete();
+        WaktuKunjungan::where('kunjungan_id', $kunjungan->id)->delete();
         $kunjungan->delete();
         return redirect()->route('kunjungan.index')
             ->with('success', 'Kunjungan telah berhasil dihapus');
@@ -172,15 +174,20 @@ class KunjunganController extends Controller
 
     public function storeVerifikasi(Request $request)
     {
+        $request->validate([
+            'no_surat' => 'required',
+        ]);
+
         $kunjungan = Kunjungan::whereId($request->kunjungan_id)->first();
 
         if ($kunjungan->waktuKunjungan->count() > 0) {
 
             $kunjungan->status = Kunjungan::STS_SDH_VERIFIKASI;
+            $kunjungan->no_surat = $request->no_surat;
             $kunjungan->save();
 
             return redirect()->route('kunjungan.index')
-                ->with('success', "Kunjungan {$kunjungan->id} telah berhasil diverifikasi");
+                ->with('success', "Kunjungan dari {$kunjungan->pengguna->nama_lengkap} telah berhasil diverifikasi");
         }
 
         return redirect()->route('kunjungan.verifikasi.create', $request->kunjungan_id)
@@ -206,6 +213,7 @@ class KunjunganController extends Controller
             'tanggal' => 'required',
             'dari_jam' => 'required',
             'hingga_jam' => 'required',
+
         ]);
 
         WaktuKunjungan::create($request->only(['kunjungan_id', 'tanggal', 'dari_jam', 'hingga_jam']));

@@ -18,6 +18,33 @@
 
                         <input name="pengguna_id" class="d-none" type="text" value="{{ auth()->user()->id }}">
 
+                        @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
+                        {{-- DIBUAT PADA --}}
+                        <div class="form-group">
+                            <label for="dibuat_pada">Tanggal</label>
+                            <input type="date" name="dibuat_pada" id="dibuat_pada" class="form-control"
+                                value="{{ date('Y-m-d') }}">
+
+                            @error('dibuat_pada')
+                            <small id="dibuat_pada_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+                        @else
+                            <div class="form-group d-none">
+                                <label for="dibuat_pada">Tanggal</label>
+                                <input type="date" name="dibuat_pada" id="dibuat_pada" class="form-control"
+                                       value="{{ date('Y-m-d') }}">
+
+                                @error('dibuat_pada')
+                                <small id="dibuat_pada_help" class="form-text text-danger">
+                                    <i class="fa fa-info-circle"></i> {{ $message }}
+                                </small>
+                                @enderror
+                            </div>
+                        @endif
+
                         {{-- DATA PENGUNJUNG --}}
                         <div class="form-group">
                             <label for="data_pengunjung">Data Pengunjung</label>

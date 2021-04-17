@@ -70,10 +70,10 @@ class DatabaseSeeder extends Seeder
                     ->for($narapidana)
                     ->create();
 
-                $kunjungan2 = Kunjungan::factory(3)
-                    ->for($narapidana)
-                    ->for($user)
-                    ->create();
+//                $kunjungan2 = Kunjungan::factory(3)
+//                    ->for($narapidana)
+//                    ->for($user)
+//                    ->create();
             }
         }
 

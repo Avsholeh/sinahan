@@ -10,11 +10,32 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\NarapidanaController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SidangController;
+use App\Models\Kunjungan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'web'])->group(function() {
+Route::get('debug', function () {
+
+//    $query = \Illuminate\Support\Facades\DB::raw("
+//    SELECT
+//    DATE_FORMAT(dibuat_pada , '%M') AS Month,
+//    count(DATE_FORMAT(dibuat_pada , '%M')) as total
+//    FROM kunjungan
+//    GROUP BY DATE_FORMAT(dibuat_pada , '%M') DESC;")->get();
+
+    $bulan = DB::raw("DATE_FORMAT(dibuat_pada , '%M') AS bulan");
+    $total = DB::raw("count(DATE_FORMAT(dibuat_pada , '%M')) as total");
+    $groupByRaw = "DATE_FORMAT(dibuat_pada , '%M')";
+
+    $kunjungan = Kunjungan::select($bulan, $total)->groupByRaw($groupByRaw)->get();
+
+
+    dd($kunjungan);
+
+});
+
+Route::middleware(['auth', 'web'])->group(function () {
 
     /**
      * Route Kelola Data Dashboard
