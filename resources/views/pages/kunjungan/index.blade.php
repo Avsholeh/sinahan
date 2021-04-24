@@ -160,6 +160,12 @@
                                                     Hapus
                                                 </a>
 
+                                                <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"
+                                                      method="post" hidden>
+                                                    @csrf
+                                                    @method('delete')
+                                                </form>
+
                                             @else
 
                                                 <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
