@@ -186,55 +186,6 @@
 
                                             @endif
 
-
-                                            {{--                                            @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)--}}
-
-                                            {{--                                                @if (auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
-                                            {{--                                                    <a href="{{ route('kunjungan.verifikasi.create', $kunjungan->id) }}"--}}
-                                            {{--                                                       class="btn btn-success btn-sm mr-2">--}}
-                                            {{--                                                        Verifikasi--}}
-                                            {{--                                                    </a>--}}
-                                            {{--                                                @endif--}}
-
-                                            {{--                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"--}}
-                                            {{--                                                   class="btn btn-warning btn-sm mr-2 d-inline-block">--}}
-                                            {{--                                                    Perbarui--}}
-                                            {{--                                                </a>--}}
-
-                                            {{--                                                <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"--}}
-                                            {{--                                                   data-target="#hapusModal">--}}
-                                            {{--                                                    Hapus--}}
-                                            {{--                                                </a>--}}
-
-                                            {{--                                                <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"--}}
-                                            {{--                                                      method="post" hidden>--}}
-                                            {{--                                                    @csrf--}}
-                                            {{--                                                    @method('delete')--}}
-                                            {{--                                                </form>--}}
-                                            {{--                                            @else--}}
-                                            {{--                                                @if (auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)--}}
-                                            {{--                                                    <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"--}}
-                                            {{--                                                       class="btn btn-warning btn-sm mr-2 d-inline-block">--}}
-                                            {{--                                                        Perbarui--}}
-                                            {{--                                                    </a>--}}
-
-                                            {{--                                                    <a class="btn btn-danger btn-sm btn-delete mr-2" data-toggle="modal"--}}
-                                            {{--                                                       data-target="#hapusModal">--}}
-                                            {{--                                                        Hapus--}}
-                                            {{--                                                    </a>--}}
-
-                                            {{--                                                    <form action="{{ route('kunjungan.delete', $kunjungan->id) }}"--}}
-                                            {{--                                                          method="post" hidden>--}}
-                                            {{--                                                        @csrf--}}
-                                            {{--                                                        @method('delete')--}}
-                                            {{--                                                    </form>--}}
-                                            {{--                                                @endif--}}
-                                            {{--                                                <a href="{{ route('kunjungan.genpdf', $kunjungan->id) }}"--}}
-                                            {{--                                                   class="btn btn-danger btn-sm mr-2 d-inline-block">--}}
-                                            {{--                                                    <i class="fa fa-file-pdf"></i> PDF--}}
-                                            {{--                                                </a>--}}
-                                            {{--                                            @endif--}}
-
                                         </div>
                                     </div>
 
