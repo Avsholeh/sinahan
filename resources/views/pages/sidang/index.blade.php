@@ -6,11 +6,14 @@
 
     <div class="card mb-4">
         <div class="card-body p-3">
+
+            @if(auth()->user()->roles === \App\Models\Pengguna::ROLES_ADMIN)
             <div class="row mb-4">
                 <div class="col">
                     <a href="{{ route('sidang.create') }}" class="btn btn-primary">Tambah Baru</a>
                 </div>
             </div>
+            @endif
 
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">{{ $message }}</div>

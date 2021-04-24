@@ -24,7 +24,15 @@ class KunjunganController extends Controller
      */
     public function index()
     {
-        $kunjungans = Kunjungan::orderBy('dibuat_pada', 'desc')->paginate(10);
+        if (auth()->user()->roles === Pengguna::ROLES_ADMIN) {
+            $kunjungans = Kunjungan::orderBy('dibuat_pada', 'desc')->paginate(10);
+        }
+
+        if (auth()->user()->roles === Pengguna::ROLES_USER) {
+            $kunjungans = Kunjungan::where('pengguna_id', auth()->user()->id)
+                ->orderBy('dibuat_pada', 'desc')->paginate(10);
+        }
+
         return view('pages.kunjungan.index', compact('kunjungans'));
     }
 

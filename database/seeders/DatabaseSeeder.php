@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $environment = 'dev'; //prod
+        $environment = env('APP_ENV'); //prod
 
         // Create Actors
 
-        if ($environment === 'prod') {
+        if ($environment === 'production') {
             \App\Models\Pengguna::factory()->create([
                 'nama_lengkap' => 'Novitasari',
                 'username' => 'tupegawai',
