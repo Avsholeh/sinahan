@@ -7,6 +7,7 @@ use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\DataPengunjung;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 
@@ -44,6 +45,8 @@ class BiodataController extends Controller
             $newPassword = Hash::make($request->password);
         }
 
+
+
         $pengguna = Pengguna::find(auth()->user()->id);
         $pengguna->update([
             'nama_lengkap' => $request->nama_lengkap,
@@ -52,6 +55,14 @@ class BiodataController extends Controller
             'roles'=> $request->roles,
             'password'=> $newPassword,
         ]);
+
+        if ($request->foto) {
+            $image = Image::make($request->file('foto')->path())->encode('png');
+            $foto = base64_encode($image);
+            $pengguna->update([
+                'foto'=> $foto,
+            ]);
+        }
 
         return redirect()->route('biodata.index')
             ->with('success', 'Biodata berhasil diperbarui.');

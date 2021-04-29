@@ -11,7 +11,7 @@
 
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <form action="{{ route('biodata.store') }}" method="post">
+                    <form action="{{ route('biodata.store') }}" method="post" enctype="multipart/form-data">
 
                         @csrf
 
@@ -89,7 +89,7 @@
                         <div class="form-group">
                             <label for="foto">Foto</label>
                             <input type="file" name="foto" class="form-control-file" id="foto"
-                                   value="{{ auth()->user()->foto }}" aria-describedby="foto_help">
+                                   value="" aria-describedby="foto_help">
                             @error('foto')
                             <small id="foto_help" class="form-text text-danger">
                                 <i class="fa fa-info-circle"></i> {{ $message }}
