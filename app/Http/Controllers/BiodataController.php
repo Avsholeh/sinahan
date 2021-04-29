@@ -45,8 +45,6 @@ class BiodataController extends Controller
             $newPassword = Hash::make($request->password);
         }
 
-
-
         $pengguna = Pengguna::find(auth()->user()->id);
         $pengguna->update([
             'nama_lengkap' => $request->nama_lengkap,
