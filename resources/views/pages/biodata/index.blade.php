@@ -8,10 +8,8 @@
 
     <div class="row">
         <div class="col-md-4 col-lg-4 col-xl-4">
-
-            <div class="card mb-4 py-2">
+            <div class="card mb-4 py-2 animated--grow-in">
                 <div class="card-body">
-
                     <div class="row">
                         <div class="col-12 d-flex justify-content-center">
                             <div id="image-profile" class="rounded-circle"
@@ -19,20 +17,17 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row pt-3">
                         <div class="col-12 d-flex justify-content-center flex-column align-items-center">
                             <h4>{{ auth()->user()->nama_lengkap }}</h4>
                             <small class="text-muted">{{ auth()->user()->roles }}</small>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-12 mt-3">
                             <a href="{{ route('biodata.edit') }}" class="btn btn-primary btn-block">Perbarui Biodata</a>
                         </div>
                     </div>
-
                 </div>
             </div>
 
