@@ -240,6 +240,10 @@
                         <div class="alert alert-success">{{ $message }}</div>
                     @endif
 
+                    @if ($message = Session::get('dataPengunjung_error'))
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @endif
+
                     @if(count($dataPengunjungs) === 0)
 
                         <div class="alert alert-danger">

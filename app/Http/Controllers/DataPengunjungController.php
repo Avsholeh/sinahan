@@ -129,8 +129,13 @@ class DataPengunjungController extends Controller
      */
     public function destroy(DataPengunjung $dataPengunjung)
     {
-        $dataPengunjung->delete();
-        return redirect()->back()
-            ->with('dataPengunjung_success', 'Data Pengunjung telah berhasil dihapus');
+        try {
+            $dataPengunjung->delete();
+            return redirect()->back()
+                ->with('dataPengunjung_success', "Data pengunjung berhasil dihapus");
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->with('dataPengunjung_error', "Data pengunjung tidak dapat dihapus");
+        }
     }
 }
