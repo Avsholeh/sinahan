@@ -143,6 +143,10 @@
                                                        class="btn btn-success btn-sm mr-2">
                                                         Verifikasi
                                                     </a>
+                                                    <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
+                                                       class="btn btn-warning btn-sm mr-2 d-inline-block">
+                                                        Perbarui
+                                                    </a>
                                                 @else
                                                     <a href="{{ route('kunjungan.genpdf', $kunjungan->id) }}"
                                                        class="btn btn-danger btn-sm mr-2 d-inline-block">
@@ -150,10 +154,10 @@
                                                     </a>
                                                 @endif
 
-                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
+                                                {{--<a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
                                                    class="btn btn-warning btn-sm mr-2 d-inline-block">
                                                     Perbarui
-                                                </a>
+                                                </a>--}}
 
                                                 <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
                                                    data-target="#hapusModal">
