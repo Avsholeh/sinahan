@@ -84,7 +84,7 @@
                         </div>
 
                         {{-- Foto --}}
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="foto">Foto</label>
                             <input name="foto" type="file" class="form-control-file" id="foto"
                                    aria-describedby="foto_help">
@@ -97,7 +97,7 @@
                         </div>
 
                         {{-- Password --}}
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="password">Password</label>
                             <input name="password" type="password" class="form-control" id="password"
                                    value="password"
@@ -111,7 +111,7 @@
                         </div>
 
                         {{-- Konfirmasi Password --}}
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="password_confirmation">Konfirmasi Password</label>
                             <input name="password_confirmation" type="password" class="form-control"
                                    value="password"
