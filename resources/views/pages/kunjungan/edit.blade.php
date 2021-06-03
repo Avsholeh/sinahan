@@ -31,7 +31,7 @@
                                     @foreach($dataPengunjungs as $dataPengunjung)
                                         <option
                                                 value="{{ $dataPengunjung->id }}"
-                                                @if($kunjungan->dataPengunjungKunjungan->contains($dataPengunjung->id)){{ 'selected' }}@endif
+                                        @if($kunjungan->dataPengunjungKunjungan->contains('data_pengunjung_id', $dataPengunjung->id)){{ 'selected' }}@endif
                                         >
                                             ID:{{ $dataPengunjung->id }} - {{ $dataPengunjung->nama_lengkap }}
                                         </option>
@@ -72,7 +72,7 @@
                                 @foreach($narapidanas as $narapidana)
                                     <option
                                             value="{{ $narapidana->id }}"
-                                            @if($kunjungan->narapidana->id === $narapidana->id){{ 'selected' }}@endif
+                                    @if($kunjungan->narapidana->id === $narapidana->id){{ 'selected' }}@endif
                                     >{{ $narapidana->nama_lengkap }}
                                         ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})
                                     </option>

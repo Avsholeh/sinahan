@@ -111,7 +111,7 @@ class KunjunganController extends Controller
         }
         $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
 
-//        dd($kunjungan->dataPengunjungKunjungan->contains(2));
+//        dd($kunjungan->dataPengunjungKunjungan->contains('data_pengunjung_id', 2));
         return view('pages.kunjungan.edit', compact('kunjungan', 'dataPengunjungs', 'narapidanas'));
     }
 
