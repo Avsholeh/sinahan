@@ -110,6 +110,8 @@ class KunjunganController extends Controller
             $dataPengunjungs = DataPengunjung::where('pengguna_id', auth()->user()->id)->get();
         }
         $narapidanas = Narapidana::where('status', Narapidana::AKTIF)->get();
+
+//        dd($kunjungan->dataPengunjungKunjungan->contains(2));
         return view('pages.kunjungan.edit', compact('kunjungan', 'dataPengunjungs', 'narapidanas'));
     }
 

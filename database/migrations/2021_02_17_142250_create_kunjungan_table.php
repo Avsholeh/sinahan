@@ -18,10 +18,10 @@ class CreateKunjunganTable extends Migration
             $table->string('no_surat')->nullable();
             $table->timestamp('dibuat_pada')->useCurrent();
 
-            $table->foreignId('narapidana_id')
+            $table->foreignId('narapidana_id')->nullable()
                 ->constrained('narapidana')->nullOnDelete();
 
-            $table->foreignId('pengguna_id')
+            $table->foreignId('pengguna_id')->nullable()
                 ->constrained('pengguna')->nullOnDelete();
 
             $table->text('keperluan');

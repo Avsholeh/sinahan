@@ -11,7 +11,8 @@
             <!-- KUNJUNGAN -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('kunjungan.update', $kunjungan->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('kunjungan.update', $kunjungan->id) }}" method="post"
+                          enctype="multipart/form-data">
 
                         @csrf
                         @method('put')
@@ -24,13 +25,16 @@
 
                             @if(count($dataPengunjungs))
 
+
                                 <select multiple name="data_pengunjung[]" id="data_pengunjung"
                                         class="form-control chosen-select">
                                     @foreach($dataPengunjungs as $dataPengunjung)
                                         <option
-                                                value="{{ $dataPengunjung->id }}" @if(old('data_pengunjung') === 'Aktif'){{ 'selected' }}@endif>
+                                                value="{{ $dataPengunjung->id }}"
+                                                @if($kunjungan->dataPengunjungKunjungan->contains($dataPengunjung->id)){{ 'selected' }}@endif
+                                        >
                                             ID:{{ $dataPengunjung->id }} - {{ $dataPengunjung->nama_lengkap }}
-                                        </option>k
+                                        </option>
                                     @endforeach
                                 </select>
 
@@ -66,7 +70,10 @@
                             <select name="narapidana_id" id="narapidana" class="form-control chosen-select">
                                 <option value="" disabled selected>Pilih narapidana</option>
                                 @foreach($narapidanas as $narapidana)
-                                    <option value="{{ $narapidana->id }}">{{ $narapidana->nama_lengkap }}
+                                    <option
+                                            value="{{ $narapidana->id }}"
+                                            @if($kunjungan->narapidana->id === $narapidana->id){{ 'selected' }}@endif
+                                    >{{ $narapidana->nama_lengkap }}
                                         ({{ $narapidana->jenis_kelamin }}) ({{ $narapidana->status }})
                                     </option>
                                 @endforeach
