@@ -172,7 +172,7 @@
 
                                             @else
 
-                                                @if($kunjungan->status === \App\Models\Kunjungan::STS_SDH_VERIFIKASI)
+                                                @if($kunjungan->status === \App\Models\Kunjungan::STS_BLM_VERIFIKASI)
                                                     <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
                                                        class="btn btn-warning btn-sm mr-2 d-inline-block">
                                                         Perbarui
