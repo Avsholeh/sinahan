@@ -172,10 +172,12 @@
 
                                             @else
 
-                                                <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
-                                                   class="btn btn-warning btn-sm mr-2 d-inline-block">
-                                                    Perbarui
-                                                </a>
+                                                @if($kunjungan->status === \App\Models\Kunjungan::STS_SDH_VERIFIKASI)
+                                                    <a href="{{ route('kunjungan.edit', $kunjungan->id) }}"
+                                                       class="btn btn-warning btn-sm mr-2 d-inline-block">
+                                                        Perbarui
+                                                    </a>
+                                                @endif
 
                                                 <a class="btn btn-danger btn-sm btn-delete" data-toggle="modal"
                                                    data-target="#hapusModal">
