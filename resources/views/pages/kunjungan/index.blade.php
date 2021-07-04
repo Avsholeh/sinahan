@@ -32,7 +32,7 @@
                                                 ID
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ $kunjungan->id }}
+                                                {{ $kunjungan->id ?? '' }}
                                             </div>
                                         </div>
 
@@ -41,7 +41,7 @@
                                                 Dibuat pada
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ $kunjungan->dibuat_pada }}
+                                                {{ $kunjungan->dibuat_pada ?? '' }}
                                             </div>
                                         </div>
 
@@ -50,7 +50,7 @@
                                                 Diajukan oleh
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ $kunjungan->pengguna->nama_lengkap }}
+                                                {{ $kunjungan->pengguna->nama_lengkap ?? '' }}
                                             </div>
                                         </div>
 
@@ -59,7 +59,7 @@
                                                 Narapidana
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ $kunjungan->narapidana->nama_lengkap }}
+                                                {{ $kunjungan->narapidana->nama_lengkap ?? '' }}
                                             </div>
                                         </div>
 
@@ -71,7 +71,7 @@
                                                 Keperluan
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <small>{{ $kunjungan->keperluan }}</small>
+                                                <small>{{ $kunjungan->keperluan ?? '' }}</small>
                                             </div>
                                         </div>
                                     </div>
