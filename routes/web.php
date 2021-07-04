@@ -10,7 +10,6 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\NarapidanaController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\SidangController;
-use App\Models\Kunjungan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
