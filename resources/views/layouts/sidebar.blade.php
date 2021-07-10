@@ -176,14 +176,16 @@
             </div>
         </li>
 
-        <hr class="sidebar-divider">
-@endif
+    @endif
+    <li class="nav-item{{ request()->is('penilaian') ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('penilaian.index') }}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>Penilaian</span>
+        </a>
+    </li>
 
+    <hr class="sidebar-divider">
 
-
-
-
-<!-- Sidebar Toggler -->
     <div class="text-center d-none d-md-inline mt-3">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
