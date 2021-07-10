@@ -86,7 +86,7 @@
                                                     @foreach($kunjungan->dataPengunjungKunjungan as $dataPengunjungKunjungan)
                                                         <small>
                                                             ({{ $loop->iteration }}
-                                                            ) {{ $dataPengunjungKunjungan->dataPengunjung->nama_lengkap }}
+                                                            ) {{ $dataPengunjungKunjungan->dataPengunjung->nama_lengkap ?? '' }}
                                                         </small>
                                                     @endforeach
                                                 @else

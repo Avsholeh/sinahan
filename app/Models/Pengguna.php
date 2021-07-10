@@ -34,6 +34,8 @@ use Illuminate\Notifications\Notifiable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DataPengunjung[] $dataPengunjung
  * @property-read int|null $data_pengunjung_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Kunjungan[] $kunjungan
+ * @property-read int|null $kunjungan_count
  */
 class Pengguna extends Authenticatable
 {

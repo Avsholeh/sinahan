@@ -32,6 +32,9 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereDibuatPada($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereNoSurat($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Kunjungan whereStatus($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DataPengunjungKunjungan[] $dataPengunjungKunjungan
+ * @property-read int|null $data_pengunjung_kunjungan_count
+ * @property-read mixed $dibuat_pada_bulan_tahun
  */
 class Kunjungan extends Model
 {

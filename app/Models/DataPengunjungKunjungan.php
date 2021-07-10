@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjungKunjungan whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjungKunjungan whereKunjunganId($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\DataPengunjung $dataPengunjung
  */
 class DataPengunjungKunjungan extends Model
 {

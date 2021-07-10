@@ -125,4 +125,12 @@ Route::middleware(['auth', 'web'])->group(function () {
         Route::delete('/{data_pengunjung}', [DataPengunjungController::class, 'destroy'])->name('dataPengunjung.delete');
     });
 
+    /**
+     * Route Kunjungan
+     */
+    Route::prefix('/penilaian')->group(function () {
+        Route::get('/', [\App\Http\Controllers\PenilaianController::class, 'index'])->name('penilaian.index');
+        Route::post('/', [\App\Http\Controllers\PenilaianController::class, 'store'])->name('penilaian.store');
+    });
+
 });

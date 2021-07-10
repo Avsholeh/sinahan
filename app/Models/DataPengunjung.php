@@ -32,6 +32,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $pengguna_id
  * @property-read \App\Models\Pengguna $pengguna
  * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjung wherePenggunaId($value)
+ * @property mixed|null $ktp
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DataPengunjungKunjungan[] $dataPengunjungKunjungan
+ * @property-read int|null $data_pengunjung_kunjungan_count
+ * @method static \Illuminate\Database\Eloquent\Builder|DataPengunjung whereKtp($value)
  */
 class DataPengunjung extends Model
 {

@@ -24,6 +24,7 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Eloquent\Builder|WaktuKunjungan whereKunjunganId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|WaktuKunjungan whereTanggal($value)
  * @mixin \Eloquent
+ * @property-read WaktuKunjungan $kunjungan
  */
 class WaktuKunjungan extends Model
 {
