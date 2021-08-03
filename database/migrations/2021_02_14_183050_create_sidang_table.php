@@ -16,15 +16,15 @@ class CreateSidangTable extends Migration
         Schema::create('sidang', function (Blueprint $table) {
             $table->id();
             $table->dateTime('tanggal');
-            $table->foreignId('hakim_id')->nullable()->constrained('hakim')->nullOnDelete();
-            $table->foreignId('jaksa_id')->nullable()->constrained('jaksa')->nullOnDelete();
-            $table->foreignId('narapidana_id')->nullable()->constrained('narapidana')->nullOnDelete();
+            $table->foreignId('hakim_id')->nullable()
+                ->constrained('hakim')->cascadeOnDelete();
+            $table->foreignId('jaksa_id')->nullable()
+                ->constrained('jaksa')->cascadeOnDelete();
+            $table->foreignId('narapidana_id')->nullable()
+                ->constrained('narapidana')->cascadeOnDelete();
             $table->string('pasal');
-//            $table->string('jpu');
             $table->string('keterangan');
         });
-
-
     }
 
     /**

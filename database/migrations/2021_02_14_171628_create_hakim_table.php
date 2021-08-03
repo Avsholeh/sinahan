@@ -29,7 +29,6 @@ class CreateHakimTable extends Migration
         });
 
         DB::statement("ALTER TABLE hakim MODIFY foto MEDIUMBLOB");
-
     }
 
     /**

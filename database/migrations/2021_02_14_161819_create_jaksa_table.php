@@ -30,7 +30,6 @@ class CreateJaksaTable extends Migration
         });
 
         DB::statement("ALTER TABLE jaksa MODIFY foto MEDIUMBLOB");
-
     }
 
     /**

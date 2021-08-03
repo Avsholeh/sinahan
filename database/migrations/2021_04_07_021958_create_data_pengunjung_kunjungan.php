@@ -15,9 +15,10 @@ class CreateDataPengunjungKunjungan extends Migration
     {
         Schema::create('data_pengunjung_kunjungan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('data_pengunjung_id')->constrained('data_pengunjung');
-            $table->foreignId('kunjungan_id')->constrained('kunjungan');
-//            $table->timestamps();
+            $table->foreignId('data_pengunjung_id')
+                ->constrained('data_pengunjung')->cascadeOnDelete();
+            $table->foreignId('kunjungan_id')
+                ->constrained('kunjungan')->cascadeOnDelete();
         });
     }
 

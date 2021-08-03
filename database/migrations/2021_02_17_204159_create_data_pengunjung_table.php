@@ -15,7 +15,8 @@ class CreateDataPengunjungTable extends Migration
     {
         Schema::create('data_pengunjung', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('pengguna');
+            $table->foreignId('pengguna_id')
+                ->constrained('pengguna')->cascadeOnDelete();
             $table->string('nama_lengkap');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

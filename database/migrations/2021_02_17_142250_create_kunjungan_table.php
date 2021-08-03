@@ -17,17 +17,13 @@ class CreateKunjunganTable extends Migration
             $table->id();
             $table->string('no_surat')->nullable();
             $table->timestamp('dibuat_pada')->useCurrent();
-
             $table->foreignId('narapidana_id')->nullable()
-                ->constrained('narapidana')->nullOnDelete();
-
+                ->constrained('narapidana')->cascadeOnDelete();
             $table->foreignId('pengguna_id')->nullable()
-                ->constrained('pengguna')->nullOnDelete();
-
+                ->constrained('pengguna')->cascadeOnDelete();
             $table->text('keperluan');
             $table->string('status')->default('BELUM DIVERIFIKASI');
         });
-
     }
 
     /**

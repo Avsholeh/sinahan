@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWaktuKunjunganTable extends Migration
+class CreatePenilaiansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateWaktuKunjunganTable extends Migration
      */
     public function up()
     {
-        Schema::create('waktu_kunjungan', function (Blueprint $table) {
+        Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kunjungan_id')
-                ->constrained('kunjungan')->cascadeOnDelete();
-            $table->date('tanggal');
-            $table->time('dari_jam');
-            $table->time('hingga_jam');
+            $table->foreignId('user_id')->constrained('pengguna')->cascadeOnDelete();
+            $table->string('penilaian');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateWaktuKunjunganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('waktu_kunjungan');
+        Schema::dropIfExists('penilaians');
     }
 }
