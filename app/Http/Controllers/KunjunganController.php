@@ -131,6 +131,7 @@ class KunjunganController extends Controller
             'keperluan' => 'required',
         ]);
 
+
 //        $kunjungan = Kunjungan::create($request->only([
 //            'narapidana_id', 'pengguna_id', 'keperluan'
 //        ]));
@@ -141,18 +142,14 @@ class KunjunganController extends Controller
             'keperluan' => $request->keperluan,
         ]);
 
-        $deletedDataPengunjung = DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id)->delete();
+        DataPengunjungKunjungan::where('kunjungan_id', $kunjungan->id)->delete();
 
-        if (!$deletedDataPengunjung or !$kunjungan) abort(404);
-
-//        if ($kunjungan) {
-            foreach ($request->data_pengunjung as $data_pengunjung_id) {
-                DataPengunjungKunjungan::create([
-                    'data_pengunjung_id' => $data_pengunjung_id,
-                    'kunjungan_id' => $kunjungan->id
-                ]);
-            }
-//        }
+        foreach ($request->data_pengunjung as $data_pengunjung_id) {
+            DataPengunjungKunjungan::create([
+                'data_pengunjung_id' => $data_pengunjung_id,
+                'kunjungan_id' => $kunjungan->id
+            ]);
+        }
 
         return redirect()->route('kunjungan.index')
             ->with('success', 'Kunjungan telah berhasil diperbarui');
