@@ -105,6 +105,20 @@
                             @enderror
                         </div>
 
+                        {{-- KTP --}}
+                        <div class="form-group">
+                            <label for="ktp">KTP</label>
+                            <input name="ktp" type="file" class="form-control-file" id="ktp"
+                                   value="@if(old('ktp')){{ old('ktp') }}@endif"
+                                   aria-describedby="ktp_help">
+
+                            @error('ktp')
+                            <small id="ktp_help" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('biodata.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>

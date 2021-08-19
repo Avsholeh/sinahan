@@ -117,6 +117,14 @@ class DataPengunjungController extends Controller
 
         $dataPengunjung->update($request->all());
 
+        if ($request->ktp) {
+            $image = Image::make($request->file('ktp')->path())->encode('png');
+            $ktp = base64_encode($image);
+            $dataPengunjung->update([
+                'ktp'=> $ktp,
+            ]);
+        }
+
         return redirect()->route('biodata.index')
             ->with('dataPengunjung_success', "Data Pengunjung telah berhasil ditambah.");
     }
