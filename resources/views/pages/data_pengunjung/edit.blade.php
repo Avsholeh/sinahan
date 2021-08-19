@@ -119,6 +119,11 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="preview">Preview KTP</label>
+                            <img class="d-flex" src="data:image/png;base64,{{ $dataPengunjung->ktp }}" width="400">
+                        </div>
+
                         <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('biodata.index') }}" type="submit" class="btn btn-secondary">Kembali</a>
                     </form>
