@@ -177,12 +177,6 @@
         </li>
 
     @endif
-    <li class="nav-item{{ request()->is('penilaian') ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('penilaian.index') }}">
-            <i class="fas fa-fw fa-home"></i>
-            <span>Penilaian</span>
-        </a>
-    </li>
 
     <hr class="sidebar-divider">
 

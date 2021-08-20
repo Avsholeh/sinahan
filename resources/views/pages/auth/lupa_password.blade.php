@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{{ config('app.name') }} - Login</title>
+    <title>{{ config('app.name') }} - Lupa Password</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
 </head>
 
 <body class="bg-gradient-primary">
@@ -34,7 +34,7 @@
                         <div class="col-lg-12">
                             <!-- Logo -->
                             <div
-                                class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
+                                    class="sidebar-brand d-flex align-items-center justify-content-center flex-column py-3">
                                 <div class="rounded">
                                     <img src="{{ asset('img/logo.png') }}" width="150">
                                 </div>
@@ -56,30 +56,26 @@
                                     <div class="alert alert-danger">{{ session('message') }}</div>
                                 @endif
 
-                                <form class="user" action="{{ route('login') }}" method="post">
+                                @if (session('status'))
+                                    <div class="mb-4 font-medium text-sm text-green-600">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+
+                                <form class="user" action="{{ route('password.email') }}" method="post">
 
                                     @csrf
 
                                     <div class="form-group">
-                                        <label class="control-label" for="email_help">Email</label>
-                                        <input name="email" type="text" class="form-control"
-                                               id="email" aria-describedby="email_help">
+                                        <label class="control-label">Email</label>
+                                        <input name="email" type="text" class="form-control" id="email"
+                                        placeholder="Masukkan email Anda">
+                                        @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label" for="username_help">Password</label>
-                                        <input name="password" type="password" class="form-control"
-                                               id="password" aria-describedby="username_help">
-                                    </div>
-                                    <input type="submit" class="btn btn-primary btn-block mt-4" value="Login">
-                                    <a href="{{ route('register') }}" class="btn btn-secondary btn-block">
-                                        Daftar
-                                    </a>
 
-                                    <div class="form-group text-center mt-3">
-                                        Klik disini untuk <a href="{{ route('password.request') }}">
-                                            Lupa Password
-                                        </a>
-                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-block mt-4" value="Konfirmasi Email">
                                 </form>
                                 <hr>
                             </div>

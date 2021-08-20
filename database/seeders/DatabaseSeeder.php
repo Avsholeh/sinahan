@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         if (!$environment) {
             \App\Models\Pengguna::factory()->create([
                 'nama_lengkap' => 'Novitasari',
+                'email' => 'tupegawai@sinahan.com',
                 'username' => 'tupegawai',
                 'jenis_kelamin' => 'Wanita',
                 'roles' => 'TU-PEGAWAI',
@@ -31,13 +32,16 @@ class DatabaseSeeder extends Seeder
             ]);
 
             \App\Models\Pengguna::factory()->create([
+                'nama_lengkap' => 'Masyarakat',
                 'username' => 'masyarakat',
+                'email' => 'masyarakat@sinahan.com',
                 'jenis_kelamin' => 'Pria',
                 'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
             ]);
         } else {
             $tuPegawai = \App\Models\Pengguna::factory()->create([
                 'nama_lengkap' => 'Novitasari',
+                'email' => 'tupegawai@sinahan.com',
                 'username' => 'tupegawai',
                 'jenis_kelamin' => 'Wanita',
                 'roles' => 'TU-PEGAWAI',
@@ -45,7 +49,9 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $user = \App\Models\Pengguna::factory()->create([
+                'nama_lengkap' => 'Masyarakat',
                 'username' => 'masyarakat',
+                'email' => 'masyarakat@sinahan.com',
                 'jenis_kelamin' => 'Pria',
                 'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
             ]);

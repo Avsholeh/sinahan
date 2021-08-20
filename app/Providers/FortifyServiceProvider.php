@@ -3,9 +3,10 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
-//use App\Actions\Fortify\ResetUserPassword;
 //use App\Actions\Fortify\UpdateUserPassword;
 //use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Actions\Fortify\ResetUserPassword;
+use App\Actions\Fortify\UpdateUserPassword;
 use App\Models\Pengguna;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
@@ -36,10 +37,9 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::createUsersUsing(CreateNewUser::class);
 //        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
 //        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-//        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
         Fortify::authenticateUsing(function (Request $request) {
-            $user = Pengguna::where('username', $request->username)->first();
+            $user = Pengguna::where('email', $request->email)->first();
 
             if (!$user)  {
                 session()->flash('message', 'Akun tidak tersedia');
@@ -68,9 +68,17 @@ class FortifyServiceProvider extends ServiceProvider
             return view('pages.auth.register');
         });
 
-        RateLimiter::for('login', function (Request $request) {
-            return Limit::perMinute(5)->by($request->email.$request->ip());
+        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        Fortify::requestPasswordResetLinkView(function () {
+            return view('pages.auth.lupa_password');
         });
+        Fortify::resetPasswordView(function ($request) {
+            return view('pages.auth.reset_password', ['request' => $request]);
+        });
+
+//        RateLimiter::for('login', function (Request $request) {
+//            return Limit::perMinute(5)->by($request->email.$request->ip());
+//        });
 
 //        RateLimiter::for('two-factor', function (Request $request) {
 //            return Limit::perMinute(5)->by($request->session()->get('login.id'));

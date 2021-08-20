@@ -16,6 +16,7 @@ class CreatePenggunaTable extends Migration
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap');
+            $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
             $table->string('jenis_kelamin');

@@ -178,6 +178,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+//        App\Providers\FortifyServiceProvider::class,
     ],
 
     /*

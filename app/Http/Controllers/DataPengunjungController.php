@@ -59,6 +59,10 @@ class DataPengunjungController extends Controller
         $uploadedKtp = Image::make($request->file('ktp')->path())->encode('png');
         $ktp = base64_encode($uploadedKtp);
 
+
+//        dd($ktp);
+
+
         DataPengunjung::create([
             'pengguna_id' => $request->pengguna_id,
             'nama_lengkap' => $request->nama_lengkap,
