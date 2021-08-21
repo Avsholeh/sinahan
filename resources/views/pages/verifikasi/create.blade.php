@@ -67,7 +67,7 @@
                                         <div class="form-group col-4">
                                             <label for="dari_jam">Dari Jam</label>
                                             <input name="dari_jam" type="time" class="form-control" id="dari_jam"
-                                                   value="{{ old('dari_jam') }}" step='3600'>
+                                                   value="{{ old('dari_jam') }}" >
 
                                             @error('dari_jam')
                                             <small class="form-text text-danger">
@@ -81,7 +81,7 @@
                                             <label for="hingga_jam">Hingga Jam</label>
                                             <input name="hingga_jam" type="time" class="form-control"
                                                    id="hingga_jam"
-                                                   value="{{ old('hingga_jam') }}" step='3600'>
+                                                   value="{{ old('hingga_jam') }}">
 
                                             @error('hingga_jam')
                                             <small class="form-text text-danger">
