@@ -50,7 +50,7 @@ class HakimController extends Controller
     public function defaultFoto(Request $request)
     {
         if (!$request->foto) {
-            if ($request->jenis_kelamin === 'Perempuan') {
+            if ($request->jenis_kelamin === 'Wanita') {
                 return base64_encode(File::get(storage_path('app/public/perempuan.png')));
             } else {
                 return base64_encode(File::get(storage_path('app/public/laki.png')));

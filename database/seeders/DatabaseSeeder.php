@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         if (!$environment) {
             \App\Models\Pengguna::factory()->create([
                 'nama_lengkap' => 'Novitasari',
-                'email' => 'tupegawai@sinahan.com',
+                'email' => 'novita.vavitasari@gmail.com',
                 'username' => 'tupegawai',
                 'jenis_kelamin' => 'Wanita',
                 'roles' => 'TU-PEGAWAI',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         } else {
             $tuPegawai = \App\Models\Pengguna::factory()->create([
                 'nama_lengkap' => 'Novitasari',
-                'email' => 'tupegawai@sinahan.com',
+                'email' => 'novita.vavitasari@gmail.com',
                 'username' => 'tupegawai',
                 'jenis_kelamin' => 'Wanita',
                 'roles' => 'TU-PEGAWAI',
