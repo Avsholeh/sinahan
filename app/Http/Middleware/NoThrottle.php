@@ -15,7 +15,7 @@ class NoThrottle extends ThrottleRequests
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 1)
+    public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 0)
     {
         if (config("app.app_config")["nothrottle"] ?? false) {
             $response = $next($request);
