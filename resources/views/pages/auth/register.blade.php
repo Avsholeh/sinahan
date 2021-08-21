@@ -93,6 +93,20 @@
                                         @enderror
                                     </div>
 
+                                    {{-- Email --}}
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Email</label>
+                                        <input name="email" type="email" class="form-control"
+                                               value="@if(old('email')) {{ old('email') }} @endif"
+                                               id="email" aria-describedby="email_help">
+
+                                        @error('email')
+                                        <small id="email_help" class="form-text text-danger">
+                                            <i class="fa fa-info-circle"></i> {{ $message }}
+                                        </small>
+                                        @enderror
+                                    </div>
+
                                     {{-- Username --}}
                                     <div class="form-group">
                                         <label class="control-label" for="username">Username</label>

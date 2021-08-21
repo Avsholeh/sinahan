@@ -23,6 +23,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'nama_lengkap' => ['required', 'string'],
+            'email' => ['required', 'string'],
             'jenis_kelamin' => ['required', 'string'],
             'username' => ['required', 'string', 'max:255', 'min:4', Rule::unique(Pengguna::class)],
             'password' => $this->passwordRules(),
@@ -30,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
 
         return Pengguna::create([
             'nama_lengkap' => $input['nama_lengkap'],
+            'email' => $input['email'],
             'jenis_kelamin' => $input['jenis_kelamin'],
             'username' => $input['username'],
             'password' => Hash::make($input['password']),
