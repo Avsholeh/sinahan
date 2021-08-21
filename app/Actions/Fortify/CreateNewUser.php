@@ -3,7 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\Pengguna;
-use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -34,7 +34,17 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'jenis_kelamin' => $input['jenis_kelamin'],
             'username' => $input['username'],
+            'foto' => $this->generateFoto($input['jenis_kelamin']),
             'password' => Hash::make($input['password']),
         ]);
+    }
+
+    private function generateFoto($jenisKelamin)
+    {
+        if ($jenisKelamin === 'Pria') {
+            return base64_encode(File::get(storage_path('app/public/laki.png')));
+        } else {
+            return base64_encode(File::get(storage_path('app/public/perempuan.png')));
+        }
     }
 }
