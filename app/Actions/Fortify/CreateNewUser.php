@@ -34,17 +34,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'jenis_kelamin' => $input['jenis_kelamin'],
             'username' => $input['username'],
-            'foto' => $this->generateFoto($input['jenis_kelamin']),
+            'foto' => base64_encode(File::get(storage_path('app/public/avatar.png'))),
             'password' => Hash::make($input['password']),
         ]);
-    }
-
-    private function generateFoto($jenisKelamin)
-    {
-        if ($jenisKelamin === 'Pria') {
-            return base64_encode(File::get(storage_path('app/public/laki.png')));
-        } else {
-            return base64_encode(File::get(storage_path('app/public/perempuan.png')));
-        }
     }
 }
