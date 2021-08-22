@@ -23,6 +23,7 @@
                         <th>Foto</th>
                         <th>Nama Lengkap</th>
                         <th>Username</th>
+                        <th>Email</th>
                         <th>Jenis Kelamin</th>
                         <th>Roles</th>
                         <th>#</th>
@@ -39,6 +40,7 @@
                             </td>
                             <td>{{ $pengguna->nama_lengkap }}</td>
                             <td>{{ $pengguna->username }}</td>
+                            <td>{{ $pengguna->email }}</td>
                             <td>{{ $pengguna->jenis_kelamin }}</td>
                             <td>
                                 @if($pengguna->roles === 'TU-PEGAWAI')

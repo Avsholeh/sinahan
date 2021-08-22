@@ -44,6 +44,20 @@
                             @enderror
                         </div>
 
+                        {{-- Email --}}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="email" class="form-control" id="email"
+                                   value="{{ $pengguna->email }}"
+                                   aria-describedby="email_help">
+
+                            @error('email')
+                            <small id="emailhelp" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
                         {{-- Jenis Kelamin --}}
                         <div class="form-group">
                             <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>

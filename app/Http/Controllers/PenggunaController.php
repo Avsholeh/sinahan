@@ -48,6 +48,7 @@ class PenggunaController extends Controller
         $request->validate([
             'nama_lengkap' => 'required',
             'username' => 'required',
+            'email' => 'required',
             'jenis_kelamin' => 'required',
             'password' => $this->passwordRules(),
             'roles' => 'required',
@@ -58,13 +59,7 @@ class PenggunaController extends Controller
         $defaultFoto = base64_encode(File::get(storage_path('app/public/avatar.png')));
 
         if (!$request->foto) {
-            if ($request->roles === 'TU-PEGAWAI') {
-                if ($request->jenis_kelamin === 'Perempuan') {
-                    $defaultFoto = base64_encode(File::get(storage_path('app/public/perempuan.png')));
-                } else {
-                    $defaultFoto = base64_encode(File::get(storage_path('app/public/laki.png')));
-                }
-            }
+            $defaultFoto = base64_encode(File::get(storage_path('app/public/avatar.png')));
         } else {
             $image = Image::make($request->file('foto')->path())->encode('png');
             $defaultFoto = base64_encode($image);
@@ -73,6 +68,7 @@ class PenggunaController extends Controller
         Pengguna::insert([
             'nama_lengkap' => $request->nama_lengkap,
             'username' => $request->username,
+            'email' => $request->email,
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => $newPassword,
             'roles' => $request->roles,
@@ -117,6 +113,7 @@ class PenggunaController extends Controller
         $request->validate([
             'nama_lengkap' => 'required',
             'username' => 'required',
+            'email' => 'required',
             'jenis_kelamin' => 'required',
             'password' => $this->passwordRules(),
             'roles' => 'required',
@@ -134,6 +131,7 @@ class PenggunaController extends Controller
         $updatePengguna = [
             'nama_lengkap' => $request->nama_lengkap,
             'username' => $request->username,
+            'email' => $request->email,
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => $newPassword,
             'roles' => $request->roles,

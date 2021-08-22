@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPengunjung;
+use App\Models\DataPengunjungKunjungan;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -143,6 +144,7 @@ class DataPengunjungController extends Controller
     {
         try {
             $dataPengunjung->delete();
+            DataPengunjungKunjungan::where('data_pengujung_id', $dataPengunjung->id)->delete();
             return redirect()->back()
                 ->with('dataPengunjung_success', "Data pengunjung berhasil dihapus");
         } catch (\Exception $e) {

@@ -45,6 +45,20 @@
                             @enderror
                         </div>
 
+                        {{-- Email --}}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" type="email" class="form-control" id="email"
+                                   value="@if(old('email')) {{ old('email') }}@endif"
+                                   aria-describedby="email_help">
+
+                            @error('email')
+                            <small id="emailhelp" class="form-text text-danger">
+                                <i class="fa fa-info-circle"></i> {{ $message }}
+                            </small>
+                            @enderror
+                        </div>
+
                         {{-- Jenis Kelamin --}}
                         <div class="form-group">
                             <label class="control-label" for="jenis_kelamin">Jenis Kelamin</label>
@@ -52,13 +66,15 @@
                                     id="jenis_kelamin">
                                 <option value="" readonly>Pilih jenis kelamin</option>
                                 <option
-                                    @if(old('jenis_kelamin') === 'laki-laki'){{ 'selected' }}@endif
-                                    value="laki-laki"
-                                >Laki-laki</option>
+                                        @if(old('jenis_kelamin') === 'Pria'){{ 'selected' }}@endif
+                                        value="Pria">
+                                    Pria
+                                </option>
                                 <option
-                                    @if(old('jenis_kelamin') === 'perempuan'){{ 'selected' }}@endif
-                                    value="perempuan"
-                                >Perempuan</option>
+                                        @if(old('jenis_kelamin') === 'Wanita'){{ 'selected' }}@endif
+                                        value="Wanita">
+                                    Wanita
+                                </option>
                             </select>
                         </div>
 
@@ -68,11 +84,13 @@
                             <select name="roles" id="roles" class="form-control">
                                 <option value="" readonly>Pilih jenis pengguna</option>
                                 <option
-                                    @if(old('roles') === 'TU-PEGAWAI'){{ 'selected' }}@endif
-                                    value="TU-PEGAWAI">TU-PEGAWAI</option>
+                                        @if(old('roles') === 'TU-PEGAWAI'){{ 'selected' }}@endif
+                                        value="TU-PEGAWAI">TU-PEGAWAI
+                                </option>
                                 <option
-                                    @if(old('roles') === 'MASYARAKAT'){{ 'selected' }}@endif
-                                    value="MASYARAKAT">MASYARAKAT</option>
+                                        @if(old('roles') === 'MASYARAKAT'){{ 'selected' }}@endif
+                                        value="MASYARAKAT">MASYARAKAT
+                                </option>
                             </select>
                         </div>
 
