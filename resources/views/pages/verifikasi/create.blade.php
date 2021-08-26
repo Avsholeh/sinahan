@@ -12,7 +12,6 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Waktu Kunjungan</label>
-
                         @if($kunjungan->waktuKunjungan->count() > 0)
                             @foreach($kunjungan->waktuKunjungan as $waktuKunjungan)
                                 <div class="alert alert-warning">
@@ -39,17 +38,13 @@
                         <div class="card">
                             <div class="card-body">
                                 {{-- FORM WAKTU KUNJUNGAN --}}
-                                <form action="{{ route('kunjungan.waktu_kunjungan.store') }}"
-                                      method="post">
-
+                                <form action="{{ route('kunjungan.waktu_kunjungan.store') }}" method="post">
                                     @csrf
                                     @method('post')
 
                                     <input name="kunjungan_id" type="text" value="{{ $kunjungan->id }}"
                                            class="d-none">
-
                                     <div class="form-row">
-
                                         {{-- TANGGAL --}}
                                         <div class="form-group col-4">
                                             <label for="tanggal">Tanggal</label>
@@ -94,7 +89,6 @@
                                             <input class="btn btn-primary" type="submit" value="Tambah">
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -108,9 +102,7 @@
                     Data Pengunjung
                 </div>
                 <div class="card-body">
-
                     @foreach($kunjungan->dataPengunjungKunjungan as $dataPengunjungKunjungan)
-
                         <div class="row mb-2">
                             <div class="col-12">
                                 <div class="card  border-left-info">
@@ -191,17 +183,14 @@
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
                 </div>
             </div>
-
         </div>
 
         <div class="col-lg-6 col-xl-6">
             <div class="card mb-4">
                 <div class="card-body">
-
                     @if(session('danger'))
                         <div class="alert alert-danger">
                             {{ session('danger') }}
@@ -211,7 +200,6 @@
                     <form action="{{ route('kunjungan.verifikasi.store') }}" method="post">
                         @csrf
                         @method('post')
-
                         {{-- Kunjungan ID --}}
                         <div class="form-group">
                             <label for="kunjungan_id">ID Kunjungan</label>
