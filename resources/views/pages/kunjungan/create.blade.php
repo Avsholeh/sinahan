@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label for="dibuat_pada">Tanggal</label>
                             <input type="date" name="dibuat_pada" id="dibuat_pada" class="form-control"
-                                value="{{ date('Y-m-d') }}">
+                                min="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}">
 
                             @error('dibuat_pada')
                             <small id="dibuat_pada_help" class="form-text text-danger">

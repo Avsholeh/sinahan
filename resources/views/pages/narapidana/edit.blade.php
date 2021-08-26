@@ -48,7 +48,7 @@
                             <label for="tanggal_lahir">Tanggal Lahir</label>
                             <input name="tanggal_lahir" type="date" class="form-control" id="tanggal_lahir"
                                    value="{{ $narapidana->tanggal_lahir }}"
-                                   aria-describedby="tanggal_lahir_help">
+                                   aria-describedby="tanggal_lahir_help" max="{{ date('Y-m-d') }}" >
 
                             @error('tanggal_lahir')
                             <small id="tanggal_lahir_help" class="form-text text-danger">

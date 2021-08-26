@@ -131,11 +131,6 @@ class KunjunganController extends Controller
             'keperluan' => 'required',
         ]);
 
-
-//        $kunjungan = Kunjungan::create($request->only([
-//            'narapidana_id', 'pengguna_id', 'keperluan'
-//        ]));
-
         $kunjungan->update([
             'narapidana_id' => $request->narapidana_id,
             'pengguna_id' => $request->pengguna_id,

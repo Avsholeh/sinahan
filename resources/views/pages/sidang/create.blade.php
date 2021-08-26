@@ -20,7 +20,12 @@
                         <div class="form-group">
                             <label for="tanggal">Tanggal</label>
                             <input name="tanggal" type="datetime-local" class="form-control" id="tanggal"
-                                   value="@if(old('tanggal')){{ old('tanggal') }}@endif"
+                                   @if(old('tanggal'))
+                                   value="{{ old('tanggal') }}"
+                                   @else
+                                   value="{{ date('Y-m-d\Th:m') }}"
+                                   @endif
+                                           min="{{ date('Y-m-d\T') }}01:00:00"
                                    aria-describedby="tanggal_help">
 
                             @error('tanggal')

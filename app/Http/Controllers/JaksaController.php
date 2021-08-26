@@ -52,11 +52,7 @@ class JaksaController extends Controller
     public function defaultFoto(Request $request)
     {
         if (!$request->foto) {
-            if (strtolower($request->jenis_kelamin) === 'wanita') {
-                return base64_encode(File::get(storage_path('app/public/perempuan.png')));
-            } else {
-                return base64_encode(File::get(storage_path('app/public/laki.png')));
-            }
+            return base64_encode(File::get(storage_path('app/public/avatar.png')));
         } else {
             $image = Image::make($request->file('foto')->path())->encode('png');
             return base64_encode($image);
