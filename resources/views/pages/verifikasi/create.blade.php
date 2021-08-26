@@ -54,7 +54,7 @@
                                         <div class="form-group col-4">
                                             <label for="tanggal">Tanggal</label>
                                             <input name="tanggal" type="date" class="form-control" id="tanggal"
-                                                   value="{{ old('tanggal') }}">
+                                                   min="{{ date('Y-m-d') }}" value="{{ date('Y-m-d') }}">
 
                                             @error('tanggal')
                                             <small class="form-text text-danger">
